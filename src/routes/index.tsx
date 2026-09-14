@@ -244,11 +244,6 @@ function Showcase() {
         <Button asChild variant="default" className="h-11 rounded-full bg-foreground px-5 text-xs text-background hover:bg-foreground/85"><a href="#stories">View Details</a></Button>
         <Button asChild className="h-11 rounded-full px-5 text-xs"><a href="#booking">Rent Now</a></Button>
       </div>
-      <div className="mx-auto mt-6 flex w-[calc(100%-2.5rem)] max-w-xl items-center gap-3" aria-label={`Car ${activeIndex + 1} of ${cars.length}`}>
-        <span className="w-8 text-right text-[10px] font-bold tabular-nums">{String(activeIndex + 1).padStart(2, "0")}</span>
-        <div className="relative h-1.5 flex-1 overflow-hidden rounded-full bg-border"><span className="absolute inset-y-0 left-0 rounded-full bg-primary transition-[width] duration-500 ease-out" style={{ width: `${((activeIndex + 1) / cars.length) * 100}%` }} /></div>
-        <span className="w-8 text-[10px] font-bold tabular-nums">{String(cars.length).padStart(2, "0")}</span>
-      </div>
     </section>
   );
 }
