@@ -179,7 +179,7 @@ function CarImage({ car, position, direction }: { car: Car; position: "previous"
   return (
     <div className={`fleet-car fleet-car--${position} fleet-car--moving-${direction > 0 ? "forward" : "back"}`} aria-hidden={position !== "active"}>
       <div className="fleet-car-shadow" />
-      <img src={car.image} alt={position === "active" ? `${car.name}, ${car.type}` : ""} className="fleet-car-image" draggable={false} />
+      <img src={car.image} alt={position === "active" ? `${car.name}, ${car.type}` : ""} className="fleet-car-image" loading="lazy" width={1264} height={848} draggable={false} />
     </div>
   );
 }
