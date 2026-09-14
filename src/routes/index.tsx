@@ -175,7 +175,8 @@ function Showcase() {
   const dragStart = useRef<number | null>(null);
   const previousIndex = (activeIndex - 1 + cars.length) % cars.length;
   const nextIndex = (activeIndex + 1) % cars.length;
-  const activeCar = cars[activeIndex];
+  const carAt = (index: number) => cars[index] ?? cars[0];
+  const activeCar = carAt(activeIndex);
   const advance = useCallback((direction = 1) => {
     setDirection(direction > 0 ? 1 : -1);
     setActiveIndex((current) => (current + direction + cars.length) % cars.length);
@@ -212,9 +213,9 @@ function Showcase() {
       </div>
       <div className="relative mt-7 md:mt-10">
         <div className="fleet-stage touch-pan-y select-none" aria-label="Swipe through available cars" onPointerDown={handlePointerDown} onPointerUp={handlePointerUp} onPointerCancel={() => { dragStart.current = null; }}>
-          <CarImage key={`previous-${activeIndex}`} car={cars[previousIndex]} position="previous" direction={direction} />
+          <CarImage key={`previous-${activeIndex}`} car={carAt(previousIndex)} position="previous" direction={direction} />
           <CarImage key={`active-${activeIndex}`} car={activeCar} position="active" direction={direction} />
-          <CarImage key={`next-${activeIndex}`} car={cars[nextIndex]} position="next" direction={direction} />
+          <CarImage key={`next-${activeIndex}`} car={carAt(nextIndex)} position="next" direction={direction} />
         </div>
         <Button type="button" variant="outline" size="icon" className="fleet-arrow left-4 rounded-full sm:left-8" onClick={() => advance(-1)} aria-label="Previous car"><ChevronLeft /></Button>
         <Button type="button" variant="outline" size="icon" className="fleet-arrow right-4 rounded-full sm:right-8" onClick={() => advance(1)} aria-label="Next car"><ChevronRight /></Button>

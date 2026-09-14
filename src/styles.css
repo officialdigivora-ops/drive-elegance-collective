@@ -98,6 +98,7 @@ button, a { cursor: pointer; }
   background-color: var(--background);
   background-blend-mode: multiply;
   mix-blend-mode: multiply;
+  mask-image: radial-gradient(ellipse 72% 64% at center, #000 68%, transparent 100%);
   filter: drop-shadow(0 30px 40px color-mix(in oklab, var(--foreground) 25%, transparent));
 }
 .fleet-car-shadow {
