@@ -5,7 +5,6 @@ import {
   ChevronRight,
   ArrowRight,
   Armchair,
-  BriefcaseBusiness,
   Check,
   CircleUserRound,
   Cog,
@@ -14,7 +13,6 @@ import {
   Instagram,
   Linkedin,
   LoaderCircle,
-  Luggage,
   Menu,
   Search,
   ShieldCheck,
@@ -26,12 +24,39 @@ import { useCallback, useEffect, useRef, useState, type FormEvent, type PointerE
 
 import { Button } from "@/components/ui/button";
 import greenSuv from "../assets/green-suv.png";
-import luxuryCarLineup from "../assets/luxury-car-lineup.jpg";
 import redCar from "../assets/red-sports-car.jpg";
 import silverSuv from "../assets/silver-suv.png";
 import steeringWheel from "../assets/steering-wheel.jpg";
 import yellowSportsCar from "../assets/yellow-sports-car.png";
 import yellowSuv from "../assets/yellow-suv.png";
+import audiA3Convertible from "../assets/fleet/audi-a3-convertible.png";
+import audiA4 from "../assets/fleet/audi-a4.png";
+import audiA6 from "../assets/fleet/audi-a6.png";
+import audiQ7 from "../assets/fleet/audi-q7.png";
+import bentleyContinentalConvertible from "../assets/fleet/bentley-continental-convertible.png";
+import bmw4Convertible from "../assets/fleet/bmw-4-convertible.png";
+import bmw5Series from "../assets/fleet/bmw-5-series.png";
+import bmwM5 from "../assets/fleet/bmw-m5.png";
+import fordMustangConvertible from "../assets/fleet/ford-mustang-convertible.png";
+import hummerH2 from "../assets/fleet/hummer-h2.png";
+import jaguarXf from "../assets/fleet/jaguar-xf.png";
+import jaguarXjl from "../assets/fleet/jaguar-xjl.png";
+import landRoverDefender from "../assets/fleet/land-rover-defender.png";
+import mercedesCCabriolet from "../assets/fleet/mercedes-c-cabriolet.png";
+import mercedesCClass from "../assets/fleet/mercedes-c-class.png";
+import mercedesEClass from "../assets/fleet/mercedes-e-class.png";
+import mercedesGWagon from "../assets/fleet/mercedes-g-wagon.png";
+import mercedesMaybach from "../assets/fleet/mercedes-maybach-s-class.png";
+import miniCooperConvertible from "../assets/fleet/mini-cooper-convertible.png";
+import porsche911Silver from "../assets/fleet/porsche-911-silver.png";
+import porscheBoxsterRed from "../assets/fleet/porsche-boxster-red.png";
+import porscheTaycanBlue from "../assets/fleet/porsche-taycan-blue.png";
+import rangeRoverSport from "../assets/fleet/range-rover-sport.png";
+import rangeRoverVelar from "../assets/fleet/range-rover-velar.png";
+import rollsRoyceGhost from "../assets/fleet/rolls-royce-ghost.png";
+import toyotaFortuner from "../assets/fleet/toyota-fortuner.png";
+import urusGreen from "../assets/fleet/urus-green.png";
+import urusYellow from "../assets/fleet/urus-yellow.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -116,54 +141,45 @@ function Intro() {
 
 type Car = {
   name: string; type: string; speed: string; seats: string; airbags: string;
-  transmission: string; luggage: string; price: number; sprite: [number, number];
+  transmission: string; price: number; image: string;
 };
 
 const cars: [Car, ...Car[]] = [
-  { name:"Lamborghini Urus", type:"SUV", speed:"305 km/h", seats:"5 seats", airbags:"6 airbags", transmission:"8-speed Automatic", luggage:"4 bags", price:225, sprite:[0,0] },
-  { name:"Lamborghini Urus", type:"SUV", speed:"305 km/h", seats:"5 seats", airbags:"6 airbags", transmission:"8-speed Automatic", luggage:"4 bags", price:225, sprite:[1,0] },
-  { name:"Porsche 911 Carrera", type:"Sports Coupe", speed:"293 km/h", seats:"4 seats", airbags:"6 airbags", transmission:"8-speed Automatic (PDK)", luggage:"2 bags", price:310, sprite:[2,0] },
-  { name:"Porsche Boxster", type:"Convertible / Roadster", speed:"275 km/h", seats:"2 seats", airbags:"6 airbags", transmission:"6-speed Manual", luggage:"2 bags", price:285, sprite:[3,0] },
-  { name:"Porsche Taycan Turbo", type:"Electric Sports Sedan", speed:"260 km/h", seats:"4 seats", airbags:"8 airbags", transmission:"2-speed Automatic", luggage:"3 bags", price:340, sprite:[4,0] },
-  { name:"Range Rover Sport", type:"SUV", speed:"250 km/h", seats:"5 seats", airbags:"8 airbags", transmission:"8-speed Automatic", luggage:"5 bags", price:245, sprite:[5,0] },
-  { name:"Range Rover Velar", type:"SUV", speed:"225 km/h", seats:"5 seats", airbags:"6 airbags", transmission:"8-speed Automatic", luggage:"4 bags", price:215, sprite:[6,0] },
-  { name:"Land Rover Defender", type:"SUV", speed:"191 km/h", seats:"5–6 seats", airbags:"6 airbags", transmission:"8-speed Automatic", luggage:"5 bags", price:230, sprite:[0,1] },
-  { name:"Audi Q7", type:"7-Seater SUV", speed:"234 km/h", seats:"7 seats", airbags:"8 airbags", transmission:"8-speed Automatic", luggage:"5 bags", price:195, sprite:[1,1] },
-  { name:"Audi A6", type:"Sedan", speed:"250 km/h", seats:"5 seats", airbags:"8 airbags", transmission:"7-speed Automatic", luggage:"4 bags", price:175, sprite:[2,1] },
-  { name:"Audi A4", type:"Sedan", speed:"250 km/h", seats:"5 seats", airbags:"8 airbags", transmission:"7-speed Automatic", luggage:"3 bags", price:150, sprite:[3,1] },
-  { name:"Audi A3 Convertible", type:"Convertible", speed:"210 km/h", seats:"4 seats", airbags:"6 airbags", transmission:"7-speed Automatic", luggage:"2 bags", price:170, sprite:[4,1] },
-  { name:"BMW 5 Series", type:"Sedan", speed:"250 km/h", seats:"5 seats", airbags:"6 airbags", transmission:"8-speed Automatic", luggage:"4 bags", price:180, sprite:[5,1] },
-  { name:"BMW M5", type:"Sports Sedan", speed:"250–305 km/h", seats:"5 seats", airbags:"6 airbags", transmission:"8-speed Automatic", luggage:"4 bags", price:325, sprite:[6,1] },
-  { name:"BMW 4 Series Convertible", type:"Convertible", speed:"250 km/h", seats:"4 seats", airbags:"6 airbags", transmission:"8-speed Automatic", luggage:"2 bags", price:225, sprite:[0,2] },
-  { name:"Mercedes-Benz C-Class", type:"Sedan", speed:"250 km/h", seats:"5 seats", airbags:"7 airbags", transmission:"9-speed Automatic", luggage:"3 bags", price:175, sprite:[1,2] },
-  { name:"Mercedes-Benz E-Class", type:"Sedan", speed:"250 km/h", seats:"5 seats", airbags:"7 airbags", transmission:"9-speed Automatic", luggage:"4 bags", price:205, sprite:[2,2] },
-  { name:"Mercedes-Benz C-Class Cabriolet", type:"Convertible", speed:"250 km/h", seats:"4 seats", airbags:"7 airbags", transmission:"9-speed Automatic", luggage:"2 bags", price:235, sprite:[3,2] },
-  { name:"Mercedes-Benz G-Class", type:"SUV", speed:"210 km/h", seats:"5 seats", airbags:"9 airbags", transmission:"9-speed Automatic", luggage:"5 bags", price:395, sprite:[4,2] },
-  { name:"Mercedes-Maybach S-Class", type:"Luxury Sedan", speed:"250 km/h", seats:"4–5 seats", airbags:"8–10 airbags", transmission:"9-speed Automatic", luggage:"4 bags", price:525, sprite:[5,2] },
-  { name:"Rolls-Royce Ghost", type:"Luxury Sedan", speed:"250 km/h", seats:"4–5 seats", airbags:"8 airbags", transmission:"8-speed Automatic", luggage:"4 bags", price:650, sprite:[6,2] },
-  { name:"Bentley Continental GT", type:"Luxury Convertible", speed:"318–335 km/h", seats:"4 seats", airbags:"8 airbags", transmission:"8-speed Automatic", luggage:"2 bags", price:575, sprite:[0,3] },
-  { name:"Jaguar XF", type:"Sedan", speed:"250 km/h", seats:"5 seats", airbags:"7 airbags", transmission:"8-speed Automatic", luggage:"4 bags", price:165, sprite:[1,3] },
-  { name:"Jaguar XJL", type:"Luxury Sedan", speed:"250 km/h", seats:"5 seats", airbags:"8 airbags", transmission:"8-speed Automatic", luggage:"4 bags", price:225, sprite:[2,3] },
-  { name:"Ford Mustang Convertible", type:"Convertible", speed:"250 km/h", seats:"4 seats", airbags:"8 airbags", transmission:"6-speed Manual", luggage:"2 bags", price:190, sprite:[3,3] },
-  { name:"Mini Cooper Convertible", type:"Convertible", speed:"210 km/h", seats:"4 seats", airbags:"6 airbags", transmission:"6-speed Manual", luggage:"2 bags", price:125, sprite:[4,3] },
-  { name:"Toyota Fortuner", type:"SUV", speed:"175 km/h", seats:"7 seats", airbags:"7 airbags", transmission:"6-speed Automatic", luggage:"5 bags", price:140, sprite:[5,3] },
-  { name:"Hummer H2", type:"SUV", speed:"160 km/h", seats:"5–6 seats", airbags:"4 airbags", transmission:"4-speed Automatic", luggage:"5 bags", price:260, sprite:[6,3] },
+  { name:"Lamborghini Urus Yellow", type:"SUV", speed:"305 km/h", seats:"5 seats", airbags:"6 airbags", transmission:"8-speed Automatic", price:225, image:urusYellow },
+  { name:"Lamborghini Urus Green", type:"SUV", speed:"305 km/h", seats:"5 seats", airbags:"6 airbags", transmission:"8-speed Automatic", price:225, image:urusGreen },
+  { name:"Porsche 911 Carrera", type:"Sports Coupe", speed:"293 km/h", seats:"4 seats", airbags:"6 airbags", transmission:"8-speed Automatic (PDK)", price:310, image:porsche911Silver },
+  { name:"Porsche Boxster", type:"Convertible / Roadster", speed:"275 km/h", seats:"2 seats", airbags:"6 airbags", transmission:"6-speed Manual", price:285, image:porscheBoxsterRed },
+  { name:"Porsche Taycan Turbo", type:"Electric Sports Sedan", speed:"260 km/h", seats:"4 seats", airbags:"8 airbags", transmission:"2-speed Automatic", price:340, image:porscheTaycanBlue },
+  { name:"Range Rover Sport", type:"SUV", speed:"250 km/h", seats:"5 seats", airbags:"8 airbags", transmission:"8-speed Automatic", price:245, image:rangeRoverSport },
+  { name:"Range Rover Velar", type:"SUV", speed:"225 km/h", seats:"5 seats", airbags:"6 airbags", transmission:"8-speed Automatic", price:215, image:rangeRoverVelar },
+  { name:"Land Rover Defender", type:"SUV", speed:"191 km/h", seats:"5–6 seats", airbags:"6 airbags", transmission:"8-speed Automatic", price:230, image:landRoverDefender },
+  { name:"Audi Q7", type:"7-Seater SUV", speed:"234 km/h", seats:"7 seats", airbags:"8 airbags", transmission:"8-speed Automatic", price:195, image:audiQ7 },
+  { name:"Audi A6", type:"Sedan", speed:"250 km/h", seats:"5 seats", airbags:"8 airbags", transmission:"7-speed Automatic", price:175, image:audiA6 },
+  { name:"Audi A4", type:"Sedan", speed:"250 km/h", seats:"5 seats", airbags:"8 airbags", transmission:"7-speed Automatic", price:150, image:audiA4 },
+  { name:"Audi A3 Convertible", type:"Convertible", speed:"210 km/h", seats:"4 seats", airbags:"6 airbags", transmission:"7-speed Automatic", price:170, image:audiA3Convertible },
+  { name:"BMW 5 Series", type:"Sedan", speed:"250 km/h", seats:"5 seats", airbags:"6 airbags", transmission:"8-speed Automatic", price:180, image:bmw5Series },
+  { name:"BMW M5", type:"Sports Sedan", speed:"250–305 km/h", seats:"5 seats", airbags:"6 airbags", transmission:"8-speed Automatic", price:325, image:bmwM5 },
+  { name:"BMW 4 Series Convertible", type:"Convertible", speed:"250 km/h", seats:"4 seats", airbags:"6 airbags", transmission:"8-speed Automatic", price:225, image:bmw4Convertible },
+  { name:"Mercedes-Benz C-Class", type:"Sedan", speed:"250 km/h", seats:"5 seats", airbags:"7 airbags", transmission:"9-speed Automatic", price:175, image:mercedesCClass },
+  { name:"Mercedes-Benz E-Class", type:"Sedan", speed:"250 km/h", seats:"5 seats", airbags:"7 airbags", transmission:"9-speed Automatic", price:205, image:mercedesEClass },
+  { name:"Mercedes-Benz C-Class Cabriolet", type:"Convertible", speed:"250 km/h", seats:"4 seats", airbags:"7 airbags", transmission:"9-speed Automatic", price:235, image:mercedesCCabriolet },
+  { name:"Mercedes-Benz G-Class", type:"SUV", speed:"210 km/h", seats:"5 seats", airbags:"9 airbags", transmission:"9-speed Automatic", price:395, image:mercedesGWagon },
+  { name:"Mercedes-Maybach S-Class", type:"Luxury Sedan", speed:"250 km/h", seats:"4–5 seats", airbags:"8–10 airbags", transmission:"9-speed Automatic", price:525, image:mercedesMaybach },
+  { name:"Rolls-Royce Ghost", type:"Luxury Sedan", speed:"250 km/h", seats:"4–5 seats", airbags:"8 airbags", transmission:"8-speed Automatic", price:650, image:rollsRoyceGhost },
+  { name:"Bentley Continental GT Convertible", type:"Luxury Convertible", speed:"318–335 km/h", seats:"4 seats", airbags:"8 airbags", transmission:"8-speed Automatic", price:575, image:bentleyContinentalConvertible },
+  { name:"Jaguar XF", type:"Sedan", speed:"250 km/h", seats:"5 seats", airbags:"7 airbags", transmission:"8-speed Automatic", price:165, image:jaguarXf },
+  { name:"Jaguar XJL", type:"Luxury Sedan", speed:"250 km/h", seats:"5 seats", airbags:"8 airbags", transmission:"8-speed Automatic", price:225, image:jaguarXjl },
+  { name:"Ford Mustang Convertible", type:"Convertible", speed:"250 km/h", seats:"4 seats", airbags:"8 airbags", transmission:"6-speed Manual", price:190, image:fordMustangConvertible },
+  { name:"Mini Cooper Convertible", type:"Convertible", speed:"210 km/h", seats:"4 seats", airbags:"6 airbags", transmission:"6-speed Manual", price:125, image:miniCooperConvertible },
+  { name:"Toyota Fortuner", type:"SUV", speed:"175 km/h", seats:"7 seats", airbags:"7 airbags", transmission:"6-speed Automatic", price:140, image:toyotaFortuner },
+  { name:"Hummer H2", type:"SUV", speed:"160 km/h", seats:"5–6 seats", airbags:"4 airbags", transmission:"4-speed Automatic", price:260, image:hummerH2 },
 ];
 
 function CarImage({ car, position, direction }: { car: Car; position: "previous" | "active" | "next"; direction: 1 | -1 }) {
-  const [column, row] = car.sprite;
   return (
     <div className={`fleet-car fleet-car--${position} fleet-car--moving-${direction > 0 ? "forward" : "back"}`} aria-hidden={position !== "active"}>
       <div className="fleet-car-shadow" />
-      <div
-        role="img"
-        aria-label={`${car.name}, ${car.type}`}
-        className="fleet-car-image"
-        style={{
-          backgroundImage: `url(${luxuryCarLineup})`,
-          backgroundPosition: `${(column / 6) * 100}% ${(row / 3) * 100}%`,
-        }}
-      />
+      <img src={car.image} alt={position === "active" ? `${car.name}, ${car.type}` : ""} className="fleet-car-image" draggable={false} />
     </div>
   );
 }
@@ -202,7 +218,6 @@ function Showcase() {
   const specs = [
     [Gauge, activeCar.speed, "Top speed"], [Armchair, activeCar.seats, "Capacity"],
     [ShieldCheck, activeCar.airbags, "Safety"], [Cog, activeCar.transmission, "Transmission"],
-    [Luggage, activeCar.luggage, "Luggage"],
   ] as const;
 
   return (
@@ -220,7 +235,7 @@ function Showcase() {
         <Button type="button" variant="outline" size="icon" className="fleet-arrow left-4 rounded-full sm:left-8" onClick={() => advance(-1)} aria-label="Previous car"><ChevronLeft /></Button>
         <Button type="button" variant="outline" size="icon" className="fleet-arrow right-4 rounded-full sm:right-8" onClick={() => advance(1)} aria-label="Next car"><ChevronRight /></Button>
       </div>
-      <div className="mx-auto mt-2 grid max-w-4xl grid-cols-2 gap-x-3 gap-y-6 px-5 sm:grid-cols-5">
+      <div className="mx-auto mt-2 grid max-w-3xl grid-cols-2 gap-x-3 gap-y-6 px-5 sm:grid-cols-4">
         {specs.map(([Icon,value,label]) => <div key={label} className="min-w-0 text-center"><Icon className="mx-auto text-muted-foreground" size={22} /><strong className="mt-2 block text-xs sm:text-sm">{value}</strong><span className="text-[10px] text-muted-foreground">{label}</span></div>)}
       </div>
       <p className="mt-5 px-5 text-center text-[10px] text-muted-foreground">Specifications vary by trim and model year.</p>
@@ -229,8 +244,10 @@ function Showcase() {
         <Button asChild variant="default" className="h-11 rounded-full bg-foreground px-5 text-xs text-background hover:bg-foreground/85"><a href="#stories">View Details</a></Button>
         <Button asChild className="h-11 rounded-full px-5 text-xs"><a href="#booking">Rent Now</a></Button>
       </div>
-      <div className="mx-auto mt-5 flex max-w-[260px] items-center justify-center gap-1.5" aria-label={`Car ${activeIndex + 1} of ${cars.length}`}>
-        {cars.map((car, index) => <button key={`${car.name}-${index}`} type="button" onClick={() => { setDirection(index >= activeIndex ? 1 : -1); setActiveIndex(index); }} aria-label={`Show ${car.name}`} aria-current={index === activeIndex ? "true" : undefined} className={`h-1.5 rounded-full transition-all ${index === activeIndex ? "w-5 bg-primary" : "w-1.5 bg-border hover:bg-muted-foreground"}`} />)}
+      <div className="mx-auto mt-6 flex w-[calc(100%-2.5rem)] max-w-xl items-center gap-3" aria-label={`Car ${activeIndex + 1} of ${cars.length}`}>
+        <span className="w-8 text-right text-[10px] font-bold tabular-nums">{String(activeIndex + 1).padStart(2, "0")}</span>
+        <div className="relative h-1.5 flex-1 overflow-hidden rounded-full bg-border"><span className="absolute inset-y-0 left-0 rounded-full bg-primary transition-[width] duration-500 ease-out" style={{ width: `${((activeIndex + 1) / cars.length) * 100}%` }} /></div>
+        <span className="w-8 text-[10px] font-bold tabular-nums">{String(cars.length).padStart(2, "0")}</span>
       </div>
     </section>
   );
