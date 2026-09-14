@@ -49,4 +49,59 @@ button, a { cursor: pointer; }
   background-image: linear-gradient(30deg, transparent 48%, var(--border) 49%, var(--border) 51%, transparent 52%), linear-gradient(120deg, transparent 48%, var(--border) 49%, var(--border) 51%, transparent 52%);
   background-size: 28px 28px;
 }
+.fleet-showcase {
+  background: linear-gradient(180deg, var(--background), color-mix(in oklab, var(--primary) 10%, var(--background)), var(--background));
+}
+.fleet-stage {
+  position: relative;
+  height: clamp(230px, 32vw, 430px);
+  cursor: grab;
+}
+.fleet-stage:active { cursor: grabbing; }
+.fleet-car {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(270px, 47vw, 700px);
+  aspect-ratio: 5 / 3;
+  transition: transform 500ms ease-out, opacity 500ms ease-out, filter 500ms ease-out;
+  will-change: transform, opacity;
+}
+.fleet-car--active { z-index: 2; opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.fleet-car--previous { opacity: .6; transform: translate(-137%, -50%) scale(.85); }
+.fleet-car--next { opacity: .6; transform: translate(37%, -50%) scale(.85); }
+.fleet-car-image {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-size: 700% 400%;
+  filter: drop-shadow(0 30px 40px color-mix(in oklab, var(--foreground) 25%, transparent));
+}
+.fleet-car-shadow {
+  position: absolute;
+  z-index: -1;
+  left: 13%;
+  right: 13%;
+  bottom: 15%;
+  height: 13%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, color-mix(in oklab, var(--foreground) 25%, transparent), transparent 70%);
+  filter: blur(24px);
+  transform: scaleY(.55);
+}
+.fleet-arrow {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  transform: translateY(-50%);
+  border-color: var(--border);
+  background: color-mix(in oklab, var(--surface) 88%, transparent);
+  box-shadow: var(--shadow-card);
+}
+@media (max-width: 639px) {
+  .fleet-car { width: min(82vw, 390px); }
+  .fleet-car--previous { transform: translate(-130%, -50%) scale(.85); }
+  .fleet-car--next { transform: translate(30%, -50%) scale(.85); }
+  .fleet-arrow { top: 88%; }
+}
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
