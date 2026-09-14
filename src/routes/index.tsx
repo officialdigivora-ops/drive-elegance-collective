@@ -4,7 +4,6 @@ import {
   ArrowRight,
   BriefcaseBusiness,
   Check,
-  ChevronRight,
   CircleUserRound,
   Facebook,
   Gauge,
@@ -114,7 +113,7 @@ function Showcase() {
   return (
     <section id="fleet" className="overflow-hidden bg-background py-20 md:py-28">
       <h2 className="px-5 text-center font-display text-4xl font-black leading-none sm:text-6xl">PICK YOUR DREAM<br />CAR TODAY</h2>
-      <div ref={rail} className="no-scrollbar mt-10 flex snap-x snap-mandatory items-center gap-3 overflow-x-auto px-[8vw] pb-4 sm:px-[18vw] md:mt-14 md:px-0">
+      <div ref={rail} aria-label="Swipe through available cars" className="no-scrollbar mt-10 flex snap-x snap-mandatory items-center gap-3 overflow-x-auto px-[8vw] pb-4 sm:px-[18vw] md:mt-14 md:px-0">
         <div className="w-[68vw] shrink-0 snap-center opacity-80 md:-ml-[20%] md:w-[45%]"><img src={yellowSportsCar} width={1280} height={640} loading="lazy" alt="Yellow sports car" className="w-full" /></div>
         <div className="relative w-[84vw] shrink-0 snap-center md:w-[52%]"><img src={greenSuv} width={1280} height={640} loading="lazy" alt="Green premium SUV" className="w-full" /><span className="absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-surface/80 shadow-card"><Rotate3D size={20} /></span></div>
         <div className="w-[68vw] shrink-0 snap-center opacity-80 md:-mr-[20%] md:w-[45%]"><img src={silverSuv} width={1280} height={640} loading="lazy" alt="Silver luxury SUV" className="w-full" /></div>
