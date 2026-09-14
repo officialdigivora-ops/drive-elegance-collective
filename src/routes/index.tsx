@@ -150,10 +150,10 @@ const cars: Car[] = [
   { name:"Hummer H2", type:"SUV", speed:"160 km/h", seats:"5–6 seats", airbags:"4 airbags", transmission:"4-speed Automatic", luggage:"5 bags", price:260, sprite:[6,3] },
 ];
 
-function CarImage({ car, position }: { car: Car; position: "previous" | "active" | "next" }) {
+function CarImage({ car, position, direction }: { car: Car; position: "previous" | "active" | "next"; direction: 1 | -1 }) {
   const [column, row] = car.sprite;
   return (
-    <div className={`fleet-car fleet-car--${position}`} aria-hidden={position !== "active"}>
+    <div className={`fleet-car fleet-car--${position} fleet-car--moving-${direction > 0 ? "forward" : "back"}`} aria-hidden={position !== "active"}>
       <div className="fleet-car-shadow" />
       <div
         role="img"
@@ -170,12 +170,14 @@ function CarImage({ car, position }: { car: Car; position: "previous" | "active"
 
 function Showcase() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState<1 | -1>(1);
   const [paused, setPaused] = useState(false);
   const dragStart = useRef<number | null>(null);
   const previousIndex = (activeIndex - 1 + cars.length) % cars.length;
   const nextIndex = (activeIndex + 1) % cars.length;
   const activeCar = cars[activeIndex];
   const advance = useCallback((direction = 1) => {
+    setDirection(direction > 0 ? 1 : -1);
     setActiveIndex((current) => (current + direction + cars.length) % cars.length);
   }, []);
 
@@ -210,9 +212,9 @@ function Showcase() {
       </div>
       <div className="relative mt-7 md:mt-10">
         <div className="fleet-stage touch-pan-y select-none" aria-label="Swipe through available cars" onPointerDown={handlePointerDown} onPointerUp={handlePointerUp} onPointerCancel={() => { dragStart.current = null; }}>
-          <CarImage car={cars[previousIndex]} position="previous" />
-          <CarImage car={activeCar} position="active" />
-          <CarImage car={cars[nextIndex]} position="next" />
+          <CarImage key={`previous-${activeIndex}`} car={cars[previousIndex]} position="previous" direction={direction} />
+          <CarImage key={`active-${activeIndex}`} car={activeCar} position="active" direction={direction} />
+          <CarImage key={`next-${activeIndex}`} car={cars[nextIndex]} position="next" direction={direction} />
         </div>
         <Button type="button" variant="outline" size="icon" className="fleet-arrow left-4 rounded-full sm:left-8" onClick={() => advance(-1)} aria-label="Previous car"><ChevronLeft /></Button>
         <Button type="button" variant="outline" size="icon" className="fleet-arrow right-4 rounded-full sm:right-8" onClick={() => advance(1)} aria-label="Next car"><ChevronRight /></Button>
@@ -227,7 +229,7 @@ function Showcase() {
         <Button asChild className="h-11 rounded-full px-5 text-xs"><a href="#booking">Rent Now</a></Button>
       </div>
       <div className="mx-auto mt-5 flex max-w-[260px] items-center justify-center gap-1.5" aria-label={`Car ${activeIndex + 1} of ${cars.length}`}>
-        {cars.map((car, index) => <button key={`${car.name}-${index}`} type="button" onClick={() => setActiveIndex(index)} aria-label={`Show ${car.name}`} aria-current={index === activeIndex ? "true" : undefined} className={`h-1.5 rounded-full transition-all ${index === activeIndex ? "w-5 bg-primary" : "w-1.5 bg-border hover:bg-muted-foreground"}`} />)}
+        {cars.map((car, index) => <button key={`${car.name}-${index}`} type="button" onClick={() => { setDirection(index >= activeIndex ? 1 : -1); setActiveIndex(index); }} aria-label={`Show ${car.name}`} aria-current={index === activeIndex ? "true" : undefined} className={`h-1.5 rounded-full transition-all ${index === activeIndex ? "w-5 bg-primary" : "w-1.5 bg-border hover:bg-muted-foreground"}`} />)}
       </div>
     </section>
   );
