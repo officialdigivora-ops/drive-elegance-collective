@@ -1,10 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowDown,
+  ChevronLeft,
+  ChevronRight,
   ArrowRight,
+  Armchair,
   BriefcaseBusiness,
   Check,
   CircleUserRound,
+  Cog,
   Facebook,
   Gauge,
   Instagram,
@@ -12,15 +16,17 @@ import {
   LoaderCircle,
   Luggage,
   Menu,
-  Rotate3D,
   Search,
+  ShieldCheck,
   Tag,
   UsersRound,
   X,
 } from "lucide-react";
-import { useRef, useState, type FormEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type FormEvent, type PointerEvent } from "react";
 
+import { Button } from "@/components/ui/button";
 import greenSuv from "../assets/green-suv.png";
+import luxuryCarLineup from "../assets/luxury-car-lineup.jpg";
 import redCar from "../assets/red-sports-car.jpg";
 import silverSuv from "../assets/silver-suv.png";
 import steeringWheel from "../assets/steering-wheel.jpg";
@@ -108,22 +114,120 @@ function Intro() {
   );
 }
 
-function Showcase() {
-  const rail = useRef<HTMLDivElement>(null);
+type Car = {
+  name: string; type: string; speed: string; seats: string; airbags: string;
+  transmission: string; luggage: string; price: number; sprite: [number, number];
+};
+
+const cars: Car[] = [
+  { name:"Lamborghini Urus", type:"SUV", speed:"305 km/h", seats:"5 seats", airbags:"6 airbags", transmission:"8-speed Automatic", luggage:"4 bags", price:225, sprite:[0,0] },
+  { name:"Lamborghini Urus", type:"SUV", speed:"305 km/h", seats:"5 seats", airbags:"6 airbags", transmission:"8-speed Automatic", luggage:"4 bags", price:225, sprite:[1,0] },
+  { name:"Porsche 911 Carrera", type:"Sports Coupe", speed:"293 km/h", seats:"4 seats", airbags:"6 airbags", transmission:"8-speed Automatic (PDK)", luggage:"2 bags", price:310, sprite:[2,0] },
+  { name:"Porsche Boxster", type:"Convertible / Roadster", speed:"275 km/h", seats:"2 seats", airbags:"6 airbags", transmission:"6-speed Manual", luggage:"2 bags", price:285, sprite:[3,0] },
+  { name:"Porsche Taycan Turbo", type:"Electric Sports Sedan", speed:"260 km/h", seats:"4 seats", airbags:"8 airbags", transmission:"2-speed Automatic", luggage:"3 bags", price:340, sprite:[4,0] },
+  { name:"Range Rover Sport", type:"SUV", speed:"250 km/h", seats:"5 seats", airbags:"8 airbags", transmission:"8-speed Automatic", luggage:"5 bags", price:245, sprite:[5,0] },
+  { name:"Range Rover Velar", type:"SUV", speed:"225 km/h", seats:"5 seats", airbags:"6 airbags", transmission:"8-speed Automatic", luggage:"4 bags", price:215, sprite:[6,0] },
+  { name:"Land Rover Defender", type:"SUV", speed:"191 km/h", seats:"5–6 seats", airbags:"6 airbags", transmission:"8-speed Automatic", luggage:"5 bags", price:230, sprite:[0,1] },
+  { name:"Audi Q7", type:"7-Seater SUV", speed:"234 km/h", seats:"7 seats", airbags:"8 airbags", transmission:"8-speed Automatic", luggage:"5 bags", price:195, sprite:[1,1] },
+  { name:"Audi A6", type:"Sedan", speed:"250 km/h", seats:"5 seats", airbags:"8 airbags", transmission:"7-speed Automatic", luggage:"4 bags", price:175, sprite:[2,1] },
+  { name:"Audi A4", type:"Sedan", speed:"250 km/h", seats:"5 seats", airbags:"8 airbags", transmission:"7-speed Automatic", luggage:"3 bags", price:150, sprite:[3,1] },
+  { name:"Audi A3 Convertible", type:"Convertible", speed:"210 km/h", seats:"4 seats", airbags:"6 airbags", transmission:"7-speed Automatic", luggage:"2 bags", price:170, sprite:[4,1] },
+  { name:"BMW 5 Series", type:"Sedan", speed:"250 km/h", seats:"5 seats", airbags:"6 airbags", transmission:"8-speed Automatic", luggage:"4 bags", price:180, sprite:[5,1] },
+  { name:"BMW M5", type:"Sports Sedan", speed:"250–305 km/h", seats:"5 seats", airbags:"6 airbags", transmission:"8-speed Automatic", luggage:"4 bags", price:325, sprite:[6,1] },
+  { name:"BMW 4 Series Convertible", type:"Convertible", speed:"250 km/h", seats:"4 seats", airbags:"6 airbags", transmission:"8-speed Automatic", luggage:"2 bags", price:225, sprite:[0,2] },
+  { name:"Mercedes-Benz C-Class", type:"Sedan", speed:"250 km/h", seats:"5 seats", airbags:"7 airbags", transmission:"9-speed Automatic", luggage:"3 bags", price:175, sprite:[1,2] },
+  { name:"Mercedes-Benz E-Class", type:"Sedan", speed:"250 km/h", seats:"5 seats", airbags:"7 airbags", transmission:"9-speed Automatic", luggage:"4 bags", price:205, sprite:[2,2] },
+  { name:"Mercedes-Benz C-Class Cabriolet", type:"Convertible", speed:"250 km/h", seats:"4 seats", airbags:"7 airbags", transmission:"9-speed Automatic", luggage:"2 bags", price:235, sprite:[3,2] },
+  { name:"Mercedes-Benz G-Class", type:"SUV", speed:"210 km/h", seats:"5 seats", airbags:"9 airbags", transmission:"9-speed Automatic", luggage:"5 bags", price:395, sprite:[4,2] },
+  { name:"Mercedes-Maybach S-Class", type:"Luxury Sedan", speed:"250 km/h", seats:"4–5 seats", airbags:"8–10 airbags", transmission:"9-speed Automatic", luggage:"4 bags", price:525, sprite:[5,2] },
+  { name:"Rolls-Royce Ghost", type:"Luxury Sedan", speed:"250 km/h", seats:"4–5 seats", airbags:"8 airbags", transmission:"8-speed Automatic", luggage:"4 bags", price:650, sprite:[6,2] },
+  { name:"Bentley Continental GT", type:"Luxury Convertible", speed:"318–335 km/h", seats:"4 seats", airbags:"8 airbags", transmission:"8-speed Automatic", luggage:"2 bags", price:575, sprite:[0,3] },
+  { name:"Jaguar XF", type:"Sedan", speed:"250 km/h", seats:"5 seats", airbags:"7 airbags", transmission:"8-speed Automatic", luggage:"4 bags", price:165, sprite:[1,3] },
+  { name:"Jaguar XJL", type:"Luxury Sedan", speed:"250 km/h", seats:"5 seats", airbags:"8 airbags", transmission:"8-speed Automatic", luggage:"4 bags", price:225, sprite:[2,3] },
+  { name:"Ford Mustang Convertible", type:"Convertible", speed:"250 km/h", seats:"4 seats", airbags:"8 airbags", transmission:"6-speed Manual", luggage:"2 bags", price:190, sprite:[3,3] },
+  { name:"Mini Cooper Convertible", type:"Convertible", speed:"210 km/h", seats:"4 seats", airbags:"6 airbags", transmission:"6-speed Manual", luggage:"2 bags", price:125, sprite:[4,3] },
+  { name:"Toyota Fortuner", type:"SUV", speed:"175 km/h", seats:"7 seats", airbags:"7 airbags", transmission:"6-speed Automatic", luggage:"5 bags", price:140, sprite:[5,3] },
+  { name:"Hummer H2", type:"SUV", speed:"160 km/h", seats:"5–6 seats", airbags:"4 airbags", transmission:"4-speed Automatic", luggage:"5 bags", price:260, sprite:[6,3] },
+];
+
+function CarImage({ car, position }: { car: Car; position: "previous" | "active" | "next" }) {
+  const [column, row] = car.sprite;
   return (
-    <section id="fleet" className="overflow-hidden bg-background py-20 md:py-28">
-      <h2 className="px-5 text-center font-display text-4xl font-black leading-none sm:text-6xl">PICK YOUR DREAM<br />CAR TODAY</h2>
-      <div ref={rail} aria-label="Swipe through available cars" className="no-scrollbar mt-10 flex snap-x snap-mandatory items-center gap-3 overflow-x-auto px-[8vw] pb-4 sm:px-[18vw] md:mt-14 md:px-0">
-        <div className="w-[68vw] shrink-0 snap-center opacity-80 md:-ml-[20%] md:w-[45%]"><img src={yellowSportsCar} width={1280} height={640} loading="lazy" alt="Yellow sports car" className="w-full" /></div>
-        <div className="relative w-[84vw] shrink-0 snap-center md:w-[52%]"><img src={greenSuv} width={1280} height={640} loading="lazy" alt="Green premium SUV" className="w-full" /><span className="absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-surface/80 shadow-card"><Rotate3D size={20} /></span></div>
-        <div className="w-[68vw] shrink-0 snap-center opacity-80 md:-mr-[20%] md:w-[45%]"><img src={silverSuv} width={1280} height={640} loading="lazy" alt="Silver luxury SUV" className="w-full" /></div>
+    <div className={`fleet-car fleet-car--${position}`} aria-hidden={position !== "active"}>
+      <div className="fleet-car-shadow" />
+      <div
+        role="img"
+        aria-label={`${car.name}, ${car.type}`}
+        className="fleet-car-image"
+        style={{
+          backgroundImage: `url(${luxuryCarLineup})`,
+          backgroundPosition: `${(column / 6) * 100}% ${(row / 3) * 100}%`,
+        }}
+      />
+    </div>
+  );
+}
+
+function Showcase() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const dragStart = useRef<number | null>(null);
+  const previousIndex = (activeIndex - 1 + cars.length) % cars.length;
+  const nextIndex = (activeIndex + 1) % cars.length;
+  const activeCar = cars[activeIndex];
+  const advance = useCallback((direction = 1) => {
+    setActiveIndex((current) => (current + direction + cars.length) % cars.length);
+  }, []);
+
+  useEffect(() => {
+    if (paused) return;
+    const timer = window.setInterval(() => advance(), 4500);
+    return () => window.clearInterval(timer);
+  }, [advance, paused]);
+
+  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    dragStart.current = event.clientX;
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+  const handlePointerUp = (event: PointerEvent<HTMLDivElement>) => {
+    if (dragStart.current === null) return;
+    const distance = event.clientX - dragStart.current;
+    if (Math.abs(distance) > 45) advance(distance < 0 ? 1 : -1);
+    dragStart.current = null;
+  };
+
+  const specs = [
+    [Gauge, activeCar.speed, "Top speed"], [Armchair, activeCar.seats, "Capacity"],
+    [ShieldCheck, activeCar.airbags, "Safety"], [Cog, activeCar.transmission, "Transmission"],
+    [Luggage, activeCar.luggage, "Luggage"],
+  ] as const;
+
+  return (
+    <section id="fleet" className="fleet-showcase overflow-hidden py-20 md:py-28" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}>
+      <div className="px-5 text-center">
+        <h2 className="font-display text-4xl font-black leading-none sm:text-6xl">PICK YOUR DREAM<br />CAR TODAY</h2>
+        <p className="mt-4 text-xs font-bold uppercase text-muted-foreground" aria-live="polite">{activeCar.name} · {activeCar.type}</p>
       </div>
-      <div className="mx-auto mt-2 grid max-w-xl grid-cols-2 gap-6 px-6 sm:grid-cols-4">
-        {[[Gauge,"306 km/h","Top speed"],[BriefcaseBusiness,"6 speed","Automatic"],[UsersRound,"5 seats","Capacity"],[Luggage,"4 bags","Luggage"]].map(([Icon,value,label]) => { const I = Icon as typeof Gauge; return <div key={value as string} className="text-center"><I className="mx-auto text-muted-foreground" size={22} /><strong className="mt-2 block text-sm">{value as string}</strong><span className="text-[10px] text-muted-foreground">{label as string}</span></div>})}
+      <div className="relative mt-7 md:mt-10">
+        <div className="fleet-stage touch-pan-y select-none" aria-label="Swipe through available cars" onPointerDown={handlePointerDown} onPointerUp={handlePointerUp} onPointerCancel={() => { dragStart.current = null; }}>
+          <CarImage car={cars[previousIndex]} position="previous" />
+          <CarImage car={activeCar} position="active" />
+          <CarImage car={cars[nextIndex]} position="next" />
+        </div>
+        <Button type="button" variant="outline" size="icon" className="fleet-arrow left-4 rounded-full sm:left-8" onClick={() => advance(-1)} aria-label="Previous car"><ChevronLeft /></Button>
+        <Button type="button" variant="outline" size="icon" className="fleet-arrow right-4 rounded-full sm:right-8" onClick={() => advance(1)} aria-label="Next car"><ChevronRight /></Button>
       </div>
-      <div className="mx-auto mt-9 grid w-[calc(100%-2.5rem)] max-w-lg gap-3 rounded-2xl bg-surface p-3 shadow-card sm:grid-cols-[1fr_auto_auto] sm:items-center">
-        <div className="flex items-center gap-3 px-2"><Tag size={18} className="text-primary"/><span className="text-xl font-black">$225</span><small className="text-muted-foreground">/ day</small></div>
-        <a href="#stories" className="rounded-full bg-foreground px-5 py-3 text-center text-xs font-bold text-background">View Details</a><a href="#booking" className="rounded-full bg-primary px-5 py-3 text-center text-xs font-bold">Rent Now</a>
+      <div className="mx-auto mt-2 grid max-w-4xl grid-cols-2 gap-x-3 gap-y-6 px-5 sm:grid-cols-5">
+        {specs.map(([Icon,value,label]) => <div key={label} className="min-w-0 text-center"><Icon className="mx-auto text-muted-foreground" size={22} /><strong className="mt-2 block text-xs sm:text-sm">{value}</strong><span className="text-[10px] text-muted-foreground">{label}</span></div>)}
+      </div>
+      <p className="mt-5 px-5 text-center text-[10px] text-muted-foreground">Specifications vary by trim and model year.</p>
+      <div className="mx-auto mt-6 grid w-[calc(100%-2.5rem)] max-w-xl gap-3 rounded-2xl bg-surface p-3 shadow-card sm:grid-cols-[1fr_auto_auto] sm:items-center">
+        <div className="flex items-center justify-center gap-3 px-2 sm:justify-start"><Tag size={18} className="text-primary"/><span className="text-xl font-black">${activeCar.price}</span><small className="text-muted-foreground">/ day</small></div>
+        <Button asChild variant="default" className="h-11 rounded-full bg-foreground px-5 text-xs text-background hover:bg-foreground/85"><a href="#stories">View Details</a></Button>
+        <Button asChild className="h-11 rounded-full px-5 text-xs"><a href="#booking">Rent Now</a></Button>
+      </div>
+      <div className="mx-auto mt-5 flex max-w-[260px] items-center justify-center gap-1.5" aria-label={`Car ${activeIndex + 1} of ${cars.length}`}>
+        {cars.map((car, index) => <button key={`${car.name}-${index}`} type="button" onClick={() => setActiveIndex(index)} aria-label={`Show ${car.name}`} aria-current={index === activeIndex ? "true" : undefined} className={`h-1.5 rounded-full transition-all ${index === activeIndex ? "w-5 bg-primary" : "w-1.5 bg-border hover:bg-muted-foreground"}`} />)}
       </div>
     </section>
   );
