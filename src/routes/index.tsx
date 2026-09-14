@@ -119,7 +119,7 @@ type Car = {
   transmission: string; luggage: string; price: number; sprite: [number, number];
 };
 
-const cars: Car[] = [
+const cars: [Car, ...Car[]] = [
   { name:"Lamborghini Urus", type:"SUV", speed:"305 km/h", seats:"5 seats", airbags:"6 airbags", transmission:"8-speed Automatic", luggage:"4 bags", price:225, sprite:[0,0] },
   { name:"Lamborghini Urus", type:"SUV", speed:"305 km/h", seats:"5 seats", airbags:"6 airbags", transmission:"8-speed Automatic", luggage:"4 bags", price:225, sprite:[1,0] },
   { name:"Porsche 911 Carrera", type:"Sports Coupe", speed:"293 km/h", seats:"4 seats", airbags:"6 airbags", transmission:"8-speed Automatic (PDK)", luggage:"2 bags", price:310, sprite:[2,0] },
