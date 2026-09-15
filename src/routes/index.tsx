@@ -23,11 +23,19 @@ import {
 import { useCallback, useEffect, useRef, useState, type FormEvent, type PointerEvent } from "react";
 
 import { Button } from "@/components/ui/button";
-import { siAudi, siBentley, siBmw, siFord, siHyundai, siMini, siPorsche, siRollsroyce, siToyota } from "simple-icons";
+import audiLogo from "../assets/brands/audi.svg.asset.json";
+import bentleyLogo from "../assets/brands/bentley.svg.asset.json";
+import bmwLogo from "../assets/brands/bmw.svg.asset.json";
+import fordLogo from "../assets/brands/ford.svg.asset.json";
 import hummerLogo from "../assets/brands/hummer.svg.asset.json";
+import hyundaiLogo from "../assets/brands/hyundai.svg.asset.json";
 import jaguarLogo from "../assets/brands/jaguar.svg.asset.json";
 import landRoverLogo from "../assets/brands/land-rover.svg.asset.json";
 import mercedesLogo from "../assets/brands/mercedes.svg.asset.json";
+import miniLogo from "../assets/brands/mini.svg.asset.json";
+import porscheLogo from "../assets/brands/porsche.png.asset.json";
+import rollsRoyceLogo from "../assets/brands/rolls-royce.svg.asset.json";
+import toyotaLogo from "../assets/brands/toyota.svg.asset.json";
 import greenSuv from "../assets/green-suv.png";
 import redCar from "../assets/red-sports-car.jpg";
 import silverSuv from "../assets/silver-suv.png";
@@ -280,21 +288,21 @@ function Stories() {
 function BrandStrip() {
   const brands = [
     { name: "Mercedes-Benz", image: mercedesLogo.url },
-    { name: siAudi.title, icon: siAudi },
-    { name: siBmw.title, icon: siBmw },
-    { name: siBentley.title, icon: siBentley },
-    { name: siPorsche.title, icon: siPorsche },
-    { name: siMini.title, icon: siMini },
-    { name: siRollsroyce.title, icon: siRollsroyce },
-    { name: siToyota.title, icon: siToyota },
-    { name: siFord.title, icon: siFord },
-    { name: siHyundai.title, icon: siHyundai },
+    { name: "Audi", image: audiLogo.url },
+    { name: "BMW", image: bmwLogo.url },
+    { name: "Bentley", image: bentleyLogo.url },
+    { name: "Porsche", image: porscheLogo.url },
+    { name: "MINI", image: miniLogo.url },
+    { name: "Rolls-Royce", image: rollsRoyceLogo.url },
+    { name: "Toyota", image: toyotaLogo.url },
+    { name: "Ford", image: fordLogo.url },
+    { name: "Hyundai", image: hyundaiLogo.url },
     { name: "Land Rover", image: landRoverLogo.url },
     { name: "Jaguar", image: jaguarLogo.url },
     { name: "Hummer", image: hummerLogo.url },
   ];
 
-  return <section className="bg-surface pb-20" aria-label="Vehicle brands"><div className="no-scrollbar mx-auto flex max-w-6xl items-center gap-10 overflow-x-auto px-5 py-8 text-foreground md:justify-between md:gap-12 md:px-8">{brands.map((brand) => <div key={brand.name} className="flex h-14 min-w-20 shrink-0 items-center justify-center grayscale" title={brand.name}>{brand.image ? <img src={brand.image} alt={`${brand.name} logo`} loading="lazy" className="max-h-10 w-auto max-w-24 object-contain" /> : brand.icon ? <svg role="img" aria-label={`${brand.name} logo`} viewBox="0 0 24 24" className="h-10 w-14 fill-current"><path d={brand.icon.path} /></svg> : null}</div>)}</div></section>;
+  return <section className="bg-surface pb-20" aria-label="Vehicle brands"><div className="no-scrollbar mx-auto flex max-w-6xl items-center gap-10 overflow-x-auto px-5 py-8 md:justify-between md:gap-12 md:px-8">{brands.map((brand) => <div key={brand.name} className="flex h-16 min-w-24 shrink-0 items-center justify-center" title={brand.name}><img src={brand.image} alt={`${brand.name} logo`} loading="lazy" className="max-h-12 w-auto max-w-24 object-contain" /></div>)}</div></section>;
 }
 
 function PhoneMockup() {
