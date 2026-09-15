@@ -255,7 +255,7 @@ function Showcase() {
       </div>
       <p className="mt-5 px-5 text-center text-[10px] text-muted-foreground">Specifications vary by trim and model year.</p>
       <div className="mx-auto mt-6 grid w-[calc(100%-2.5rem)] max-w-xl gap-3 rounded-2xl bg-surface p-3 shadow-card sm:grid-cols-[1fr_auto_auto] sm:items-center">
-        <div className="flex items-center justify-center gap-3 px-2 sm:justify-start"><Tag size={18} className="text-primary"/><span className="text-xl font-black">${activeCar.price}</span><small className="text-muted-foreground">/ day</small></div>
+         <div className="flex items-center justify-center gap-3 px-2 sm:justify-start"><Tag size={18} className="text-primary"/><span className="text-xl font-black">₹{activeCar.price.toLocaleString("en-IN")}</span><small className="text-muted-foreground">/ 13 hours</small></div>
         <Button asChild variant="default" className="h-11 rounded-full bg-foreground px-5 text-xs text-background hover:bg-foreground/85"><a href="#stories">View Details</a></Button>
         <Button asChild className="h-11 rounded-full px-5 text-xs"><a href="#booking">Rent Now</a></Button>
       </div>
@@ -274,7 +274,24 @@ function Stories() {
 }
 
 function BrandStrip() {
-  return <section className="bg-surface pb-20"><div className="no-scrollbar mx-auto flex max-w-6xl items-center justify-between gap-12 overflow-x-auto px-5 py-8 text-center text-muted-foreground md:px-8">{["LAND ROVER","Audi","LAMBORGHINI","Ferrari","BMW","HONDA","NISSAN"].map((brand) => <span key={brand} className="shrink-0 font-display text-sm font-black tracking-normal grayscale">{brand}</span>)}</div></section>;
+  const brands = [
+    { name: "Mercedes-Benz" },
+    { name: siAudi.title, icon: siAudi },
+    { name: siBmw.title, icon: siBmw },
+    { name: siBentley.title, icon: siBentley },
+    { name: siPorsche.title, icon: siPorsche },
+    { name: siMini.title, icon: siMini },
+    { name: siRollsroyce.title, icon: siRollsroyce },
+    { name: siToyota.title, icon: siToyota },
+    { name: siFord.title, icon: siFord },
+    { name: siHyundai.title, icon: siHyundai },
+    { name: "Lamborghini" },
+    { name: "Land Rover" },
+    { name: "Jaguar" },
+    { name: "Hummer" },
+  ];
+
+  return <section className="bg-surface pb-20" aria-label="Vehicle brands"><div className="no-scrollbar mx-auto flex max-w-6xl items-center gap-10 overflow-x-auto px-5 py-8 text-muted-foreground md:gap-14 md:px-8">{brands.map((brand) => <div key={brand.name} className="flex min-w-max shrink-0 items-center gap-2 grayscale"><span className="font-display text-sm font-black tracking-normal">{brand.name}</span>{brand.icon && <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-current"><path d={brand.icon.path} /></svg>}</div>)}</div></section>;
 }
 
 function PhoneMockup() {
