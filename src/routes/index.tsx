@@ -14,7 +14,6 @@ import {
   Linkedin,
   LoaderCircle,
   Menu,
-  Search,
   ShieldCheck,
   Tag,
   UsersRound,
@@ -105,7 +104,7 @@ function Header() {
         </nav>
         <div className="flex items-center justify-end gap-2 sm:gap-3">
           <button className="hidden h-10 w-10 items-center justify-center rounded-full bg-foreground text-background transition-transform hover:scale-105 sm:flex" aria-label="Open profile"><CircleUserRound size={19} /></button>
-          <a href="#booking" className="inline-flex h-10 items-center rounded-full bg-primary px-4 text-xs font-bold text-primary-foreground transition-colors hover:bg-primary-hover sm:px-5">Get Started</a>
+          <a href="#fleet" className="inline-flex h-10 items-center rounded-full bg-primary px-4 text-xs font-bold text-primary-foreground transition-colors hover:bg-primary-hover sm:px-5">Get Started</a>
           <button className="flex h-10 w-10 items-center justify-center rounded-full bg-foreground text-background md:hidden" onClick={() => setOpen(!open)} aria-label="Toggle navigation" aria-expanded={open}>{open ? <X size={19} /> : <Menu size={19} />}</button>
         </div>
       </div>
@@ -114,36 +113,16 @@ function Header() {
   );
 }
 
-function BookingCard() {
-  const [tab, setTab] = useState<"Car" | "Vans">("Car");
-  return (
-    <div id="booking" className="relative z-20 mx-auto w-[calc(100%-2.5rem)] max-w-3xl rounded-2xl bg-card p-4 shadow-card md:p-5">
-      <div className="mb-4 flex gap-7 border-b border-border text-sm font-bold">
-        {(["Car", "Vans"] as const).map((item) => <button key={item} onClick={() => setTab(item)} className={`relative pb-3 ${tab === item ? "text-foreground after:absolute after:inset-x-0 after:-bottom-px after:h-0.5 after:bg-primary" : "text-muted-foreground"}`}>{item}</button>)}
-      </div>
-      <div className="grid gap-2 md:grid-cols-[1.25fr_1fr_1fr_auto] md:items-center">
-        {[
-          ["Pick up & Return location", "Dallas, Texas"],
-          ["Start", "Oct 16, 11:00 AM"],
-          ["Stop", "Oct 18, 5:00 PM"],
-        ].map(([label, value]) => <label key={label} className="block min-w-0 border-b border-border px-2 py-3 md:border-r md:border-b-0"><span className="block text-[10px] font-bold">{label}</span><input className="mt-1 w-full bg-transparent text-sm text-muted-foreground outline-none" defaultValue={value} aria-label={label} /></label>)}
-        <button className="flex h-12 w-full items-center justify-center rounded-xl bg-foreground text-background transition-colors hover:bg-primary hover:text-primary-foreground md:w-12" aria-label="Search available cars"><Search size={18} /></button>
-      </div>
-    </div>
-  );
-}
-
 function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-background pt-12 md:pt-16">
       <div className="relative z-10 px-5 text-center"><h1 className="mx-auto max-w-4xl font-display text-5xl font-black leading-[0.92] tracking-normal sm:text-7xl lg:text-8xl">PREMIUM CAR<br />RENTAL</h1></div>
-      <div className="mt-8"><BookingCard /></div>
-      <div className="relative -mt-3 h-[310px] sm:h-[420px] md:h-[520px]">
+      <div className="relative mt-3 h-[330px] sm:h-[440px] md:h-[540px]">
         <div className="absolute inset-x-0 bottom-0 h-[62%] bg-primary [clip-path:polygon(0_22%,100%_0,100%_100%,0_100%)]" />
         <span className="spark absolute right-[8%] top-[20%] z-10 text-primary">✦</span>
         <img src={yellowSuv} width={1536} height={768} alt="Yellow premium performance SUV" className="absolute left-1/2 top-1/2 z-10 w-[110%] max-w-6xl -translate-x-1/2 -translate-y-[44%] object-contain" />
       </div>
-      <a href="#how-it-works" aria-label="Scroll to learn more" className="absolute bottom-0 left-1/2 z-30 flex h-14 w-14 -translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full border-[6px] border-background bg-primary text-primary-foreground"><ArrowDown size={20} /></a>
+      <a href="#fleet" aria-label="Go to Pick Your Dream Car Today" className="absolute bottom-0 left-1/2 z-30 flex h-16 w-16 -translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full border-[6px] border-background bg-foreground text-background shadow-card transition-transform hover:scale-105"><ArrowDown size={22} strokeWidth={2.5} /></a>
     </section>
   );
 }
@@ -269,7 +248,7 @@ function Showcase() {
       <div className="mx-auto mt-6 grid w-[calc(100%-2.5rem)] max-w-xl gap-3 rounded-2xl bg-surface p-3 shadow-card sm:grid-cols-[1fr_auto_auto] sm:items-center">
          <div className="flex items-center justify-center gap-3 px-2 sm:justify-start"><Tag size={18} className="text-primary"/><span className="text-xl font-black">₹{activeCar.price.toLocaleString("en-IN")}</span><small className="text-muted-foreground">/ 13 hours</small></div>
         <Button asChild variant="default" className="h-11 rounded-full bg-foreground px-5 text-xs text-background hover:bg-foreground/85"><a href="#stories">View Details</a></Button>
-        <Button asChild className="h-11 rounded-full px-5 text-xs"><a href="#booking">Rent Now</a></Button>
+        <Button asChild className="h-11 rounded-full px-5 text-xs"><a href="#top">Rent Now</a></Button>
       </div>
     </section>
   );
