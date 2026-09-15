@@ -23,7 +23,11 @@ import {
 import { useCallback, useEffect, useRef, useState, type FormEvent, type PointerEvent } from "react";
 
 import { Button } from "@/components/ui/button";
-import { siAudi, siBentley, siBmw, siFord, siHyundai, siMini, siPorsche, siRollsroyce, siToyota } from "simple-icons";
+import { siAudi, siBentley, siBmw, siFord, siHyundai, siLamborghini, siMini, siPorsche, siRollsroyce, siToyota } from "simple-icons";
+import hummerLogo from "../assets/brands/hummer.svg.asset.json";
+import jaguarLogo from "../assets/brands/jaguar.svg.asset.json";
+import landRoverLogo from "../assets/brands/land-rover.svg.asset.json";
+import mercedesLogo from "../assets/brands/mercedes.svg.asset.json";
 import greenSuv from "../assets/green-suv.png";
 import redCar from "../assets/red-sports-car.jpg";
 import silverSuv from "../assets/silver-suv.png";
@@ -275,7 +279,7 @@ function Stories() {
 
 function BrandStrip() {
   const brands = [
-    { name: "Mercedes-Benz" },
+    { name: "Mercedes-Benz", image: mercedesLogo.url },
     { name: siAudi.title, icon: siAudi },
     { name: siBmw.title, icon: siBmw },
     { name: siBentley.title, icon: siBentley },
@@ -285,13 +289,13 @@ function BrandStrip() {
     { name: siToyota.title, icon: siToyota },
     { name: siFord.title, icon: siFord },
     { name: siHyundai.title, icon: siHyundai },
-    { name: "Lamborghini" },
-    { name: "Land Rover" },
-    { name: "Jaguar" },
-    { name: "Hummer" },
+    { name: siLamborghini.title, icon: siLamborghini },
+    { name: "Land Rover", image: landRoverLogo.url },
+    { name: "Jaguar", image: jaguarLogo.url },
+    { name: "Hummer", image: hummerLogo.url },
   ];
 
-  return <section className="bg-surface pb-20" aria-label="Vehicle brands"><div className="no-scrollbar mx-auto flex max-w-6xl items-center gap-10 overflow-x-auto px-5 py-8 text-muted-foreground md:gap-14 md:px-8">{brands.map((brand) => <div key={brand.name} className="flex min-w-max shrink-0 items-center gap-2 grayscale"><span className="font-display text-sm font-black tracking-normal">{brand.name}</span>{brand.icon && <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-current"><path d={brand.icon.path} /></svg>}</div>)}</div></section>;
+  return <section className="bg-surface pb-20" aria-label="Vehicle brands"><div className="no-scrollbar mx-auto flex max-w-6xl items-center gap-10 overflow-x-auto px-5 py-8 text-foreground md:justify-between md:gap-12 md:px-8">{brands.map((brand) => <div key={brand.name} className="flex h-14 min-w-20 shrink-0 items-center justify-center grayscale" title={brand.name}>{brand.image ? <img src={brand.image} alt={`${brand.name} logo`} loading="lazy" className="max-h-10 w-auto max-w-24 object-contain" /> : brand.icon ? <svg role="img" aria-label={`${brand.name} logo`} viewBox="0 0 24 24" className="h-10 w-14 fill-current"><path d={brand.icon.path} /></svg> : null}</div>)}</div></section>;
 }
 
 function PhoneMockup() {
