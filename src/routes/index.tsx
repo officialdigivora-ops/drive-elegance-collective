@@ -23,7 +23,7 @@ import {
 import { useCallback, useEffect, useRef, useState, type FormEvent, type PointerEvent } from "react";
 
 import { Button } from "@/components/ui/button";
-import { siAudi, siBentley, siBmw, siFord, siHyundai, siLamborghini, siMini, siPorsche, siRollsroyce, siToyota } from "simple-icons";
+import { siAudi, siBentley, siBmw, siFord, siHyundai, siMini, siPorsche, siRollsroyce, siToyota } from "simple-icons";
 import hummerLogo from "../assets/brands/hummer.svg.asset.json";
 import jaguarLogo from "../assets/brands/jaguar.svg.asset.json";
 import landRoverLogo from "../assets/brands/land-rover.svg.asset.json";
@@ -289,7 +289,6 @@ function BrandStrip() {
     { name: siToyota.title, icon: siToyota },
     { name: siFord.title, icon: siFord },
     { name: siHyundai.title, icon: siHyundai },
-    { name: siLamborghini.title, icon: siLamborghini },
     { name: "Land Rover", image: landRoverLogo.url },
     { name: "Jaguar", image: jaguarLogo.url },
     { name: "Hummer", image: hummerLogo.url },
