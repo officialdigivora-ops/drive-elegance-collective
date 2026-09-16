@@ -10,7 +10,7 @@ import {
   Facebook,
   Gauge,
   Instagram,
-  Linkedin,
+  Phone,
   LoaderCircle,
   Menu,
   ShieldCheck,
@@ -79,17 +79,63 @@ import toyotaFortuner from "../assets/fleet/toyota-fortuner.png";
 import limousineLongNew from "../assets/fleet/limousine-long-new.png";
 import mustangGt from "../assets/fleet/mustang-gt.png";
 import vintageLuxury from "../assets/fleet/vintage-luxury.png";
+import brandLogo from "../assets/brand/chaudhary-logo.png";
+
+const BRAND = "Chaudhary Luxury Cars";
+const PHONE_DISPLAY = "+91 99905 69473";
+const PHONE_LINK = "tel:+919990569473";
+const ADDRESS = "92M8+62C, Sanoli Rd, Sewah Kheri, Ugra Kheri Village, Panipat Taraf Afghan, Panipat, Haryana 132104, India";
+const MAP_LINK = "https://www.google.com/maps/search/?api=1&query=92M8%2B62C%20Sanoli%20Rd%20Panipat%20Haryana%20132104";
+const INSTAGRAM = "https://www.instagram.com/choudharyluxurycars";
+const FACEBOOK = "https://www.facebook.com/profile.php?id=61554864970019";
+
+const SITE_URL = "https://drive-elegance-collective.lovable.app";
+const TITLE = "Luxury Car Rental in Delhi NCR | Chaudhary Luxury Cars";
+const DESCRIPTION = "Chaudhary Luxury Cars offers wedding, event and corporate luxury car rental across Delhi NCR, Haryana and Uttar Pradesh. 100+ premium cars, 13-hour packages with fuel, driver, decoration and toll. Call +91 99905 69473.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "RENTAL | Premium Car Rental" },
-      { name: "description", content: "Reserve premium performance cars and SUVs with effortless pickup, flexible dates, and exceptional service." },
-      { property: "og:title", content: "RENTAL | Premium Car Rental" },
-      { property: "og:description", content: "Find your dream car and make every drive exceptional." },
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { name: "keywords", content: "luxury car rental Delhi NCR, wedding car rental Haryana, luxury car hire Uttar Pradesh, Rolls Royce rental Delhi, Mercedes wedding car Panipat, Range Rover rental NCR" },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Chaudhary Luxury Cars" },
+      { property: "og:url", content: SITE_URL },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+      { name: "robots", content: "index, follow" },
     ],
+    links: [{ rel: "canonical", href: SITE_URL }],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "AutoRental",
+        name: "Chaudhary Luxury Cars",
+        description: DESCRIPTION,
+        url: SITE_URL,
+        telephone: "+91 99905 69473",
+        priceRange: "₹6,000 - ₹2,45,000 per 13 hours",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "92M8+62C, Sanoli Rd, Sewah Kheri, Ugra Kheri Village",
+          addressLocality: "Panipat",
+          addressRegion: "Haryana",
+          postalCode: "132104",
+          addressCountry: "IN",
+        },
+        areaServed: ["Delhi", "NCR", "Haryana", "Uttar Pradesh"],
+        openingHours: "Mo-Su 00:00-23:59",
+        sameAs: [
+          "https://www.instagram.com/choudharyluxurycars",
+          "https://www.facebook.com/profile.php?id=61554864970019",
+        ],
+      }),
+    }],
   }),
   component: Index,
 });
@@ -105,7 +151,10 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-lg">
       <div className="mx-auto grid h-20 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 md:grid-cols-3 md:px-8">
-        <a href="#top" className="font-display text-xl font-black tracking-normal">RENTAL</a>
+        <a href="#top" className="flex items-center gap-2" aria-label={`${BRAND} home`}>
+          <img src={brandLogo} width={1536} height={768} alt={`${BRAND} logo`} className="h-9 w-auto sm:h-11" />
+          <span className="sr-only">{BRAND}</span>
+        </a>
         <nav className="hidden items-center justify-center gap-8 text-sm font-semibold md:flex" aria-label="Primary navigation">
           {navItems.map((item) => <a key={item.label} href={item.href} className="transition-colors hover:text-primary">{item.label}</a>)}
         </nav>
@@ -123,7 +172,10 @@ function Header() {
 function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-background pt-8 sm:pt-10 md:pt-14">
-      <div className="relative z-10 px-5 text-center"><h1 className="mx-auto max-w-4xl font-display text-5xl font-black leading-[0.92] tracking-normal sm:text-7xl lg:text-8xl">PREMIUM CAR<br />RENTAL</h1></div>
+      <div className="relative z-10 px-5 text-center">
+        <h1 className="mx-auto max-w-4xl font-display text-5xl font-black leading-[0.92] tracking-normal sm:text-7xl lg:text-8xl">LUXURY CAR<br />RENTAL</h1>
+        <p className="mx-auto mt-4 max-w-xl text-sm font-semibold text-muted-foreground sm:text-base">{BRAND} — weddings, events &amp; corporate travel across Delhi, NCR, Haryana &amp; Uttar Pradesh. Call <a href={PHONE_LINK} className="text-foreground underline">{PHONE_DISPLAY}</a></p>
+      </div>
       <div className="relative mt-1 h-[270px] sm:h-[380px] md:h-[500px] lg:h-[540px]">
         <div className="absolute inset-x-0 bottom-0 h-[62%] bg-primary [clip-path:polygon(0_22%,100%_0,100%_100%,0_100%)]" />
         <span className="spark absolute right-[8%] top-[20%] z-10 text-primary">✦</span>
@@ -350,8 +402,59 @@ function UserFeedback() {
 function Footer() {
   const [status, setStatus] = useState<"idle"|"loading"|"success">("idle");
   const submit = (e: FormEvent) => { e.preventDefault(); setStatus("loading"); window.setTimeout(() => setStatus("success"), 900); };
-  const columns = { Pages:["Rental","Locations","FAQ","Features","Blog"], Resources:["Installation Manual","Release Notes","Community Help"], Company:["About Us","Careers","Press","Support"], Product:["Demo","Security","FAQ","Features"] };
-  return <footer id="newsletter" className="bg-foreground text-background"><div className="mx-auto max-w-6xl px-5 py-16 md:px-8"><div className="grid items-end gap-10 border-b border-footer-line pb-14 md:grid-cols-2"><h2 className="relative max-w-md font-display text-4xl font-black leading-none sm:text-5xl"><span className="text-primary">✦</span> Stay up to date<br />on all the latest<br />news.</h2><form onSubmit={submit} className="flex items-center gap-2 border-b border-footer-line pb-3"><input required type="email" placeholder="Your Email" aria-label="Your email" className="min-w-0 flex-1 bg-transparent py-3 text-sm text-background outline-none placeholder:text-footer-muted"/><button disabled={status !== "idle"} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground" aria-label="Subscribe">{status === "loading" ? <LoaderCircle size={18} className="animate-spin"/> : status === "success" ? <Check size={18}/> : <ArrowRight size={18}/>}</button></form></div><div className="grid grid-cols-2 gap-x-8 gap-y-10 py-14 sm:grid-cols-3 lg:grid-cols-5">{Object.entries(columns).map(([title,links]) => <div key={title}><h3 className="mb-5 text-xs font-bold">{title}</h3><ul className="space-y-3">{links.map(link => <li key={link}><a href="#" className="text-xs text-footer-muted hover:text-primary">{link}</a></li>)}</ul></div>)}<div><h3 className="mb-5 text-xs font-bold">Follow Us</h3><div className="flex gap-2">{[Facebook,Linkedin,Instagram].map((Icon,i) => <a key={i} href="#" aria-label="Social channel" className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-line text-footer-muted hover:text-primary"><Icon size={15}/></a>)}</div></div></div><div className="flex flex-col gap-3 border-t border-footer-line pt-6 text-[10px] text-footer-muted sm:flex-row sm:justify-between"><span>All rights reserved © Premium Rental 2026</span><span>Privacy Policy&nbsp;&nbsp; | &nbsp;&nbsp;Terms &amp; Conditions</span></div></div></footer>;
+  const serviceAreas = ["Delhi", "Noida", "Gurugram", "Ghaziabad", "Faridabad", "Panipat", "Sonipat", "Karnal", "Meerut", "Agra"];
+  return (
+    <footer id="newsletter" className="bg-foreground text-background">
+      <div className="mx-auto max-w-6xl px-5 py-16 md:px-8">
+        <div className="grid items-end gap-10 border-b border-footer-line pb-14 md:grid-cols-2">
+          <h2 className="relative max-w-md font-display text-4xl font-black leading-none sm:text-5xl"><span className="text-primary">✦</span> Stay up to date<br />on all the latest<br />news.</h2>
+          <form onSubmit={submit} className="flex items-center gap-2 border-b border-footer-line pb-3">
+            <input required type="email" placeholder="Your Email" aria-label="Your email" className="min-w-0 flex-1 bg-transparent py-3 text-sm text-background outline-none placeholder:text-footer-muted" />
+            <button disabled={status !== "idle"} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground" aria-label="Subscribe">{status === "loading" ? <LoaderCircle size={18} className="animate-spin" /> : status === "success" ? <Check size={18} /> : <ArrowRight size={18} />}</button>
+          </form>
+        </div>
+        <div className="grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <img src={brandLogo} width={1536} height={768} loading="lazy" alt={`${BRAND} logo`} className="h-11 w-auto brightness-0 invert" />
+            <p className="mt-5 max-w-xs text-xs leading-6 text-footer-muted">Luxury car rental for weddings, photoshoots, corporate travel and airport transfers across Delhi NCR, Haryana and Uttar Pradesh. 100+ premium cars, 7 years of experience.</p>
+          </div>
+          <div>
+            <h3 className="mb-5 text-xs font-bold">Contact</h3>
+            <ul className="space-y-3 text-xs text-footer-muted">
+              <li><a href={PHONE_LINK} className="hover:text-primary">{PHONE_DISPLAY}</a></li>
+              <li><a href="https://wa.me/919990569473" target="_blank" rel="noopener noreferrer" className="hover:text-primary">WhatsApp us</a></li>
+              <li><a href={MAP_LINK} target="_blank" rel="noopener noreferrer" className="leading-6 hover:text-primary">{ADDRESS}</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="mb-5 text-xs font-bold">Service Areas</h3>
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-3 text-xs text-footer-muted">
+              {serviceAreas.map((area) => <li key={area}>{area}</li>)}
+            </ul>
+          </div>
+          <div>
+            <h3 className="mb-5 text-xs font-bold">Rental Package</h3>
+            <ul className="space-y-3 text-xs leading-6 text-footer-muted">
+              <li>Timing: 13 hours</li>
+              <li>Fuel, driver, decoration &amp; toll included</li>
+              <li>Extra km depends on car</li>
+              <li>Extra timing depends on car</li>
+            </ul>
+            <h3 className="mb-4 mt-8 text-xs font-bold">Follow Us</h3>
+            <div className="flex gap-2">
+              <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-line text-footer-muted hover:text-primary"><Instagram size={15} /></a>
+              <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-line text-footer-muted hover:text-primary"><Facebook size={15} /></a>
+              <a href={PHONE_LINK} aria-label="Call us" className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-line text-footer-muted hover:text-primary"><Phone size={15} /></a>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col gap-3 border-t border-footer-line pt-6 text-[10px] text-footer-muted sm:flex-row sm:justify-between">
+          <span>All rights reserved © {BRAND} 2026</span>
+          <span>Privacy Policy&nbsp;&nbsp; | &nbsp;&nbsp;Terms &amp; Conditions</span>
+        </div>
+      </div>
+    </footer>
+  );
 }
 
 function Index() {
