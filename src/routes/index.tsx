@@ -127,6 +127,29 @@ function Hero() {
   );
 }
 
+const marqueePrimary = ["NCR'S BIGGEST CAR RENTAL", "100+ PREMIUM CARS", "NCR'S BIGGEST CAR RENTAL", "100+ PREMIUM CARS"];
+const marqueeSecondary = ["24/7 SERVICE", "20,000+ CUSTOMERS", "24/7 SERVICE", "20,000+ CUSTOMERS"];
+
+function CrossMarquee() {
+  const renderItems = (items: string[]) => [...items, ...items].map((item, index) => (
+    <span key={`${item}-${index}`} className="cross-marquee-item">
+      <span aria-hidden="true">✦</span>{item}
+    </span>
+  ));
+
+  return (
+    <section className="cross-marquee" aria-label="Rental service highlights">
+      <div className="cross-marquee-band cross-marquee-band--primary">
+        <div className="cross-marquee-track">{renderItems(marqueePrimary)}</div>
+      </div>
+      <div className="cross-marquee-band cross-marquee-band--secondary">
+        <div className="cross-marquee-track cross-marquee-track--reverse">{renderItems(marqueeSecondary)}</div>
+      </div>
+      <p className="sr-only">NCR's biggest car rental with 24/7 service, more than 20,000 customers, and over 100 cars.</p>
+    </section>
+  );
+}
+
 type Car = {
   name: string; type: string; speed: string; seats: string; airbags: string;
   transmission: string; price: number; image: string;
@@ -325,5 +348,5 @@ function Footer() {
 }
 
 function Index() {
-  return <main><Header /><Hero /><Showcase /><Gallery /><BrandStrip /><UserFeedback /><Footer /></main>;
+  return <main><Header /><Hero /><CrossMarquee /><Showcase /><Gallery /><BrandStrip /><UserFeedback /><Footer /></main>;
 }
