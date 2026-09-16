@@ -2,22 +2,22 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   ChevronLeft,
   ChevronRight,
-  ArrowRight,
+  Fuel,
   Armchair,
-  Check,
+
   CircleUserRound,
   Cog,
   Facebook,
   Gauge,
   Instagram,
   Phone,
-  LoaderCircle,
+  UserRoundCheck,
   Menu,
   ShieldCheck,
   Tag,
   X,
 } from "lucide-react";
-import { useCallback, useEffect, useRef, useState, type FormEvent, type PointerEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
 
 import { Button } from "@/components/ui/button";
 import audiLogo from "../assets/brands/audi.svg.asset.json";
@@ -318,7 +318,10 @@ function Showcase() {
       <div className="mx-auto grid max-w-3xl grid-cols-2 gap-x-3 gap-y-5 px-5 sm:grid-cols-4 sm:gap-y-6">
         {specs.map(([Icon,value,label]) => <div key={label} className="min-w-0 text-center"><Icon className="mx-auto text-muted-foreground" size={22} /><strong className="mt-2 block text-xs sm:text-sm">{value}</strong><span className="text-[10px] text-muted-foreground">{label}</span></div>)}
       </div>
-      <p className="mt-4 px-5 text-center text-[10px] text-muted-foreground">Specifications vary by trim and model year.</p>
+      <div className="mt-5 flex flex-wrap items-center justify-center gap-3 px-5">
+        <span className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white"><Fuel size={15} /> Fuel Included</span>
+        <span className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white"><UserRoundCheck size={15} /> Driver Included</span>
+      </div>
       <div className="mx-auto mt-5 grid w-[calc(100%-2.5rem)] max-w-xl gap-3 rounded-2xl bg-surface p-3 shadow-card sm:grid-cols-[1fr_auto] sm:items-center">
          <div className="flex items-center justify-center gap-3 px-2 sm:justify-start"><Tag size={18} className="text-primary"/><span className="text-xl font-black">₹{activeCar.price.toLocaleString("en-IN")}</span><small className="text-muted-foreground">/ 13 hours</small></div>
         <Button asChild className="h-11 rounded-full px-6 text-xs sm:w-auto w-full"><a href={`https://wa.me/919990569473?text=${encodeURIComponent(`I want to book this car: ${activeCar.name} (${activeCar.type}) for ₹${activeCar.price.toLocaleString("en-IN")} / 13 hours. Can I get more details?`)}`} target="_blank" rel="noopener noreferrer">Rent Now</a></Button>
@@ -409,24 +412,15 @@ function UserFeedback() {
 }
 
 function Footer() {
-  const [status, setStatus] = useState<"idle"|"loading"|"success">("idle");
-  const submit = (e: FormEvent) => { e.preventDefault(); setStatus("loading"); window.setTimeout(() => setStatus("success"), 900); };
   const serviceAreas = ["Delhi", "Noida", "Gurugram", "Ghaziabad", "Faridabad", "Panipat", "Sonipat", "Karnal", "Meerut", "Agra"];
   return (
-    <footer id="newsletter" className="bg-foreground text-background">
-      <div className="mx-auto max-w-6xl px-5 py-16 md:px-8">
-        <div className="grid items-end gap-10 border-b border-footer-line pb-14 md:grid-cols-2">
-          <h2 className="relative max-w-md font-display text-4xl font-black leading-none sm:text-5xl"><span className="text-primary">✦</span> Stay up to date<br />on all the latest<br />news.</h2>
-          <form onSubmit={submit} className="flex items-center gap-2 border-b border-footer-line pb-3">
-            <input required type="email" placeholder="Your Email" aria-label="Your email" className="min-w-0 flex-1 bg-transparent py-3 text-sm text-background outline-none placeholder:text-footer-muted" />
-            <button disabled={status !== "idle"} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground" aria-label="Subscribe">{status === "loading" ? <LoaderCircle size={18} className="animate-spin" /> : status === "success" ? <Check size={18} /> : <ArrowRight size={18} />}</button>
-          </form>
+    <footer className="bg-foreground text-background">
+      <div className="mx-auto max-w-6xl px-5 py-14 md:px-8">
+        <div className="flex flex-col items-center border-b border-footer-line pb-12 text-center">
+          <img src={brandLogo} width={1536} height={768} loading="lazy" alt={`${BRAND} logo`} className="h-20 w-auto brightness-0 invert sm:h-24" />
+          <p className="mt-5 max-w-md text-xs leading-6 text-footer-muted">Luxury car rental for weddings, photoshoots, corporate travel and airport transfers across Delhi NCR, Haryana and Uttar Pradesh. 100+ premium cars, 7 years of experience.</p>
         </div>
-        <div className="grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <img src={brandLogo} width={1536} height={768} loading="lazy" alt={`${BRAND} logo`} className="h-11 w-auto brightness-0 invert" />
-            <p className="mt-5 max-w-xs text-xs leading-6 text-footer-muted">Luxury car rental for weddings, photoshoots, corporate travel and airport transfers across Delhi NCR, Haryana and Uttar Pradesh. 100+ premium cars, 7 years of experience.</p>
-          </div>
+        <div className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-3">
           <div>
             <h3 className="mb-5 text-xs font-bold">Contact</h3>
             <ul className="space-y-3 text-xs text-footer-muted">
