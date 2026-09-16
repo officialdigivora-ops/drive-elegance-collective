@@ -272,14 +272,16 @@ function Showcase() {
 }
 
 const galleryImages = [
-  { image: redCar, alt: "Red sports car driving on an open road", crop: true },
-  { image: mercedesConvertibleWhite, alt: "White Mercedes convertible", crop: false },
-  { image: steeringWheel, alt: "Premium sports car steering wheel", crop: true },
-  { image: bentleyConvertibleRed, alt: "Red Bentley convertible", crop: false },
-  { image: silverSuv, alt: "Silver luxury SUV", crop: false },
-  { image: porscheTaycanBlue, alt: "Blue Porsche Taycan Turbo", crop: false },
-  { image: yellowSportsCar, alt: "Yellow premium sports car", crop: false },
-  { image: rangeRoverSportBlack, alt: "Black Range Rover Sport", crop: false },
+  { image: galleryDefender.url, alt: "White Land Rover Defender decorated for a wedding", crop: true },
+  { image: galleryHummer.url, alt: "White Hummer H2", crop: true },
+  { image: galleryBmwFront.url, alt: "White BMW convertible with wedding flowers", crop: true },
+  { image: galleryBmwSide.url, alt: "White BMW convertible side view", crop: true },
+  { image: galleryRangeRoverRed.url, alt: "Red Range Rover convertible with wedding flowers", crop: true },
+  { image: galleryBentleyBlack.url, alt: "Black Bentley Continental convertible", crop: true },
+  { image: galleryAudiWhite.url, alt: "White Audi A4 decorated for a wedding", crop: true },
+  { image: galleryMaybach.url, alt: "Mercedes-Maybach with wedding flowers", crop: true },
+  { image: galleryTaycanBlue.url, alt: "Blue Porsche Taycan Turbo", crop: true },
+  { image: galleryGwagon.url, alt: "White Mercedes G-Wagon with wedding flowers", crop: true },
 ];
 
 function Gallery() {
