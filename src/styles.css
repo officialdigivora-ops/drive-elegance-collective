@@ -49,6 +49,29 @@ button, a { cursor: pointer; }
   background-image: linear-gradient(30deg, transparent 48%, var(--border) 49%, var(--border) 51%, transparent 52%), linear-gradient(120deg, transparent 48%, var(--border) 49%, var(--border) 51%, transparent 52%);
   background-size: 28px 28px;
 }
+.gallery-flow {
+  width: 100%;
+  overflow: hidden;
+}
+.gallery-track {
+  display: flex;
+  width: max-content;
+  gap: 18px;
+  padding-inline: 9px;
+  animation: gallery-scroll 48s linear infinite;
+  will-change: transform;
+}
+.gallery-frame {
+  flex: 0 0 clamp(280px, 34vw, 500px);
+  height: clamp(220px, 28vw, 390px);
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--background);
+}
+@keyframes gallery-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - 9px)); }
+}
 .fleet-showcase {
   background: linear-gradient(180deg, var(--background), color-mix(in oklab, var(--primary) 10%, var(--background)), var(--background));
 }
@@ -129,4 +152,4 @@ button, a { cursor: pointer; }
   .fleet-car--next { transform: translate3d(30%, -50%, -80px) rotateY(-8deg) scale(.84); }
   .fleet-arrow { top: 88%; }
 }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } .gallery-flow { overflow-x: auto; } }

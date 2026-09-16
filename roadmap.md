@@ -3,3 +3,9 @@
 - [x] Add matching unique images for newly requested models and variants.
 - [x] Update the brand strip to show brands represented by the fleet.
 - [x] Verify the carousel and mobile layout, including price labels and no extra progress line.
+
+# Page section refresh
+- [x] Remove the section and arrow immediately after the Lamborghini.
+- [x] Replace Stories Behind the Wheel with a slow, continuous vehicle gallery.
+- [x] Replace the app-store promotion with customer feedback.
+- [x] Verify the refreshed page on desktop and mobile.

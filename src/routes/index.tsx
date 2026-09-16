@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  ArrowDown,
   ChevronLeft,
   ChevronRight,
   ArrowRight,
@@ -16,7 +15,6 @@ import {
   Menu,
   ShieldCheck,
   Tag,
-  UsersRound,
   X,
 } from "lucide-react";
 import { useCallback, useEffect, useRef, useState, type FormEvent, type PointerEvent } from "react";
@@ -35,7 +33,6 @@ import miniLogo from "../assets/brands/mini.svg.asset.json";
 import porscheLogo from "../assets/brands/porsche.png.asset.json";
 import rollsRoyceLogo from "../assets/brands/rolls-royce.svg.asset.json";
 import toyotaLogo from "../assets/brands/toyota.svg.asset.json";
-import greenSuv from "../assets/green-suv.png";
 import redCar from "../assets/red-sports-car.jpg";
 import silverSuv from "../assets/silver-suv.png";
 import steeringWheel from "../assets/steering-wheel.jpg";
@@ -91,7 +88,11 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const navItems = ["How it works", "Locations", "Fleet"];
+const navItems = [
+  { label: "Fleet", href: "#fleet" },
+  { label: "Gallery", href: "#gallery" },
+  { label: "Feedback", href: "#feedback" },
+];
 
 function Header() {
   const [open, setOpen] = useState(false);
@@ -100,7 +101,7 @@ function Header() {
       <div className="mx-auto grid h-20 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 md:grid-cols-3 md:px-8">
         <a href="#top" className="font-display text-xl font-black tracking-normal">RENTAL</a>
         <nav className="hidden items-center justify-center gap-8 text-sm font-semibold md:flex" aria-label="Primary navigation">
-          {navItems.map((item) => <a key={item} href={`#${item.toLowerCase().replaceAll(" ", "-")}`} className="transition-colors hover:text-primary">{item}</a>)}
+          {navItems.map((item) => <a key={item.label} href={item.href} className="transition-colors hover:text-primary">{item.label}</a>)}
         </nav>
         <div className="flex items-center justify-end gap-2 sm:gap-3">
           <button className="hidden h-10 w-10 items-center justify-center rounded-full bg-foreground text-background transition-transform hover:scale-105 sm:flex" aria-label="Open profile"><CircleUserRound size={19} /></button>
@@ -108,7 +109,7 @@ function Header() {
           <button className="flex h-10 w-10 items-center justify-center rounded-full bg-foreground text-background md:hidden" onClick={() => setOpen(!open)} aria-label="Toggle navigation" aria-expanded={open}>{open ? <X size={19} /> : <Menu size={19} />}</button>
         </div>
       </div>
-      {open && <nav className="border-t border-border bg-background px-5 py-4 md:hidden">{navItems.map((item) => <a key={item} href={`#${item.toLowerCase().replaceAll(" ", "-")}`} className="block border-b border-border py-3 text-sm font-bold" onClick={() => setOpen(false)}>{item}</a>)}</nav>}
+      {open && <nav className="border-t border-border bg-background px-5 py-4 md:hidden">{navItems.map((item) => <a key={item.label} href={item.href} className="block border-b border-border py-3 text-sm font-bold" onClick={() => setOpen(false)}>{item.label}</a>)}</nav>}
     </header>
   );
 }
@@ -121,18 +122,6 @@ function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-[62%] bg-primary [clip-path:polygon(0_22%,100%_0,100%_100%,0_100%)]" />
         <span className="spark absolute right-[8%] top-[20%] z-10 text-primary">✦</span>
         <img src={yellowSuv} width={1536} height={768} alt="Yellow premium performance SUV" className="absolute left-1/2 top-1/2 z-10 w-[110%] max-w-6xl -translate-x-1/2 -translate-y-[44%] object-contain" />
-      </div>
-      <a href="#fleet" aria-label="Go to Pick Your Dream Car Today" className="absolute bottom-0 left-1/2 z-30 flex h-16 w-16 -translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full border-[6px] border-background bg-foreground text-background shadow-card transition-transform hover:scale-105"><ArrowDown size={22} strokeWidth={2.5} /></a>
-    </section>
-  );
-}
-
-function Intro() {
-  return (
-    <section id="how-it-works" className="bg-surface py-24 md:py-32">
-      <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 md:grid-cols-[0.9fr_1.1fr] md:px-8">
-        <div className="max-w-lg"><p className="mb-4 text-xs font-bold uppercase text-primary">Built for the extraordinary</p><h2 className="font-display text-4xl font-black leading-none sm:text-6xl">PREMIUM CAR<br />RENTAL</h2><p className="mt-7 text-base leading-7 text-muted-foreground">Selected Car Service is ready to help with service and repairs of exclusive modern and classic cars. With our workshop for exclusive cars, we have the opportunity to provide the best service for your car in a separate specialist workshop.</p><a href="#fleet" className="mt-8 inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-bold text-background transition-colors hover:bg-primary hover:text-primary-foreground">See all our Cars <ArrowRight size={16} /></a></div>
-        <div className="relative md:justify-self-end"><span className="spark absolute -left-6 top-1/3 z-10 text-primary">✦</span><img src={redCar} width={1024} height={1280} loading="lazy" alt="Red sports car driving on a country road" className="h-[480px] w-full rounded-3xl object-cover sm:h-[620px] md:w-[470px]" /></div>
       </div>
     </section>
   );
@@ -247,21 +236,43 @@ function Showcase() {
       <p className="mt-5 px-5 text-center text-[10px] text-muted-foreground">Specifications vary by trim and model year.</p>
       <div className="mx-auto mt-6 grid w-[calc(100%-2.5rem)] max-w-xl gap-3 rounded-2xl bg-surface p-3 shadow-card sm:grid-cols-[1fr_auto_auto] sm:items-center">
          <div className="flex items-center justify-center gap-3 px-2 sm:justify-start"><Tag size={18} className="text-primary"/><span className="text-xl font-black">₹{activeCar.price.toLocaleString("en-IN")}</span><small className="text-muted-foreground">/ 13 hours</small></div>
-        <Button asChild variant="default" className="h-11 rounded-full bg-foreground px-5 text-xs text-background hover:bg-foreground/85"><a href="#stories">View Details</a></Button>
+        <Button asChild variant="default" className="h-11 rounded-full bg-foreground px-5 text-xs text-background hover:bg-foreground/85"><a href="#gallery">View Details</a></Button>
         <Button asChild className="h-11 rounded-full px-5 text-xs"><a href="#top">Rent Now</a></Button>
       </div>
     </section>
   );
 }
 
-const stories = [
-  { day:"25", date:"December 2023", title:"Electrifying the experience", desc:"Why going electric makes every drive feel refreshingly new.", image:steeringWheel, alt:"Premium sports car steering wheel" },
-  { day:"04", date:"December 2023", title:"Flexible hire for business", desc:"Move your team in comfort with plans built around your schedule.", image:redCar, alt:"Red sports car on an open road" },
-  { day:"18", date:"November 2023", title:"Single vehicles to entire fleets", desc:"A considered selection for one great day or every working day.", image:silverSuv, alt:"Silver luxury SUV" },
+const galleryImages = [
+  { image: redCar, alt: "Red sports car driving on an open road", crop: true },
+  { image: mercedesConvertibleWhite, alt: "White Mercedes convertible", crop: false },
+  { image: steeringWheel, alt: "Premium sports car steering wheel", crop: true },
+  { image: bentleyConvertibleRed, alt: "Red Bentley convertible", crop: false },
+  { image: silverSuv, alt: "Silver luxury SUV", crop: false },
+  { image: porscheTaycanBlue, alt: "Blue Porsche Taycan Turbo", crop: false },
+  { image: yellowSportsCar, alt: "Yellow premium sports car", crop: false },
+  { image: rangeRoverSportBlack, alt: "Black Range Rover Sport", crop: false },
 ];
 
-function Stories() {
-  return <section id="stories" className="bg-surface py-20 md:py-28"><div className="mx-auto max-w-6xl px-5 md:px-8"><h2 className="text-center font-display text-4xl font-black leading-none sm:text-6xl">STORIES BEHIND<br />THE WHEEL</h2><div className="mt-14 grid gap-10 md:grid-cols-2 lg:grid-cols-3">{stories.map((story) => <article key={story.title} className="border-t border-foreground pt-4"><div className="flex items-start gap-3"><strong className="font-display text-4xl">{story.day}</strong><span className="pt-1 text-[10px] leading-3 text-muted-foreground">{story.date.split(" ")[0]}<br />{story.date.split(" ")[1]}</span></div><h3 className="mt-5 text-lg font-black uppercase">{story.title}</h3><p className="mt-2 min-h-12 text-sm leading-6 text-muted-foreground">{story.desc}</p><img src={story.image} loading="lazy" alt={story.alt} className="mt-5 h-56 w-full rounded-2xl object-cover" /></article>)}</div><div className="mt-10 text-center"><a href="#newsletter" className="inline-flex rounded-full bg-foreground px-6 py-3 text-xs font-bold text-background">See all Stories</a></div></div></section>;
+function Gallery() {
+  const flowingImages = [...galleryImages, ...galleryImages];
+  return (
+    <section id="gallery" className="overflow-hidden bg-surface py-20 md:py-28">
+      <div className="mx-auto max-w-6xl px-5 text-center md:px-8">
+        <p className="mb-4 text-xs font-bold uppercase text-primary">Our collection</p>
+        <h2 className="font-display text-4xl font-black leading-none sm:text-6xl">CAR GALLERY</h2>
+      </div>
+      <div className="gallery-flow mt-12" aria-label="Car gallery">
+        <div className="gallery-track">
+          {flowingImages.map((item, index) => (
+            <figure key={`${item.alt}-${index}`} className="gallery-frame">
+              <img src={item.image} alt={index < galleryImages.length ? item.alt : ""} aria-hidden={index >= galleryImages.length} loading="lazy" className={item.crop ? "h-full w-full object-cover" : "h-full w-full object-contain p-4"} />
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 function BrandStrip() {
@@ -284,12 +295,26 @@ function BrandStrip() {
   return <section className="bg-surface pb-20" aria-label="Vehicle brands"><div className="no-scrollbar mx-auto flex max-w-6xl items-center gap-10 overflow-x-auto px-5 py-8 md:justify-between md:gap-12 md:px-8">{brands.map((brand) => <div key={brand.name} className="flex h-16 min-w-24 shrink-0 items-center justify-center" title={brand.name}><img src={brand.image} alt={`${brand.name} logo`} loading="lazy" className="max-h-12 w-auto max-w-24 object-contain" /></div>)}</div></section>;
 }
 
-function PhoneMockup() {
-  return <div className="relative mx-auto h-[390px] w-[220px] rounded-[34px] border-[7px] border-foreground bg-surface p-3 shadow-phone"><div className="mx-auto h-4 w-20 rounded-full bg-foreground"/><div className="mt-4 flex justify-between text-[8px] font-bold"><span>Hi, Sarthak</span><CircleUserRound size={16}/></div><div className="mt-3 rounded-xl bg-background p-2"><img src={greenSuv} loading="lazy" width={1280} height={640} alt="Green SUV listing" className="h-24 w-full object-contain"/><strong className="block text-xs">Lamborghini Urus</strong><span className="text-[9px] text-muted-foreground">Available today</span><strong className="float-right text-xs">$45.00/h</strong></div><div className="mt-3 rounded-xl border border-border p-3"><div className="flex items-center gap-2"><CircleUserRound size={22}/><div><strong className="block text-[10px]">Jane Cooper</strong><span className="text-[8px] text-muted-foreground">Balance $4,203</span></div></div><div className="map-pattern mt-3 h-20 rounded-lg"/></div><div className="absolute -right-8 top-20 text-4xl">✦</div></div>;
-}
+const feedback = [
+  { quote: "The car arrived spotless and exactly on time. The whole experience felt effortless.", name: "Aarav Mehta", detail: "Mercedes Convertible" },
+  { quote: "Professional service, excellent cars, and clear pricing. I would happily book again.", name: "Riya Kapoor", detail: "Range Rover Sport" },
+  { quote: "Our event journey was handled perfectly from pickup to return. Truly premium service.", name: "Kabir Sharma", detail: "Bentley Convertible" },
+];
 
-function AppPromo() {
-  return <section className="bg-surface pb-0 pt-8"><div className="mx-auto grid min-h-[420px] max-w-6xl overflow-hidden rounded-3xl bg-primary px-7 pt-10 md:grid-cols-2 md:items-center md:px-16 md:pt-0"><div className="pb-10 md:pb-0"><h2 className="font-display text-4xl font-black leading-none sm:text-5xl">PREMIUM CAR<br />RENTAL</h2><p className="mt-4 max-w-sm text-sm font-medium">Your next drive is only a tap away.</p><div className="mt-6 flex flex-wrap gap-3"><a href="#" className="rounded-full bg-foreground px-5 py-3 text-xs font-bold text-background">● App Store</a><a href="#" className="rounded-full bg-foreground px-5 py-3 text-xs font-bold text-background">▶ Google Play</a></div></div><div className="self-end"><PhoneMockup /></div></div></section>;
+function UserFeedback() {
+  return (
+    <section id="feedback" className="bg-primary py-20 md:py-28">
+      <div className="mx-auto max-w-6xl px-5 md:px-8">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div><p className="mb-4 text-xs font-bold uppercase">From our customers</p><h2 className="font-display text-4xl font-black leading-none sm:text-6xl">USER FEEDBACK</h2></div>
+          <div className="text-3xl" aria-hidden="true">✦</div>
+        </div>
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
+          {feedback.map((item) => <blockquote key={item.name} className="flex min-h-64 flex-col justify-between rounded-2xl bg-surface p-7 shadow-card"><div><div className="text-lg text-primary" aria-label="5 out of 5 stars">★★★★★</div><p className="mt-6 text-lg font-semibold leading-8">“{item.quote}”</p></div><footer className="mt-8 border-t border-border pt-5"><strong className="block text-sm">{item.name}</strong><span className="mt-1 block text-xs text-muted-foreground">{item.detail}</span></footer></blockquote>)}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 function Footer() {
@@ -300,5 +325,5 @@ function Footer() {
 }
 
 function Index() {
-  return <main><Header /><Hero /><Intro /><Showcase /><Stories /><BrandStrip /><AppPromo /><Footer /></main>;
+  return <main><Header /><Hero /><Showcase /><Gallery /><BrandStrip /><UserFeedback /><Footer /></main>;
 }
