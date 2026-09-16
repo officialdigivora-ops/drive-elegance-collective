@@ -155,9 +155,9 @@ function Header() {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-lg">
-      <div className="mx-auto grid h-20 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 md:grid-cols-3 md:px-8">
+      <div className="mx-auto grid h-16 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 md:grid-cols-3 md:px-8">
         <a href="#top" className="flex items-center gap-2" aria-label={`${BRAND} home`}>
-          <img src={brandLogo} width={1536} height={768} alt={`${BRAND} logo`} className="h-9 w-auto sm:h-11" />
+          <img src={brandLogo} width={1536} height={768} alt={`${BRAND} logo`} className="h-12 w-auto sm:h-14" />
           <span className="sr-only">{BRAND}</span>
         </a>
         <nav className="hidden items-center justify-center gap-8 text-sm font-semibold md:flex" aria-label="Primary navigation">
