@@ -10,7 +10,7 @@ import {
   Facebook,
   Gauge,
   Instagram,
-  Linkedin,
+  Phone,
   LoaderCircle,
   Menu,
   ShieldCheck,
