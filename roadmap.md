@@ -9,3 +9,8 @@
 - [x] Replace Stories Behind the Wheel with a slow, continuous vehicle gallery.
 - [x] Replace the app-store promotion with customer feedback.
 - [x] Verify the refreshed page on desktop and mobile.
+
+# Responsive spacing and marquee refresh
+- [x] Tighten excess vertical spacing across mobile, tablet, and desktop.
+- [x] Restyle the crossing marquee with image-inspired typography and theme neutrals only.
+- [x] Verify the updated page on mobile, tablet, and desktop.
