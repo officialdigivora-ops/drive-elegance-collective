@@ -33,10 +33,16 @@ import miniLogo from "../assets/brands/mini.svg.asset.json";
 import porscheLogo from "../assets/brands/porsche.png.asset.json";
 import rollsRoyceLogo from "../assets/brands/rolls-royce.svg.asset.json";
 import toyotaLogo from "../assets/brands/toyota.svg.asset.json";
-import redCar from "../assets/red-sports-car.jpg";
-import silverSuv from "../assets/silver-suv.png";
-import steeringWheel from "../assets/steering-wheel.jpg";
-import yellowSportsCar from "../assets/yellow-sports-car.png";
+import galleryDefender from "../assets/gallery/gallery-defender.jpg.asset.json";
+import galleryHummer from "../assets/gallery/gallery-hummer.jpg.asset.json";
+import galleryBmwFront from "../assets/gallery/gallery-bmw-front.jpg.asset.json";
+import galleryBmwSide from "../assets/gallery/gallery-bmw-side.jpg.asset.json";
+import galleryRangeRoverRed from "../assets/gallery/gallery-rangerover-red.jpg.asset.json";
+import galleryBentleyBlack from "../assets/gallery/gallery-bentley-black.jpg.asset.json";
+import galleryAudiWhite from "../assets/gallery/gallery-audi-white.jpg.asset.json";
+import galleryMaybach from "../assets/gallery/gallery-maybach.jpg.asset.json";
+import galleryTaycanBlue from "../assets/gallery/gallery-taycan-blue.jpg.asset.json";
+import galleryGwagon from "../assets/gallery/gallery-gwagon.jpg.asset.json";
 import yellowSuv from "../assets/yellow-suv.png";
 import audiA3Convertible from "../assets/fleet/audi-a3-convertible.png";
 import audiA3ConvertibleWhite from "../assets/fleet/audi-a3-convertible-white.png";
@@ -266,14 +272,16 @@ function Showcase() {
 }
 
 const galleryImages = [
-  { image: redCar, alt: "Red sports car driving on an open road", crop: true },
-  { image: mercedesConvertibleWhite, alt: "White Mercedes convertible", crop: false },
-  { image: steeringWheel, alt: "Premium sports car steering wheel", crop: true },
-  { image: bentleyConvertibleRed, alt: "Red Bentley convertible", crop: false },
-  { image: silverSuv, alt: "Silver luxury SUV", crop: false },
-  { image: porscheTaycanBlue, alt: "Blue Porsche Taycan Turbo", crop: false },
-  { image: yellowSportsCar, alt: "Yellow premium sports car", crop: false },
-  { image: rangeRoverSportBlack, alt: "Black Range Rover Sport", crop: false },
+  { image: galleryDefender.url, alt: "White Land Rover Defender decorated for a wedding", crop: true },
+  { image: galleryHummer.url, alt: "White Hummer H2", crop: true },
+  { image: galleryBmwFront.url, alt: "White BMW convertible with wedding flowers", crop: true },
+  { image: galleryBmwSide.url, alt: "White BMW convertible side view", crop: true },
+  { image: galleryRangeRoverRed.url, alt: "Red Range Rover convertible with wedding flowers", crop: true },
+  { image: galleryBentleyBlack.url, alt: "Black Bentley Continental convertible", crop: true },
+  { image: galleryAudiWhite.url, alt: "White Audi A4 decorated for a wedding", crop: true },
+  { image: galleryMaybach.url, alt: "Mercedes-Maybach with wedding flowers", crop: true },
+  { image: galleryTaycanBlue.url, alt: "Blue Porsche Taycan Turbo", crop: true },
+  { image: galleryGwagon.url, alt: "White Mercedes G-Wagon with wedding flowers", crop: true },
 ];
 
 function Gallery() {
