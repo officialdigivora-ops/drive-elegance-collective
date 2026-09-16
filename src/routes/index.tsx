@@ -116,9 +116,9 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-background pt-12 md:pt-16">
+    <section id="top" className="relative overflow-hidden bg-background pt-8 sm:pt-10 md:pt-14">
       <div className="relative z-10 px-5 text-center"><h1 className="mx-auto max-w-4xl font-display text-5xl font-black leading-[0.92] tracking-normal sm:text-7xl lg:text-8xl">PREMIUM CAR<br />RENTAL</h1></div>
-      <div className="relative mt-3 h-[330px] sm:h-[440px] md:h-[540px]">
+      <div className="relative mt-1 h-[270px] sm:h-[380px] md:h-[500px] lg:h-[540px]">
         <div className="absolute inset-x-0 bottom-0 h-[62%] bg-primary [clip-path:polygon(0_22%,100%_0,100%_100%,0_100%)]" />
         <span className="spark absolute right-[8%] top-[20%] z-10 text-primary">✦</span>
         <img src={yellowSuv} width={1536} height={768} alt="Yellow premium performance SUV" className="absolute left-1/2 top-1/2 z-10 w-[110%] max-w-6xl -translate-x-1/2 -translate-y-[44%] object-contain" />
@@ -239,12 +239,12 @@ function Showcase() {
   ] as const;
 
   return (
-    <section id="fleet" className="fleet-showcase overflow-hidden py-20 md:py-28" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}>
+    <section id="fleet" className="fleet-showcase overflow-hidden py-14 sm:py-18 md:py-24" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}>
       <div className="px-5 text-center">
         <h2 className="font-display text-4xl font-black leading-none sm:text-6xl">PICK YOUR DREAM<br />CAR TODAY</h2>
         <p className="mt-4 text-xs font-bold uppercase text-muted-foreground" aria-live="polite">{activeCar.name} · {activeCar.type}</p>
       </div>
-      <div className="relative mt-7 md:mt-10">
+      <div className="relative mt-4 sm:mt-6 md:mt-8">
         <div className="fleet-stage touch-pan-y select-none" aria-label="Swipe through available cars" onPointerDown={handlePointerDown} onPointerUp={handlePointerUp} onPointerCancel={() => { dragStart.current = null; }}>
           <CarImage key={`previous-${activeIndex}`} car={carAt(previousIndex)} position="previous" direction={direction} />
           <CarImage key={`active-${activeIndex}`} car={activeCar} position="active" direction={direction} />
@@ -253,11 +253,11 @@ function Showcase() {
         <Button type="button" variant="outline" size="icon" className="fleet-arrow left-4 rounded-full sm:left-8" onClick={() => advance(-1)} aria-label="Previous car"><ChevronLeft /></Button>
         <Button type="button" variant="outline" size="icon" className="fleet-arrow right-4 rounded-full sm:right-8" onClick={() => advance(1)} aria-label="Next car"><ChevronRight /></Button>
       </div>
-      <div className="mx-auto mt-2 grid max-w-3xl grid-cols-2 gap-x-3 gap-y-6 px-5 sm:grid-cols-4">
+      <div className="mx-auto grid max-w-3xl grid-cols-2 gap-x-3 gap-y-5 px-5 sm:grid-cols-4 sm:gap-y-6">
         {specs.map(([Icon,value,label]) => <div key={label} className="min-w-0 text-center"><Icon className="mx-auto text-muted-foreground" size={22} /><strong className="mt-2 block text-xs sm:text-sm">{value}</strong><span className="text-[10px] text-muted-foreground">{label}</span></div>)}
       </div>
-      <p className="mt-5 px-5 text-center text-[10px] text-muted-foreground">Specifications vary by trim and model year.</p>
-      <div className="mx-auto mt-6 grid w-[calc(100%-2.5rem)] max-w-xl gap-3 rounded-2xl bg-surface p-3 shadow-card sm:grid-cols-[1fr_auto_auto] sm:items-center">
+      <p className="mt-4 px-5 text-center text-[10px] text-muted-foreground">Specifications vary by trim and model year.</p>
+      <div className="mx-auto mt-5 grid w-[calc(100%-2.5rem)] max-w-xl gap-3 rounded-2xl bg-surface p-3 shadow-card sm:grid-cols-[1fr_auto_auto] sm:items-center">
          <div className="flex items-center justify-center gap-3 px-2 sm:justify-start"><Tag size={18} className="text-primary"/><span className="text-xl font-black">₹{activeCar.price.toLocaleString("en-IN")}</span><small className="text-muted-foreground">/ 13 hours</small></div>
         <Button asChild variant="default" className="h-11 rounded-full bg-foreground px-5 text-xs text-background hover:bg-foreground/85"><a href="#gallery">View Details</a></Button>
         <Button asChild className="h-11 rounded-full px-5 text-xs"><a href="#top">Rent Now</a></Button>
@@ -280,12 +280,12 @@ const galleryImages = [
 function Gallery() {
   const flowingImages = [...galleryImages, ...galleryImages];
   return (
-    <section id="gallery" className="overflow-hidden bg-surface py-20 md:py-28">
+    <section id="gallery" className="overflow-hidden bg-surface py-14 sm:py-18 md:py-24">
       <div className="mx-auto max-w-6xl px-5 text-center md:px-8">
         <p className="mb-4 text-xs font-bold uppercase text-primary">Our collection</p>
         <h2 className="font-display text-4xl font-black leading-none sm:text-6xl">CAR GALLERY</h2>
       </div>
-      <div className="gallery-flow mt-12" aria-label="Car gallery">
+      <div className="gallery-flow mt-8 md:mt-10" aria-label="Car gallery">
         <div className="gallery-track">
           {flowingImages.map((item, index) => (
             <figure key={`${item.alt}-${index}`} className="gallery-frame">
@@ -315,7 +315,7 @@ function BrandStrip() {
     { name: "Hummer", image: hummerLogo.url },
   ];
 
-  return <section className="bg-surface pb-20" aria-label="Vehicle brands"><div className="no-scrollbar mx-auto flex max-w-6xl items-center gap-10 overflow-x-auto px-5 py-8 md:justify-between md:gap-12 md:px-8">{brands.map((brand) => <div key={brand.name} className="flex h-16 min-w-24 shrink-0 items-center justify-center" title={brand.name}><img src={brand.image} alt={`${brand.name} logo`} loading="lazy" className="max-h-12 w-auto max-w-24 object-contain" /></div>)}</div></section>;
+  return <section className="bg-surface pb-12 md:pb-16" aria-label="Vehicle brands"><div className="no-scrollbar mx-auto flex max-w-6xl items-center gap-8 overflow-x-auto px-5 py-6 md:justify-between md:gap-10 md:px-8">{brands.map((brand) => <div key={brand.name} className="flex h-14 min-w-20 shrink-0 items-center justify-center" title={brand.name}><img src={brand.image} alt={`${brand.name} logo`} loading="lazy" className="max-h-10 w-auto max-w-24 object-contain sm:max-h-12" /></div>)}</div></section>;
 }
 
 const feedback = [
@@ -326,13 +326,13 @@ const feedback = [
 
 function UserFeedback() {
   return (
-    <section id="feedback" className="bg-primary py-20 md:py-28">
+    <section id="feedback" className="bg-primary py-14 sm:py-18 md:py-24">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div><p className="mb-4 text-xs font-bold uppercase">From our customers</p><h2 className="font-display text-4xl font-black leading-none sm:text-6xl">USER FEEDBACK</h2></div>
           <div className="text-3xl" aria-hidden="true">✦</div>
         </div>
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
+        <div className="mt-8 grid gap-4 md:mt-10 md:grid-cols-3">
           {feedback.map((item) => <blockquote key={item.name} className="flex min-h-64 flex-col justify-between rounded-2xl bg-surface p-7 shadow-card"><div><div className="text-lg text-primary" aria-label="5 out of 5 stars">★★★★★</div><p className="mt-6 text-lg font-semibold leading-8">“{item.quote}”</p></div><footer className="mt-8 border-t border-border pt-5"><strong className="block text-sm">{item.name}</strong><span className="mt-1 block text-xs text-muted-foreground">{item.detail}</span></footer></blockquote>)}
         </div>
       </div>

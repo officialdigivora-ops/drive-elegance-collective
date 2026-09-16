@@ -5,6 +5,7 @@
 @theme inline {
   --font-sans: "Manrope", sans-serif;
   --font-display: "Archivo", sans-serif;
+  --font-marquee: "Space Grotesk", sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -52,7 +53,7 @@ button, a { cursor: pointer; }
 .cross-marquee {
   position: relative;
   z-index: 10;
-  height: clamp(150px, 18vw, 230px);
+  height: clamp(128px, 16vw, 208px);
   overflow: hidden;
   background: var(--background);
   isolation: isolate;
@@ -68,21 +69,21 @@ button, a { cursor: pointer; }
 }
 .cross-marquee-band--primary {
   z-index: 2;
-  color: var(--foreground);
-  background: var(--primary);
+  color: var(--background);
+  background: var(--foreground);
   transform: translateY(-50%) rotate(-5deg);
 }
 .cross-marquee-band--secondary {
   z-index: 1;
-  color: var(--background);
-  background: oklch(0.48 0.2 28);
+  color: var(--foreground);
+  background: var(--background);
   transform: translateY(-50%) rotate(5deg);
 }
 .cross-marquee-track {
   display: flex;
   width: max-content;
   align-items: center;
-  padding-block: 18px;
+  padding-block: 16px;
   animation: cross-marquee-left 22s linear infinite;
   will-change: transform;
 }
@@ -95,10 +96,11 @@ button, a { cursor: pointer; }
   align-items: center;
   gap: 20px;
   padding-inline: 24px;
-  font-family: var(--font-display);
-  font-size: clamp(1rem, 2vw, 1.55rem);
-  font-weight: 900;
-  line-height: 1;
+  font-family: var(--font-marquee);
+  font-size: clamp(1.05rem, 2.35vw, 1.85rem);
+  font-weight: 700;
+  line-height: .9;
+  text-transform: uppercase;
   white-space: nowrap;
 }
 .cross-marquee-item > span { font-size: 1.2em; }
@@ -208,12 +210,12 @@ button, a { cursor: pointer; }
   box-shadow: var(--shadow-card);
 }
 @media (max-width: 639px) {
-  .cross-marquee { height: 150px; }
+  .cross-marquee { height: 128px; }
   .cross-marquee-band { left: -18%; width: 136%; }
   .cross-marquee-band--primary { transform: translateY(-50%) rotate(-8deg); }
   .cross-marquee-band--secondary { transform: translateY(-50%) rotate(8deg); }
-  .cross-marquee-track { padding-block: 13px; animation-duration: 18s; }
-  .cross-marquee-item { gap: 14px; padding-inline: 18px; }
+  .cross-marquee-track { padding-block: 12px; animation-duration: 18s; }
+  .cross-marquee-item { gap: 12px; padding-inline: 16px; }
   .fleet-car { width: min(82vw, 390px); }
   .fleet-car--previous { transform: translate3d(-130%, -50%, -80px) rotateY(8deg) scale(.84); }
   .fleet-car--next { transform: translate3d(30%, -50%, -80px) rotateY(-8deg) scale(.84); }
