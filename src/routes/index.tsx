@@ -399,8 +399,59 @@ function UserFeedback() {
 function Footer() {
   const [status, setStatus] = useState<"idle"|"loading"|"success">("idle");
   const submit = (e: FormEvent) => { e.preventDefault(); setStatus("loading"); window.setTimeout(() => setStatus("success"), 900); };
-  const columns = { Pages:["Rental","Locations","FAQ","Features","Blog"], Resources:["Installation Manual","Release Notes","Community Help"], Company:["About Us","Careers","Press","Support"], Product:["Demo","Security","FAQ","Features"] };
-  return <footer id="newsletter" className="bg-foreground text-background"><div className="mx-auto max-w-6xl px-5 py-16 md:px-8"><div className="grid items-end gap-10 border-b border-footer-line pb-14 md:grid-cols-2"><h2 className="relative max-w-md font-display text-4xl font-black leading-none sm:text-5xl"><span className="text-primary">✦</span> Stay up to date<br />on all the latest<br />news.</h2><form onSubmit={submit} className="flex items-center gap-2 border-b border-footer-line pb-3"><input required type="email" placeholder="Your Email" aria-label="Your email" className="min-w-0 flex-1 bg-transparent py-3 text-sm text-background outline-none placeholder:text-footer-muted"/><button disabled={status !== "idle"} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground" aria-label="Subscribe">{status === "loading" ? <LoaderCircle size={18} className="animate-spin"/> : status === "success" ? <Check size={18}/> : <ArrowRight size={18}/>}</button></form></div><div className="grid grid-cols-2 gap-x-8 gap-y-10 py-14 sm:grid-cols-3 lg:grid-cols-5">{Object.entries(columns).map(([title,links]) => <div key={title}><h3 className="mb-5 text-xs font-bold">{title}</h3><ul className="space-y-3">{links.map(link => <li key={link}><a href="#" className="text-xs text-footer-muted hover:text-primary">{link}</a></li>)}</ul></div>)}<div><h3 className="mb-5 text-xs font-bold">Follow Us</h3><div className="flex gap-2">{[Facebook,Linkedin,Instagram].map((Icon,i) => <a key={i} href="#" aria-label="Social channel" className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-line text-footer-muted hover:text-primary"><Icon size={15}/></a>)}</div></div></div><div className="flex flex-col gap-3 border-t border-footer-line pt-6 text-[10px] text-footer-muted sm:flex-row sm:justify-between"><span>All rights reserved © Premium Rental 2026</span><span>Privacy Policy&nbsp;&nbsp; | &nbsp;&nbsp;Terms &amp; Conditions</span></div></div></footer>;
+  const serviceAreas = ["Delhi", "Noida", "Gurugram", "Ghaziabad", "Faridabad", "Panipat", "Sonipat", "Karnal", "Meerut", "Agra"];
+  return (
+    <footer id="newsletter" className="bg-foreground text-background">
+      <div className="mx-auto max-w-6xl px-5 py-16 md:px-8">
+        <div className="grid items-end gap-10 border-b border-footer-line pb-14 md:grid-cols-2">
+          <h2 className="relative max-w-md font-display text-4xl font-black leading-none sm:text-5xl"><span className="text-primary">✦</span> Stay up to date<br />on all the latest<br />news.</h2>
+          <form onSubmit={submit} className="flex items-center gap-2 border-b border-footer-line pb-3">
+            <input required type="email" placeholder="Your Email" aria-label="Your email" className="min-w-0 flex-1 bg-transparent py-3 text-sm text-background outline-none placeholder:text-footer-muted" />
+            <button disabled={status !== "idle"} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground" aria-label="Subscribe">{status === "loading" ? <LoaderCircle size={18} className="animate-spin" /> : status === "success" ? <Check size={18} /> : <ArrowRight size={18} />}</button>
+          </form>
+        </div>
+        <div className="grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <img src={brandLogo} width={1536} height={768} loading="lazy" alt={`${BRAND} logo`} className="h-11 w-auto brightness-0 invert" />
+            <p className="mt-5 max-w-xs text-xs leading-6 text-footer-muted">Luxury car rental for weddings, photoshoots, corporate travel and airport transfers across Delhi NCR, Haryana and Uttar Pradesh. 100+ premium cars, 7 years of experience.</p>
+          </div>
+          <div>
+            <h3 className="mb-5 text-xs font-bold">Contact</h3>
+            <ul className="space-y-3 text-xs text-footer-muted">
+              <li><a href={PHONE_LINK} className="hover:text-primary">{PHONE_DISPLAY}</a></li>
+              <li><a href="https://wa.me/919990569473" target="_blank" rel="noopener noreferrer" className="hover:text-primary">WhatsApp us</a></li>
+              <li><a href={MAP_LINK} target="_blank" rel="noopener noreferrer" className="leading-6 hover:text-primary">{ADDRESS}</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="mb-5 text-xs font-bold">Service Areas</h3>
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-3 text-xs text-footer-muted">
+              {serviceAreas.map((area) => <li key={area}>{area}</li>)}
+            </ul>
+          </div>
+          <div>
+            <h3 className="mb-5 text-xs font-bold">Rental Package</h3>
+            <ul className="space-y-3 text-xs leading-6 text-footer-muted">
+              <li>Timing: 13 hours</li>
+              <li>Fuel, driver, decoration &amp; toll included</li>
+              <li>Extra km depends on car</li>
+              <li>Extra timing depends on car</li>
+            </ul>
+            <h3 className="mb-4 mt-8 text-xs font-bold">Follow Us</h3>
+            <div className="flex gap-2">
+              <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-line text-footer-muted hover:text-primary"><Instagram size={15} /></a>
+              <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-line text-footer-muted hover:text-primary"><Facebook size={15} /></a>
+              <a href={PHONE_LINK} aria-label="Call us" className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-line text-footer-muted hover:text-primary"><Phone size={15} /></a>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col gap-3 border-t border-footer-line pt-6 text-[10px] text-footer-muted sm:flex-row sm:justify-between">
+          <span>All rights reserved © {BRAND} 2026</span>
+          <span>Privacy Policy&nbsp;&nbsp; | &nbsp;&nbsp;Terms &amp; Conditions</span>
+        </div>
+      </div>
+    </footer>
+  );
 }
 
 function Index() {
