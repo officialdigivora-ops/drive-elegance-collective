@@ -13,4 +13,4 @@
 # Responsive spacing and marquee refresh
 - [x] Tighten excess vertical spacing across mobile, tablet, and desktop.
 - [x] Restyle the crossing marquee with image-inspired typography and theme neutrals only.
-- [ ] Verify the updated page on mobile, tablet, and desktop.
+- [x] Verify the updated page on mobile, tablet, and desktop.
