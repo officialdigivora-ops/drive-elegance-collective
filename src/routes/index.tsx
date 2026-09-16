@@ -89,16 +89,53 @@ const MAP_LINK = "https://www.google.com/maps/search/?api=1&query=92M8%2B62C%20S
 const INSTAGRAM = "https://www.instagram.com/choudharyluxurycars";
 const FACEBOOK = "https://www.facebook.com/profile.php?id=61554864970019";
 
+const SITE_URL = "https://drive-elegance-collective.lovable.app";
+const TITLE = "Luxury Car Rental in Delhi NCR | Chaudhary Luxury Cars";
+const DESCRIPTION = "Chaudhary Luxury Cars offers wedding, event and corporate luxury car rental across Delhi NCR, Haryana and Uttar Pradesh. 100+ premium cars, 13-hour packages with fuel, driver, decoration and toll. Call +91 99905 69473.";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "RENTAL | Premium Car Rental" },
-      { name: "description", content: "Reserve premium performance cars and SUVs with effortless pickup, flexible dates, and exceptional service." },
-      { property: "og:title", content: "RENTAL | Premium Car Rental" },
-      { property: "og:description", content: "Find your dream car and make every drive exceptional." },
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { name: "keywords", content: "luxury car rental Delhi NCR, wedding car rental Haryana, luxury car hire Uttar Pradesh, Rolls Royce rental Delhi, Mercedes wedding car Panipat, Range Rover rental NCR" },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Chaudhary Luxury Cars" },
+      { property: "og:url", content: SITE_URL },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+      { name: "robots", content: "index, follow" },
     ],
+    links: [{ rel: "canonical", href: SITE_URL }],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "AutoRental",
+        name: "Chaudhary Luxury Cars",
+        description: DESCRIPTION,
+        url: SITE_URL,
+        telephone: "+91 99905 69473",
+        priceRange: "₹6,000 - ₹2,45,000 per 13 hours",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "92M8+62C, Sanoli Rd, Sewah Kheri, Ugra Kheri Village",
+          addressLocality: "Panipat",
+          addressRegion: "Haryana",
+          postalCode: "132104",
+          addressCountry: "IN",
+        },
+        areaServed: ["Delhi", "NCR", "Haryana", "Uttar Pradesh"],
+        openingHours: "Mo-Su 00:00-23:59",
+        sameAs: [
+          "https://www.instagram.com/choudharyluxurycars",
+          "https://www.facebook.com/profile.php?id=61554864970019",
+        ],
+      }),
+    }],
   }),
   component: Index,
 });
