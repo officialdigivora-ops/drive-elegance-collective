@@ -155,18 +155,18 @@ function Header() {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-lg">
-      <div className="mx-auto grid h-20 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 md:grid-cols-3 md:px-8">
+      <div className="mx-auto grid h-16 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 md:grid-cols-3 md:px-8">
         <a href="#top" className="flex items-center gap-2" aria-label={`${BRAND} home`}>
-          <img src={brandLogo} width={1536} height={768} alt={`${BRAND} logo`} className="h-9 w-auto sm:h-11" />
+          <img src={brandLogo} width={1536} height={768} alt={`${BRAND} logo`} className="h-12 w-auto sm:h-14" />
           <span className="sr-only">{BRAND}</span>
         </a>
         <nav className="hidden items-center justify-center gap-8 text-sm font-semibold md:flex" aria-label="Primary navigation">
           {navItems.map((item) => <a key={item.label} href={item.href} className="transition-colors hover:text-primary">{item.label}</a>)}
         </nav>
         <div className="flex items-center justify-end gap-2 sm:gap-3">
-          <button className="hidden h-10 w-10 items-center justify-center rounded-full bg-foreground text-background transition-transform hover:scale-105 sm:flex" aria-label="Open profile"><CircleUserRound size={19} /></button>
-          <a href="#fleet" className="inline-flex h-10 items-center rounded-full bg-primary px-4 text-xs font-bold text-primary-foreground transition-colors hover:bg-primary-hover sm:px-5">Get Started</a>
-          <button className="flex h-10 w-10 items-center justify-center rounded-full bg-foreground text-background md:hidden" onClick={() => setOpen(!open)} aria-label="Toggle navigation" aria-expanded={open}>{open ? <X size={19} /> : <Menu size={19} />}</button>
+          <button className="hidden h-9 w-9 items-center justify-center rounded-full bg-foreground text-background transition-transform hover:scale-105 sm:flex" aria-label="Open profile"><CircleUserRound size={19} /></button>
+          <a href={PHONE_LINK} className="inline-flex h-9 items-center gap-1.5 rounded-full bg-primary px-4 text-xs font-bold text-primary-foreground shadow-[0_4px_14px_color-mix(in_oklab,var(--primary)_45%,transparent)] transition-all hover:bg-primary-hover hover:shadow-[0_6px_20px_color-mix(in_oklab,var(--primary)_55%,transparent)] sm:px-5"><Phone size={15} /> Contact Now</a>
+          <button className="flex h-9 w-9 items-center justify-center rounded-full bg-foreground text-background md:hidden" onClick={() => setOpen(!open)} aria-label="Toggle navigation" aria-expanded={open}>{open ? <X size={19} /> : <Menu size={19} />}</button>
         </div>
       </div>
       {open && <nav className="border-t border-border bg-background px-5 py-4 md:hidden">{navItems.map((item) => <a key={item.label} href={item.href} className="block border-b border-border py-3 text-sm font-bold" onClick={() => setOpen(false)}>{item.label}</a>)}</nav>}
