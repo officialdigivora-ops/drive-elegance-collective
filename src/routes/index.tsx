@@ -172,7 +172,10 @@ function Header() {
 function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-background pt-8 sm:pt-10 md:pt-14">
-      <div className="relative z-10 px-5 text-center"><h1 className="mx-auto max-w-4xl font-display text-5xl font-black leading-[0.92] tracking-normal sm:text-7xl lg:text-8xl">PREMIUM CAR<br />RENTAL</h1></div>
+      <div className="relative z-10 px-5 text-center">
+        <h1 className="mx-auto max-w-4xl font-display text-5xl font-black leading-[0.92] tracking-normal sm:text-7xl lg:text-8xl">LUXURY CAR<br />RENTAL</h1>
+        <p className="mx-auto mt-4 max-w-xl text-sm font-semibold text-muted-foreground sm:text-base">{BRAND} — weddings, events &amp; corporate travel across Delhi, NCR, Haryana &amp; Uttar Pradesh. Call <a href={PHONE_LINK} className="text-foreground underline">{PHONE_DISPLAY}</a></p>
+      </div>
       <div className="relative mt-1 h-[270px] sm:h-[380px] md:h-[500px] lg:h-[540px]">
         <div className="absolute inset-x-0 bottom-0 h-[62%] bg-primary [clip-path:polygon(0_22%,100%_0,100%_100%,0_100%)]" />
         <span className="spark absolute right-[8%] top-[20%] z-10 text-primary">✦</span>
