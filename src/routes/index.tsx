@@ -339,6 +339,11 @@ const galleryImages = [
   { image: galleryMaybach.url, alt: "Mercedes-Maybach with wedding flowers", crop: true },
   { image: galleryTaycanBlue.url, alt: "Blue Porsche Taycan Turbo", crop: true },
   { image: galleryGwagon.url, alt: "White Mercedes G-Wagon with wedding flowers", crop: true },
+  { image: galleryRollsRoyceWhite.url, alt: "White Rolls-Royce Ghost", crop: true },
+  { image: galleryMiniRed.url, alt: "Red Mini Cooper convertible", crop: true },
+  { image: galleryJaguarXf.url, alt: "White Jaguar XF", crop: true },
+  { image: galleryVintageRed.url, alt: "Vintage red convertible decorated for a wedding", crop: true },
+  { image: galleryMustangRed.url, alt: "Red Ford Mustang GT decorated for a wedding", crop: true },
 ];
 
 function Gallery() {
