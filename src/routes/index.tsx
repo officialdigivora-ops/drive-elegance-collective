@@ -43,6 +43,11 @@ import galleryAudiWhite from "../assets/gallery/gallery-audi-white.jpg.asset.jso
 import galleryMaybach from "../assets/gallery/gallery-maybach.jpg.asset.json";
 import galleryTaycanBlue from "../assets/gallery/gallery-taycan-blue.jpg.asset.json";
 import galleryGwagon from "../assets/gallery/gallery-gwagon.jpg.asset.json";
+import galleryRollsRoyceWhite from "../assets/gallery/gallery-rollsroyce-white.jpg.asset.json";
+import galleryMiniRed from "../assets/gallery/gallery-mini-red.jpg.asset.json";
+import galleryJaguarXf from "../assets/gallery/gallery-jaguar-xf.jpg.asset.json";
+import galleryVintageRed from "../assets/gallery/gallery-vintage-red.jpg.asset.json";
+import galleryMustangRed from "../assets/gallery/gallery-mustang-red.jpg.asset.json";
 import yellowSuv from "../assets/yellow-suv.png";
 import audiA3Convertible from "../assets/fleet/audi-a3-convertible.png";
 import audiA3ConvertibleWhite from "../assets/fleet/audi-a3-convertible-white.png";
@@ -334,6 +339,11 @@ const galleryImages = [
   { image: galleryMaybach.url, alt: "Mercedes-Maybach with wedding flowers", crop: true },
   { image: galleryTaycanBlue.url, alt: "Blue Porsche Taycan Turbo", crop: true },
   { image: galleryGwagon.url, alt: "White Mercedes G-Wagon with wedding flowers", crop: true },
+  { image: galleryRollsRoyceWhite.url, alt: "White Rolls-Royce Ghost", crop: true },
+  { image: galleryMiniRed.url, alt: "Red Mini Cooper convertible", crop: true },
+  { image: galleryJaguarXf.url, alt: "White Jaguar XF", crop: true },
+  { image: galleryVintageRed.url, alt: "Vintage red convertible decorated for a wedding", crop: true },
+  { image: galleryMustangRed.url, alt: "Red Ford Mustang GT decorated for a wedding", crop: true },
 ];
 
 function Gallery() {
