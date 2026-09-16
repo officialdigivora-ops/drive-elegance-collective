@@ -79,6 +79,15 @@ import toyotaFortuner from "../assets/fleet/toyota-fortuner.png";
 import limousineLongNew from "../assets/fleet/limousine-long-new.png";
 import mustangGt from "../assets/fleet/mustang-gt.png";
 import vintageLuxury from "../assets/fleet/vintage-luxury.png";
+import brandLogo from "../assets/brand/chaudhary-logo.png";
+
+const BRAND = "Chaudhary Luxury Cars";
+const PHONE_DISPLAY = "+91 99905 69473";
+const PHONE_LINK = "tel:+919990569473";
+const ADDRESS = "92M8+62C, Sanoli Rd, Sewah Kheri, Ugra Kheri Village, Panipat Taraf Afghan, Panipat, Haryana 132104, India";
+const MAP_LINK = "https://www.google.com/maps/search/?api=1&query=92M8%2B62C%20Sanoli%20Rd%20Panipat%20Haryana%20132104";
+const INSTAGRAM = "https://www.instagram.com/choudharyluxurycars";
+const FACEBOOK = "https://www.facebook.com/profile.php?id=61554864970019";
 
 export const Route = createFileRoute("/")({
   head: () => ({
