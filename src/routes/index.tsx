@@ -2,22 +2,22 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   ChevronLeft,
   ChevronRight,
-  ArrowRight,
+  Fuel,
   Armchair,
-  Check,
+
   CircleUserRound,
   Cog,
   Facebook,
   Gauge,
   Instagram,
   Phone,
-  LoaderCircle,
+  UserRoundCheck,
   Menu,
   ShieldCheck,
   Tag,
   X,
 } from "lucide-react";
-import { useCallback, useEffect, useRef, useState, type FormEvent, type PointerEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
 
 import { Button } from "@/components/ui/button";
 import audiLogo from "../assets/brands/audi.svg.asset.json";
