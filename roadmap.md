@@ -5,7 +5,7 @@
 - [x] Verify the carousel and mobile layout, including price labels and no extra progress line.
 
 # Page section refresh
-- [ ] Remove the section and arrow immediately after the Lamborghini.
-- [ ] Replace Stories Behind the Wheel with a slow, continuous vehicle gallery.
-- [ ] Replace the app-store promotion with customer feedback.
-- [ ] Verify the refreshed page on desktop and mobile.
+- [x] Remove the section and arrow immediately after the Lamborghini.
+- [x] Replace Stories Behind the Wheel with a slow, continuous vehicle gallery.
+- [x] Replace the app-store promotion with customer feedback.
+- [x] Verify the refreshed page on desktop and mobile.
