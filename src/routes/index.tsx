@@ -310,7 +310,7 @@ function BrandStrip() {
     { name: "Hummer", image: hummerLogo.url },
   ];
 
-  return <section className="bg-surface pb-12 md:pb-16" aria-label="Vehicle brands"><div className="no-scrollbar mx-auto flex max-w-6xl items-center gap-8 overflow-x-auto px-5 py-6 md:justify-between md:gap-10 md:px-8">{brands.map((brand) => <div key={brand.name} className="flex h-14 min-w-20 shrink-0 items-center justify-center" title={brand.name}><img src={brand.image} alt={`${brand.name} logo`} loading="lazy" className="max-h-10 w-auto max-w-24 object-contain sm:max-h-12" /></div>)}</div></section>;
+  return <section className="bg-surface pb-8 md:pb-10" aria-label="Vehicle brands"><div className="no-scrollbar mx-auto flex max-w-6xl items-center gap-3 overflow-x-auto px-5 py-3 md:justify-between md:gap-4 md:px-8">{brands.map((brand) => <div key={brand.name} className="flex h-12 min-w-20 shrink-0 items-center justify-center rounded-xl bg-white px-3 shadow-[0_1px_4px_rgba(0,0,0,0.05)]" title={brand.name}><img src={brand.image} alt={`${brand.name} logo`} loading="lazy" className="max-h-7 w-auto max-w-20 object-contain sm:max-h-8" /></div>)}</div></section>;
 }
 
 const feedback = [
