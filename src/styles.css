@@ -222,3 +222,113 @@ button, a { cursor: pointer; }
   .fleet-arrow { top: 88%; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } .gallery-flow { overflow-x: auto; } }
+/* ---- Tokens & utilities for the Fleet, Car Details and Contact pages ---- */
+@theme inline {
+  --color-card-foreground: var(--card-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary-strong: var(--primary-strong);
+  --color-warm-line: var(--warm-line);
+  --color-hero: var(--hero);
+  --color-fleet: var(--fleet);
+  --color-ticker: var(--ticker);
+  --color-ticker-foreground: var(--ticker-foreground);
+  --color-price: var(--price);
+  --color-benefit: var(--benefit);
+  --color-gallery: var(--gallery);
+  --color-gallery-dot: var(--gallery-dot);
+  --color-footer: var(--footer);
+  --color-footer-foreground: var(--footer-foreground);
+  --color-bar-border: var(--bar-border);
+  --shadow-gold: 0 12px 30px color-mix(in oklab, var(--primary) 28%, transparent);
+  --shadow-page: var(--shadow-page);
+}
+
+:root {
+  --card-foreground: oklch(0.145 0.006 65);
+  --secondary: oklch(0.91 0.036 79);
+  --secondary-foreground: oklch(0.115 0.006 70);
+  --muted: oklch(0.925 0.02 78);
+  --accent: oklch(0.87 0.06 78);
+  --accent-foreground: oklch(0.18 0.008 65);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --input: oklch(0.82 0.025 73);
+  --ring: oklch(0.7 0.16 69);
+  --primary-strong: oklch(0.7 0.16 69);
+  --warm-line: oklch(0.72 0.032 71);
+  --hero: oklch(0.961 0.018 78);
+  --fleet: oklch(0.79 0.17 78);
+  --ticker: oklch(0.115 0.006 70);
+  --ticker-foreground: oklch(0.982 0.01 78);
+  --price: oklch(0.57 0.13 66);
+  --benefit: oklch(0.55 0.14 150);
+  --gallery: oklch(0.79 0.16 77);
+  --gallery-dot: oklch(0.59 0.11 75);
+  --footer: oklch(0.12 0.003 70);
+  --footer-foreground: oklch(0.98 0.002 80);
+  --bar-border: oklch(0.25 0.004 60);
+  --shadow-page: 0 16px 46px oklch(0.1 0 0 / 18%);
+}
+
+@utility display-type {
+  font-family: var(--font-display);
+  letter-spacing: 0;
+}
+
+@utility field-luxury {
+  border: 0;
+  border-bottom: 1px solid var(--color-warm-line);
+  border-radius: 0;
+  background: transparent;
+  outline: none;
+  transition: border-color 180ms ease;
+
+  &:focus {
+    border-color: var(--color-foreground);
+  }
+}
+
+@utility fleet-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-width: 0;
+  padding-inline: 0.75rem;
+  font-size: clamp(0.65rem, 2.5vw, 0.8rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  transition: filter 180ms ease;
+  &:hover { filter: brightness(0.96); }
+  &:focus-visible { outline: 3px solid var(--color-ring); outline-offset: 3px; }
+}
+
+@utility fleet-price {
+  display: block;
+  width: 100%;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.7rem 0.25rem 0.75rem;
+  background: linear-gradient(90deg, color-mix(in oklab, var(--color-primary) 16%, transparent), transparent 76%);
+}
+
+.fleet-intro { border-bottom: 1px solid var(--color-border); }
+.fleet-ticker { background-color: var(--color-ticker); color: var(--color-ticker-foreground); }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.fleet-marquee { animation: marquee 28s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fleet-marquee { animation: none; }
+}
