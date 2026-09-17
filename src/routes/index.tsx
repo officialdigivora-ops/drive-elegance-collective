@@ -1,8 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ChevronLeft,
   ChevronRight,
-  Fuel,
   Armchair,
 
   CircleUserRound,
@@ -11,7 +10,6 @@ import {
   Gauge,
   Instagram,
   Phone,
-  UserRoundCheck,
   Menu,
   ShieldCheck,
   Tag,
@@ -33,21 +31,6 @@ import miniLogo from "../assets/brands/mini.svg.asset.json";
 import porscheLogo from "../assets/brands/porsche.png.asset.json";
 import rollsRoyceLogo from "../assets/brands/rolls-royce.svg.asset.json";
 import toyotaLogo from "../assets/brands/toyota.svg.asset.json";
-import galleryDefender from "../assets/gallery/gallery-defender.jpg.asset.json";
-import galleryHummer from "../assets/gallery/gallery-hummer.jpg.asset.json";
-import galleryBmwFront from "../assets/gallery/gallery-bmw-front.jpg.asset.json";
-import galleryBmwSide from "../assets/gallery/gallery-bmw-side.jpg.asset.json";
-import galleryRangeRoverRed from "../assets/gallery/gallery-rangerover-red.jpg.asset.json";
-import galleryBentleyBlack from "../assets/gallery/gallery-bentley-black.jpg.asset.json";
-import galleryAudiWhite from "../assets/gallery/gallery-audi-white.jpg.asset.json";
-import galleryMaybach from "../assets/gallery/gallery-maybach.jpg.asset.json";
-import galleryTaycanBlue from "../assets/gallery/gallery-taycan-blue.jpg.asset.json";
-import galleryGwagon from "../assets/gallery/gallery-gwagon.jpg.asset.json";
-import galleryRollsRoyceWhite from "../assets/gallery/gallery-rollsroyce-white.jpg.asset.json";
-import galleryMiniRed from "../assets/gallery/gallery-mini-red.jpg.asset.json";
-import galleryJaguarXf from "../assets/gallery/gallery-jaguar-xf.jpg.asset.json";
-import galleryVintageRed from "../assets/gallery/gallery-vintage-red.jpg.asset.json";
-import galleryMustangRed from "../assets/gallery/gallery-mustang-red.jpg.asset.json";
 import yellowSuv from "../assets/yellow-suv.png";
 import audiA3Convertible from "../assets/fleet/audi-a3-convertible.png";
 import audiA3ConvertibleWhite from "../assets/fleet/audi-a3-convertible-white.png";
@@ -150,7 +133,6 @@ const navItems = [
   { label: "Our Fleet", href: "/fleet" },
   { label: "Car Details", href: "/car-details" },
   { label: "Contact Us", href: "/contact" },
-  { label: "Gallery", href: "#gallery" },
   { label: "Feedback", href: "#feedback" },
 ];
 
@@ -321,56 +303,17 @@ function Showcase() {
       <div className="mx-auto grid max-w-3xl grid-cols-2 gap-x-3 gap-y-5 px-5 sm:grid-cols-4 sm:gap-y-6">
         {specs.map(([Icon,value,label]) => <div key={label} className="min-w-0 text-center"><Icon className="mx-auto text-muted-foreground" size={22} /><strong className="mt-2 block text-xs sm:text-sm">{value}</strong><span className="text-[10px] text-muted-foreground">{label}</span></div>)}
       </div>
-      <div className="mt-5 flex flex-wrap items-center justify-center gap-3 px-5">
-        <span className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white"><Fuel size={15} /> Fuel Included</span>
-        <span className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white"><UserRoundCheck size={15} /> Driver Included</span>
-      </div>
       <div className="mx-auto mt-5 grid w-[calc(100%-2.5rem)] max-w-xl gap-3 rounded-2xl bg-surface p-3 shadow-card sm:grid-cols-[1fr_auto] sm:items-center">
          <div className="flex items-center justify-center gap-3 px-2 sm:justify-start"><Tag size={18} className="text-primary"/><span className="text-xl font-black">₹{activeCar.price.toLocaleString("en-IN")}</span><small className="text-muted-foreground">/ 13 hours</small></div>
         <Button asChild className="h-11 rounded-full px-6 text-xs sm:w-auto w-full"><a href={`https://wa.me/919990569473?text=${encodeURIComponent(`I want to book this car: ${activeCar.name} (${activeCar.type}) for ₹${activeCar.price.toLocaleString("en-IN")} / 13 hours. Can I get more details?`)}`} target="_blank" rel="noopener noreferrer">Rent Now</a></Button>
       </div>
-    </section>
-  );
-}
-
-const galleryImages = [
-  { image: galleryDefender.url, alt: "White Land Rover Defender decorated for a wedding", crop: true },
-  { image: galleryHummer.url, alt: "White Hummer H2", crop: true },
-  { image: galleryBmwFront.url, alt: "White BMW convertible with wedding flowers", crop: true },
-  { image: galleryBmwSide.url, alt: "White BMW convertible side view", crop: true },
-  { image: galleryRangeRoverRed.url, alt: "Red Range Rover convertible with wedding flowers", crop: true },
-  { image: galleryBentleyBlack.url, alt: "Black Bentley Continental convertible", crop: true },
-  { image: galleryAudiWhite.url, alt: "White Audi A4 decorated for a wedding", crop: true },
-  { image: galleryMaybach.url, alt: "Mercedes-Maybach with wedding flowers", crop: true },
-  { image: galleryTaycanBlue.url, alt: "Blue Porsche Taycan Turbo", crop: true },
-  { image: galleryGwagon.url, alt: "White Mercedes G-Wagon with wedding flowers", crop: true },
-  { image: galleryRollsRoyceWhite.url, alt: "White Rolls-Royce Ghost", crop: true },
-  { image: galleryMiniRed.url, alt: "Red Mini Cooper convertible", crop: true },
-  { image: galleryJaguarXf.url, alt: "White Jaguar XF", crop: true },
-  { image: galleryVintageRed.url, alt: "Vintage red convertible decorated for a wedding", crop: true },
-  { image: galleryMustangRed.url, alt: "Red Ford Mustang GT decorated for a wedding", crop: true },
-];
-
-function Gallery() {
-  const flowingImages = [...galleryImages, ...galleryImages];
-  return (
-    <section id="gallery" className="overflow-hidden bg-surface py-14 sm:py-18 md:py-24">
-      <div className="mx-auto max-w-6xl px-5 text-center md:px-8">
-        <p className="mb-4 text-xs font-bold uppercase text-primary">Our collection</p>
-        <h2 className="font-display text-4xl font-black leading-none sm:text-6xl">CAR GALLERY</h2>
-      </div>
-      <div className="gallery-flow mt-8 md:mt-10" aria-label="Car gallery">
-        <div className="gallery-track">
-          {flowingImages.map((item, index) => (
-            <figure key={`${item.alt}-${index}`} className="gallery-frame">
-              <img src={item.image} alt={index < galleryImages.length ? item.alt : ""} aria-hidden={index >= galleryImages.length} loading="lazy" className={item.crop ? "h-full w-full object-cover" : "h-full w-full object-contain p-4"} />
-            </figure>
-          ))}
-        </div>
+      <div className="mt-4 text-center">
+        <Button asChild variant="outline" className="h-10 rounded-full px-6 text-xs font-bold uppercase tracking-wider"><Link to="/fleet">Show all</Link></Button>
       </div>
     </section>
   );
 }
+
 
 function BrandStrip() {
   const brands = [
@@ -464,5 +407,5 @@ function Footer() {
 }
 
 function Index() {
-  return <main><Header /><Hero /><CrossMarquee /><Showcase /><Gallery /><BrandStrip /><UserFeedback /><Footer /></main>;
+  return <main><Header /><Hero /><CrossMarquee /><Showcase /><BrandStrip /><UserFeedback /><Footer /></main>;
 }
