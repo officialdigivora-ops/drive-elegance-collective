@@ -305,10 +305,10 @@ function Showcase() {
       </div>
       <div className="mx-auto mt-5 grid w-[calc(100%-2.5rem)] max-w-xl gap-3 rounded-2xl bg-surface p-3 shadow-card sm:grid-cols-[1fr_auto] sm:items-center">
          <div className="flex items-center justify-center gap-3 px-2 sm:justify-start"><Tag size={18} className="text-primary"/><span className="text-xl font-black">₹{activeCar.price.toLocaleString("en-IN")}</span><small className="text-muted-foreground">/ 13 hours</small></div>
-        <Button asChild className="h-11 rounded-full px-6 text-xs sm:w-auto w-full"><a href={`https://wa.me/919990569473?text=${encodeURIComponent(`I want to book this car: ${activeCar.name} (${activeCar.type}) for ₹${activeCar.price.toLocaleString("en-IN")} / 13 hours. Can I get more details?`)}`} target="_blank" rel="noopener noreferrer">Rent Now</a></Button>
-      </div>
-      <div className="mt-4 text-center">
-        <Button asChild variant="outline" className="h-10 rounded-full px-6 text-xs font-bold uppercase tracking-wider"><Link to="/fleet">Show all</Link></Button>
+        <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
+          <Button asChild className="h-11 rounded-full px-6 text-xs"><a href={`https://wa.me/919990569473?text=${encodeURIComponent(`I want to book this car: ${activeCar.name} (${activeCar.type}) for ₹${activeCar.price.toLocaleString("en-IN")} / 13 hours. Can I get more details?`)}`} target="_blank" rel="noopener noreferrer">Rent Now</a></Button>
+          <Button asChild variant="secondary" className="h-11 rounded-full bg-foreground px-6 text-xs font-bold uppercase tracking-wider text-background hover:bg-foreground/90"><Link to="/fleet">Show all</Link></Button>
+        </div>
       </div>
     </section>
   );
