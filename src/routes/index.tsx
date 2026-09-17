@@ -360,46 +360,47 @@ function UserFeedback() {
 function Footer() {
   const serviceAreas = ["Delhi", "Noida", "Gurugram", "Ghaziabad", "Faridabad", "Panipat", "Sonipat", "Karnal", "Meerut", "Agra"];
   return (
-    <footer className="bg-foreground text-background">
-      <div className="mx-auto max-w-6xl px-5 py-14 md:px-8">
-        <div className="flex flex-col items-center border-b border-footer-line pb-12 text-center">
-          <img src={brandLogo} width={1536} height={768} loading="lazy" alt={`${BRAND} logo`} className="h-20 w-auto brightness-0 invert sm:h-24" />
-          <p className="mt-5 max-w-md text-xs leading-6 text-footer-muted">Luxury car rental for weddings, photoshoots, corporate travel and airport transfers across Delhi NCR, Haryana and Uttar Pradesh. 100+ premium cars, 7 years of experience.</p>
-        </div>
-        <div className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-3">
+    <footer className="relative overflow-hidden bg-foreground text-background">
+      <div className="pointer-events-none absolute -right-10 top-10 select-none font-display text-[160px] font-black leading-none text-background/[0.03] sm:text-[260px]">✦</div>
+      <div className="relative mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+          <div className="flex flex-col">
+            <img src={brandLogo} width={1536} height={768} loading="lazy" alt={`${BRAND} logo`} className="h-16 w-auto brightness-0 invert sm:h-20" />
+            <p className="mt-5 max-w-xs text-xs leading-6 text-footer-muted">Luxury car rental for weddings, photoshoots, corporate travel and airport transfers across Delhi NCR, Haryana & Uttar Pradesh. 100+ premium cars, 7+ years of experience.</p>
+            <div className="mt-6 flex gap-2.5">
+              <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full border border-footer-line text-footer-muted transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"><Instagram size={16} /></a>
+              <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-full border border-footer-line text-footer-muted transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"><Facebook size={16} /></a>
+              <a href="https://wa.me/919990569473" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex h-10 w-10 items-center justify-center rounded-full border border-footer-line text-footer-muted transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"><Phone size={16} /></a>
+            </div>
+          </div>
           <div>
-            <h3 className="mb-5 text-xs font-bold">Contact</h3>
-            <ul className="space-y-3 text-xs text-footer-muted">
-              <li><a href={PHONE_LINK} className="hover:text-primary">{PHONE_DISPLAY}</a></li>
-              <li><a href="https://wa.me/919990569473" target="_blank" rel="noopener noreferrer" className="hover:text-primary">WhatsApp us</a></li>
-              <li><a href={MAP_LINK} target="_blank" rel="noopener noreferrer" className="leading-6 hover:text-primary">{ADDRESS}</a></li>
+            <h3 className="mb-5 text-[11px] font-bold uppercase tracking-wider text-primary">Contact</h3>
+            <ul className="space-y-4 text-xs text-footer-muted">
+              <li><a href={PHONE_LINK} className="flex items-center gap-2 transition-colors hover:text-primary"><Phone size={14} className="text-primary" /> {PHONE_DISPLAY}</a></li>
+              <li><a href="https://wa.me/919990569473" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-primary">WhatsApp us</a></li>
+              <li><a href={MAP_LINK} target="_blank" rel="noopener noreferrer" className="leading-6 transition-colors hover:text-primary">{ADDRESS}</a></li>
             </ul>
           </div>
           <div>
-            <h3 className="mb-5 text-xs font-bold">Service Areas</h3>
-            <ul className="grid grid-cols-2 gap-x-4 gap-y-3 text-xs text-footer-muted">
-              {serviceAreas.map((area) => <li key={area}>{area}</li>)}
-            </ul>
-          </div>
-          <div>
-            <h3 className="mb-5 text-xs font-bold">Rental Package</h3>
+            <h3 className="mb-5 text-[11px] font-bold uppercase tracking-wider text-primary">Rental Package</h3>
             <ul className="space-y-3 text-xs leading-6 text-footer-muted">
               <li>Timing: 13 hours</li>
-              <li>Fuel, driver, decoration &amp; toll included</li>
+              <li>Fuel, driver, decoration & toll included</li>
               <li>Extra km depends on car</li>
               <li>Extra timing depends on car</li>
             </ul>
-            <h3 className="mb-4 mt-8 text-xs font-bold">Follow Us</h3>
-            <div className="flex gap-2">
-              <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-line text-footer-muted hover:text-primary"><Instagram size={15} /></a>
-              <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-line text-footer-muted hover:text-primary"><Facebook size={15} /></a>
-              <a href={PHONE_LINK} aria-label="Call us" className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-line text-footer-muted hover:text-primary"><Phone size={15} /></a>
-            </div>
+          </div>
+          <div>
+            <h3 className="mb-5 text-[11px] font-bold uppercase tracking-wider text-primary">Service Areas</h3>
+            <ul className="flex flex-wrap gap-2">
+              {serviceAreas.map((area) => <li key={area} className="rounded-full border border-footer-line px-3 py-1 text-[11px] text-footer-muted">{area}</li>)}
+            </ul>
           </div>
         </div>
-        <div className="flex flex-col gap-3 border-t border-footer-line pt-6 text-[10px] text-footer-muted sm:flex-row sm:justify-between">
-          <span>All rights reserved © {BRAND} 2026</span>
-          <span>Privacy Policy&nbsp;&nbsp; | &nbsp;&nbsp;Terms &amp; Conditions</span>
+        <div className="mt-12 flex flex-col gap-5 border-t border-footer-line pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <span className="text-[11px] text-footer-muted">All rights reserved © {BRAND} 2026</span>
+          <a href={PHONE_LINK} className="inline-flex h-10 items-center gap-2 self-start rounded-full bg-primary px-6 text-xs font-bold text-primary-foreground shadow-[0_4px_14px_color-mix(in_oklab,var(--primary)_45%,transparent)] transition-all hover:bg-primary-hover sm:self-auto"><Phone size={15} /> Contact Now</a>
+          <span className="text-[11px] text-footer-muted sm:text-right">Privacy Policy&nbsp;&nbsp;|&nbsp;&nbsp;Terms & Conditions</span>
         </div>
       </div>
     </footer>
