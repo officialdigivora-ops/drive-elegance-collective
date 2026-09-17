@@ -365,7 +365,7 @@ function Footer() {
       <div className="relative mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="flex flex-col">
-            <img src={brandLogo} width={1536} height={768} loading="lazy" alt={`${BRAND} logo`} className="h-16 w-auto brightness-0 invert sm:h-20" />
+            <img src={brandLogo} width={1536} height={768} loading="lazy" alt={`${BRAND} logo`} className="h-14 w-auto self-start brightness-0 invert sm:h-16" />
             <p className="mt-5 max-w-xs text-xs leading-6 text-footer-muted">Luxury car rental for weddings, photoshoots, corporate travel and airport transfers across Delhi NCR, Haryana & Uttar Pradesh. 100+ premium cars, 7+ years of experience.</p>
             <div className="mt-6 flex gap-2.5">
               <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full border border-footer-line text-footer-muted transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"><Instagram size={16} /></a>
@@ -408,5 +408,5 @@ function Footer() {
 }
 
 function Index() {
-  return <main><Header /><Hero /><CrossMarquee /><Showcase /><BrandStrip /><UserFeedback /><Footer /></main>;
+  return <main><Header /><Hero /><Showcase /><BrandStrip /><UserFeedback /><Footer /></main>;
 }
