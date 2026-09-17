@@ -321,13 +321,12 @@ function Showcase() {
       <div className="mx-auto grid max-w-3xl grid-cols-2 gap-x-3 gap-y-5 px-5 sm:grid-cols-4 sm:gap-y-6">
         {specs.map(([Icon,value,label]) => <div key={label} className="min-w-0 text-center"><Icon className="mx-auto text-muted-foreground" size={22} /><strong className="mt-2 block text-xs sm:text-sm">{value}</strong><span className="text-[10px] text-muted-foreground">{label}</span></div>)}
       </div>
-      <div className="mt-5 flex flex-wrap items-center justify-center gap-3 px-5">
-        <span className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white"><Fuel size={15} /> Fuel Included</span>
-        <span className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white"><UserRoundCheck size={15} /> Driver Included</span>
-      </div>
       <div className="mx-auto mt-5 grid w-[calc(100%-2.5rem)] max-w-xl gap-3 rounded-2xl bg-surface p-3 shadow-card sm:grid-cols-[1fr_auto] sm:items-center">
          <div className="flex items-center justify-center gap-3 px-2 sm:justify-start"><Tag size={18} className="text-primary"/><span className="text-xl font-black">₹{activeCar.price.toLocaleString("en-IN")}</span><small className="text-muted-foreground">/ 13 hours</small></div>
         <Button asChild className="h-11 rounded-full px-6 text-xs sm:w-auto w-full"><a href={`https://wa.me/919990569473?text=${encodeURIComponent(`I want to book this car: ${activeCar.name} (${activeCar.type}) for ₹${activeCar.price.toLocaleString("en-IN")} / 13 hours. Can I get more details?`)}`} target="_blank" rel="noopener noreferrer">Rent Now</a></Button>
+      </div>
+      <div className="mt-4 text-center">
+        <Button asChild variant="outline" className="h-10 rounded-full px-6 text-xs font-bold uppercase tracking-wider"><Link to="/fleet">Show all</Link></Button>
       </div>
     </section>
   );
