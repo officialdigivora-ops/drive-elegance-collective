@@ -174,28 +174,6 @@ function Hero() {
   );
 }
 
-const marqueePrimary = ["NCR'S BIGGEST CAR RENTAL", "100+ PREMIUM CARS", "NCR'S BIGGEST CAR RENTAL", "100+ PREMIUM CARS"];
-const marqueeSecondary = ["24/7 SERVICE", "20,000+ CUSTOMERS", "24/7 SERVICE", "20,000+ CUSTOMERS"];
-
-function CrossMarquee() {
-  const renderItems = (items: string[]) => [...items, ...items].map((item, index) => (
-    <span key={`${item}-${index}`} className="cross-marquee-item">
-      <span aria-hidden="true">✦</span>{item}
-    </span>
-  ));
-
-  return (
-    <section className="cross-marquee" aria-label="Rental service highlights">
-      <div className="cross-marquee-band cross-marquee-band--primary">
-        <div className="cross-marquee-track">{renderItems(marqueePrimary)}</div>
-      </div>
-      <div className="cross-marquee-band cross-marquee-band--secondary">
-        <div className="cross-marquee-track cross-marquee-track--reverse">{renderItems(marqueeSecondary)}</div>
-      </div>
-      <p className="sr-only">NCR's biggest car rental with 24/7 service, more than 20,000 customers, and over 100 cars.</p>
-    </section>
-  );
-}
 
 type Car = {
   name: string; type: string; speed: string; seats: string; airbags: string;
@@ -365,7 +343,7 @@ function Footer() {
       <div className="relative mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="flex flex-col">
-            <img src={brandLogo} width={1536} height={768} loading="lazy" alt={`${BRAND} logo`} className="h-16 w-auto brightness-0 invert sm:h-20" />
+            <img src={brandLogo} width={1536} height={768} loading="lazy" alt={`${BRAND} logo`} className="h-14 w-auto self-start brightness-0 invert sm:h-16" />
             <p className="mt-5 max-w-xs text-xs leading-6 text-footer-muted">Luxury car rental for weddings, photoshoots, corporate travel and airport transfers across Delhi NCR, Haryana & Uttar Pradesh. 100+ premium cars, 7+ years of experience.</p>
             <div className="mt-6 flex gap-2.5">
               <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full border border-footer-line text-footer-muted transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"><Instagram size={16} /></a>
@@ -408,5 +386,5 @@ function Footer() {
 }
 
 function Index() {
-  return <main><Header /><Hero /><CrossMarquee /><Showcase /><BrandStrip /><UserFeedback /><Footer /></main>;
+  return <main><Header /><Hero /><Showcase /><BrandStrip /><UserFeedback /><Footer /></main>;
 }
