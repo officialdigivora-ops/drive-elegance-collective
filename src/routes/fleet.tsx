@@ -1,56 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SitePageHeader } from "@/components/site-page-header";
-import audiA3Red from "../assets/fleet/audi-a3-convertible.png";
-import audiA3White from "../assets/fleet/audi-a3-convertible-white.png";
-import audiA4 from "../assets/fleet/audi-a4.png";
-import audiA6 from "../assets/fleet/audi-a6-white.png";
-import audiQ7 from "../assets/fleet/audi-q7-white.png";
-import bentleyRed from "../assets/fleet/bentley-convertible-red.png";
-import bentleySunroof from "../assets/fleet/bentley-sunroof-white.png";
-import bmw5 from "../assets/fleet/bmw-5-series-white.png";
-import bmwConvertible from "../assets/fleet/bmw-convertible-white.png";
-import defender from "../assets/fleet/land-rover-defender-white.png";
-import fortuner from "../assets/fleet/toyota-fortuner.png";
-import gwagon from "../assets/fleet/mercedes-g-wagon-white.png";
-import hummer from "../assets/fleet/hummer-h2-white.png";
-import hyundaiVerna from "../assets/fleet/hyundai-verna-white.png";
-import jaguarXf from "../assets/fleet/jaguar-xf-white.png";
-import jaguarXjl from "../assets/fleet/jaguar-xjl-white.png";
-import limousine from "../assets/fleet/limousine-long-new-white.png";
-import maybach from "../assets/fleet/mercedes-maybach-white.png";
-import mercedesC300 from "../assets/fleet/mercedes-c-300-white.png";
-import mercedesCla from "../assets/fleet/mercedes-cla-white.png";
-import mercedesConvertible from "../assets/fleet/mercedes-convertible-white.png";
-import mercedesConvertibleRed from "../assets/fleet/mercedes-convertible-red.png";
-import mercedesEClass from "../assets/fleet/mercedes-e-class-white.png";
-import miniRed from "../assets/fleet/mini-cooper-convertible-red.png";
-import mustangRed from "../assets/fleet/mustang-gt-red.png";
-import porscheBoxsterRed from "../assets/fleet/porsche-boxster-red.png";
-import rangeRoverEvoqueRed from "../assets/fleet/range-rover-evoque-convertible-red.png";
-import rangeRoverSport from "../assets/fleet/range-rover-sport-sv-white.png";
-import rangeRoverVelar from "../assets/fleet/range-rover-velar-autobiography-white.png";
-import rollsRoyce from "../assets/fleet/rolls-royce-ghost.png";
-import vintage from "../assets/fleet/vintage-luxury-white.png";
-import limousineExteriorFront from "../assets/limousine/limousine-exterior-front.jpg.asset.json";
-import limousineExteriorAngle from "../assets/limousine/limousine-exterior-angle.jpg.asset.json";
-import limousineInteriorSeat from "../assets/limousine/limousine-interior-seat.jpg.asset.json";
-import limousineInteriorBar from "../assets/limousine/limousine-interior-bar.jpg.asset.json";
-import mercedesConvertibleFront from "../assets/real-fleet/mercedes-convertible-front.jpg.asset.json";
-import mercedesConvertibleAngle from "../assets/real-fleet/mercedes-convertible-angle.jpg.asset.json";
-import audiA6Front from "../assets/real-fleet/audi-a6-front.jpg.asset.json";
-import audiA6Rear from "../assets/real-fleet/audi-a6-rear.jpg.asset.json";
-import bmw5Front from "../assets/real-fleet/bmw-5-series-front.jpg.asset.json";
-import bmw5Rear from "../assets/real-fleet/bmw-5-series-rear.jpg.asset.json";
-import rangeRoverSportFront from "../assets/real-fleet/range-rover-sport-front.jpg.asset.json";
-import rangeRoverSportAngle from "../assets/real-fleet/range-rover-sport-angle.jpg.asset.json";
-import rangeRoverSportRear from "../assets/real-fleet/range-rover-sport-rear.jpg.asset.json";
-import bentleyConvertibleFront from "../assets/real-fleet/bentley-convertible-front.jpg.asset.json";
-import bentleyConvertibleRear from "../assets/real-fleet/bentley-convertible-rear.jpg.asset.json";
-import bentleyConvertibleSide from "../assets/real-fleet/bentley-convertible-side.jpg.asset.json";
-import audiA3ConvertibleFront from "../assets/real-fleet/audi-a3-convertible-front.jpg.asset.json";
-import audiA3ConvertibleRear from "../assets/real-fleet/audi-a3-convertible-rear.jpg.asset.json";
-import porscheBoxsterRoof from "../assets/real-fleet/porsche-boxster-roof.jpg.asset.json";
-import porscheBoxsterOpen from "../assets/real-fleet/porsche-boxster-open.jpg.asset.json";
+import { bookingLink, fleetCars, realCarPhotos, type CarPhoto } from "@/data/fleet";
 
 export const Route = createFileRoute("/fleet")({
   head: () => ({
@@ -72,97 +22,9 @@ export const Route = createFileRoute("/fleet")({
   component: Index,
 });
 
-const cars = [
-  ["Mercedes Convertible White", "Luxury Convertible", mercedesConvertible, 20000],
-  ["Audi A6 White", "Executive Sedan", audiA6, 10000],
-  ["Bmw 5 Series White", "Luxury Sedan", bmw5, 12000],
-  ["Bentley Convertible Red", "Luxury Convertible", bentleyRed, 70000],
-  ["Audi A3 Convertible White", "Convertible", audiA3White, 16000],
-  ["Porsche Boxster Red", "Sports Convertible", porscheBoxsterRed, 120000],
-  ["Jaguar Xf White", "Luxury Sedan", jaguarXf, 13000],
-  ["Mercedes Convertible Red", "Luxury Convertible", mercedesConvertibleRed, 20000],
-  ["Audi Q7 7 Seater White", "7-Seater SUV", audiQ7, 16000],
-  ["Mercedes C 300 White", "Luxury Sedan", mercedesC300, 14000],
-  ["Mercedes Cla White", "Luxury Sedan", mercedesCla, 13000],
-  ["Jaguar Xjl White", "Luxury Sedan", jaguarXjl, 20000],
-  ["Mini Cooper Convertible Red", "Convertible", miniRed, 15000],
-  ["Rolls Royce Sedan White", "Ultra Luxury Sedan", rollsRoyce, 200000],
-  ["Mercedes Maybach White", "Ultra Luxury Sedan", maybach, 40000],
-  ["Gwagon White", "Luxury SUV", gwagon, 90000],
-  ["Audi A4 White", "Executive Sedan", audiA4, 7000],
-  ["Limousine Long New White", "Luxury Limousine", limousine, 18000],
-  ["Range Rover Evoque Convertible Red", "Convertible SUV", rangeRoverEvoqueRed, 75000],
-  ["Bmw Convertible White", "Convertible", bmwConvertible, 20000],
-  ["Audi A3 Convertible Red", "Convertible", audiA3Red, 18000],
-  ["Mustang GT Red", "Sports Coupe", mustangRed, 90000],
-  ["Mercedes E Class White", "Luxury Sedan", mercedesEClass, 20000],
-  ["Vintages White", "Classic Car", vintage, 21000],
-  ["Range Rover Velar White", "Luxury SUV", rangeRoverVelar, 40000],
-  ["Fortuner Legender White", "7-Seater SUV", fortuner, 10000],
-  ["Range Rover Sport White", "Luxury SUV", rangeRoverSport, 40000],
-  ["Bentley Sunroof White", "Luxury Sedan", bentleySunroof, 45000],
-  ["Hummee H2 White", "Luxury SUV", hummer, 48000],
-  ["Defender White", "Luxury SUV", defender, 45000],
-  ["Verna New Model White", "Premium Sedan", hyundaiVerna, 4000],
-].map(([name, category, image, price]) => ({
-  name: String(name),
-  category: String(category),
-  image: String(image),
-  alt: `${name} available for luxury car rental`,
-  price: `₹${Number(price).toLocaleString("en-IN")}`,
-  duration: "13 hours",
-}));
+const cars = fleetCars;
 
-const limousinePhotos = [
-  { src: limousine, alt: "Limousine Long New White studio view" },
-  { src: limousineExteriorFront.url, alt: "White wedding limousine decorated with flowers, front view" },
-  { src: limousineExteriorAngle.url, alt: "White wedding limousine decorated with flowers, angled view" },
-  { src: limousineInteriorSeat.url, alt: "Limousine passenger cabin with leather seating" },
-  { src: limousineInteriorBar.url, alt: "Limousine cabin bar and entertainment area" },
-];
-
-const realCarPhotos: Record<string, Array<{ src: string; alt: string; contain?: boolean }>> = {
-  "Mercedes Convertible White": [
-    { src: mercedesConvertible, alt: "Mercedes Convertible White studio view", contain: true },
-    { src: mercedesConvertibleFront.url, alt: "White Mercedes convertible front view" },
-    { src: mercedesConvertibleAngle.url, alt: "White Mercedes convertible angled view" },
-  ],
-  "Audi A6 White": [
-    { src: audiA6, alt: "Audi A6 White studio view", contain: true },
-    { src: audiA6Front.url, alt: "White Audi A6 front view" },
-    { src: audiA6Rear.url, alt: "White Audi A6 rear view" },
-  ],
-  "Bmw 5 Series White": [
-    { src: bmw5, alt: "BMW 5 Series White studio view", contain: true },
-    { src: bmw5Front.url, alt: "White BMW 5 Series front view" },
-    { src: bmw5Rear.url, alt: "White BMW 5 Series rear view" },
-  ],
-  "Bentley Convertible Red": [
-    { src: bentleyRed, alt: "Bentley Convertible Red studio view", contain: true },
-    { src: bentleyConvertibleFront.url, alt: "Red Bentley convertible front view" },
-    { src: bentleyConvertibleRear.url, alt: "Red Bentley convertible rear view" },
-    { src: bentleyConvertibleSide.url, alt: "Red Bentley convertible side view" },
-  ],
-  "Audi A3 Convertible White": [
-    { src: audiA3White, alt: "Audi A3 Convertible White studio view", contain: true },
-    { src: audiA3ConvertibleFront.url, alt: "White Audi A3 convertible front view" },
-    { src: audiA3ConvertibleRear.url, alt: "White Audi A3 convertible rear view" },
-  ],
-  "Porsche Boxster Red": [
-    { src: porscheBoxsterRed, alt: "Porsche Boxster Red studio view", contain: true },
-    { src: porscheBoxsterRoof.url, alt: "Red Porsche Boxster rear view with roof closed" },
-    { src: porscheBoxsterOpen.url, alt: "Red Porsche Boxster angled view with roof open" },
-  ],
-  "Limousine Long New White": limousinePhotos.map((photo, index) => ({ ...photo, contain: index === 0 })),
-  "Range Rover Sport White": [
-    { src: rangeRoverSport, alt: "Range Rover Sport White studio view", contain: true },
-    { src: rangeRoverSportFront.url, alt: "Black Range Rover Sport front view" },
-    { src: rangeRoverSportAngle.url, alt: "Black Range Rover Sport angled view" },
-    { src: rangeRoverSportRear.url, alt: "Black Range Rover Sport rear view" },
-  ],
-};
-
-function CarPhotoReel({ photos }: { photos: Array<{ src: string; alt: string; contain?: boolean }> }) {
+function CarPhotoReel({ photos }: { photos: CarPhoto[] }) {
   return (
     <div className="limousine-reel" aria-label="Real exterior and interior car photos">
       <div className="limousine-reel-track">
@@ -223,7 +85,6 @@ function Index() {
 
         <div className="space-y-6 sm:space-y-8 lg:space-y-10">
           {cars.map((car, index) => {
-            const bookingMessage = encodeURIComponent(`Hello Chaudhary Luxury Cars, I would like to book the ${car.name} (${car.category}). The listed starting price is ${car.price} for ${car.duration}. Please confirm availability, final price, and pickup details. I understand the package includes fuel, driver, decoration, and toll; extra kilometres and extra time depend on the car.`);
             const photos = realCarPhotos[car.name];
             return (
               <article key={car.name} className="grid overflow-hidden border border-border bg-card md:grid-cols-2">
@@ -244,10 +105,10 @@ function Index() {
                     </div>
                   </div>
                   <div className="mt-5 grid h-11 grid-cols-2 overflow-hidden rounded-full sm:mt-6 sm:h-12">
-                    <Link to="/car-details" className="fleet-action bg-secondary text-secondary-foreground" aria-label={`View details for ${car.name}`}>
+                    <Link to="/car-details" search={{ car: car.name }} className="fleet-action bg-secondary text-secondary-foreground" aria-label={`View details for ${car.name}`}>
                       View Details
                     </Link>
-                    <a href={`https://wa.me/919990569473?text=${bookingMessage}`} target="_blank" rel="noopener noreferrer" className="fleet-action bg-primary text-primary-foreground" aria-label={`Book ${car.name} now`}>
+                    <a href={bookingLink(car)} target="_blank" rel="noopener noreferrer" className="fleet-action bg-primary text-primary-foreground" aria-label={`Book ${car.name} now`}>
                       <span>Book Now</span><ArrowIcon />
                     </a>
                   </div>
