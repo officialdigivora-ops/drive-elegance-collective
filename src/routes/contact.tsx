@@ -1,9 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowUpRight, CarFront, Clock3, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowUpRight, Check, Clock3, Mail, MapPin, Phone } from "lucide-react";
 import { useState, type FormEvent } from "react";
 
 import { Button } from "@/components/ui/button";
 import { SitePageHeader } from "@/components/site-page-header";
+import { cn } from "@/lib/utils";
+import { fleetCars } from "@/data/fleet";
+import mercedesLogo from "../assets/brands/mercedes.svg.asset.json";
 
 const offices = [
   {
@@ -42,6 +45,7 @@ export const Route = createFileRoute("/contact")({
 
 function BookingPage() {
   const [hours, setHours] = useState(13);
+  const [selectedCar, setSelectedCar] = useState(fleetCars[0]!);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -50,6 +54,7 @@ function BookingPage() {
     const phone = String(form.get("phone") || "").replace(/[^0-9+ -]/g, "").trim().slice(0, 20);
     const address = String(form.get("address") || "").trim().slice(0, 300);
     const car = String(form.get("car") || "").trim().slice(0, 100);
+    const carDetails = fleetCars.find((item) => item.name === car);
     const pickupDate = String(form.get("pickupDate") || "").trim();
     const pickupTime = String(form.get("pickupTime") || "").trim();
     const duration = Math.max(13, Math.min(240, Number(form.get("hours")) || 13));
@@ -62,7 +67,8 @@ function BookingPage() {
       "",
       `Name: ${name}`,
       `Phone: ${phone}`,
-      `Car required: ${car}`,
+      `Car required: ${car}${carDetails ? ` (${carDetails.category})` : ""}`,
+      carDetails ? `Listed starting price: ${carDetails.price} for 13 hours` : "",
       `Pickup date: ${pickupDate}`,
       `Pickup time: ${pickupTime}`,
       `Rental duration: ${duration} hours`,
@@ -92,8 +98,8 @@ function BookingPage() {
       <section className="mx-auto grid max-w-6xl items-start gap-9 px-4 py-8 sm:px-7 sm:py-10 lg:grid-cols-[1.35fr_0.65fr] lg:px-10">
         <form onSubmit={handleSubmit} className="rounded-md border border-warm-line bg-card p-4 shadow-lg shadow-foreground/5 sm:p-6">
           <div className="mb-5 flex items-center gap-3 border-b border-warm-line pb-4">
-            <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
-              <CarFront className="size-4" aria-hidden="true" />
+            <span className="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-warm-line">
+              <img src={mercedesLogo.url} alt="Mercedes-Benz logo" className="size-7 object-contain" />
             </span>
             <div className="min-w-0">
               <h2 className="display-type truncate text-lg uppercase sm:text-xl">Rental enquiry</h2>
@@ -110,10 +116,40 @@ function BookingPage() {
               Phone number *
               <input required name="phone" type="tel" maxLength={20} minLength={8} autoComplete="tel" inputMode="tel" placeholder="Your WhatsApp number" className="field-luxury h-10 text-sm font-medium normal-case text-foreground placeholder:text-muted-foreground/60" />
             </label>
-            <label className="grid gap-1 text-[11px] font-bold uppercase text-muted-foreground">
-              Car required *
-              <input required name="car" maxLength={100} placeholder="e.g. Mercedes S-Class" className="field-luxury h-10 text-sm font-medium normal-case text-foreground placeholder:text-muted-foreground/60" />
-            </label>
+            <div className="grid gap-2 sm:col-span-2">
+              <p className="text-[11px] font-bold uppercase text-muted-foreground">
+                Car required * <span className="normal-case text-foreground">{selectedCar.name}</span>
+              </p>
+              <input type="hidden" name="car" value={selectedCar.name} />
+              <div className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2" role="radiogroup" aria-label="Select the car you need">
+                {fleetCars.map((car) => {
+                  const active = car.name === selectedCar.name;
+                  return (
+                    <button
+                      type="button"
+                      key={car.name}
+                      role="radio"
+                      aria-checked={active}
+                      onClick={() => setSelectedCar(car)}
+                      className={cn(
+                        "relative w-40 shrink-0 snap-start overflow-hidden rounded-xl border bg-background p-2 text-left transition",
+                        active ? "border-primary ring-2 ring-primary" : "border-warm-line hover:border-foreground/40",
+                      )}
+                    >
+                      {active && (
+                        <span className="absolute right-2 top-2 flex size-5 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                          <Check className="size-3" aria-hidden="true" />
+                        </span>
+                      )}
+                      <img src={car.image} alt={car.alt} className="h-20 w-full object-contain" loading="lazy" />
+                      <p className="mt-1 truncate text-[11px] font-bold uppercase leading-4 text-foreground">{car.name}</p>
+                      <p className="truncate text-[10px] font-medium normal-case text-muted-foreground">{car.category}</p>
+                      <p className="mt-0.5 text-[11px] font-bold text-primary-strong">{car.price} / 13 hrs</p>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
             <label className="grid gap-1 text-[11px] font-bold uppercase text-muted-foreground">
               Pickup date *
               <input required name="pickupDate" type="date" className="field-luxury h-10 min-w-0 text-sm font-medium normal-case text-foreground" />

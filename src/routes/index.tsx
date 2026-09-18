@@ -140,7 +140,7 @@ export const Route = createFileRoute("/")({
 const navItems = [
   { label: "Home", href: "#top" },
   { label: "Our Fleet", href: "/fleet" },
-  { label: "Contact Us", href: "/contact" },
+  { label: "Book Now", href: "/contact" },
 ];
 
 const contactOptions = [
