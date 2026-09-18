@@ -217,7 +217,7 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-background pt-5 sm:pt-7 md:pt-10">
+    <section id="top" className="relative overflow-hidden bg-background pt-2 sm:pt-3 md:pt-4">
       <div className="relative z-10 px-5 text-center">
         <h1 className="mx-auto max-w-4xl font-display text-5xl font-black leading-[0.92] tracking-normal sm:text-7xl lg:text-8xl">LUXURY CAR<br />RENTAL</h1>
       </div>

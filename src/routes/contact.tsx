@@ -85,7 +85,7 @@ function BookingPage() {
     <main className="min-h-screen bg-background text-foreground">
       <SitePageHeader title="Contact Us" />
       <section className="border-b border-warm-line">
-        <div className="mx-auto max-w-6xl px-4 py-6 sm:px-7 sm:py-8 lg:px-10">
+        <div className="mx-auto max-w-6xl px-4 pb-6 pt-2 sm:px-7 sm:pb-8 sm:pt-3 lg:px-10">
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="display-type text-3xl leading-none uppercase sm:text-5xl">
               Book your <span className="text-primary">perfect ride</span>
