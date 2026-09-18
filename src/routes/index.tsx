@@ -156,10 +156,14 @@ export const Route = createFileRoute("/")({
 });
 
 const navItems = [
-  { label: "Home", href: "#top" },
-  { label: "Our Fleet", href: "/fleet" },
-  { label: "Book Now", href: "/contact" },
+  { label: "Home", to: "/" as const },
+  { label: "Our Fleet", to: "/fleet" as const },
+  { label: "Book Now", to: "/contact" as const },
 ];
+
+function scrollTop() {
+  requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "auto" }));
+}
 
 const contactOptions = [
   { label: "Call", href: PHONE_LINK, icon: PhoneIcon, tile: "bg-[#34A853] text-white", iconColor: "" },
