@@ -39,7 +39,7 @@ export function SitePageHeader({ title }: { title: string }) {
             preload="intent"
             resetScroll
             onClick={scrollTop}
-            className="flex h-10 items-center justify-center text-[10px] font-bold uppercase transition-colors hover:text-primary"
+            className="flex h-11 items-center justify-center text-[11px] font-bold uppercase transition-colors hover:text-primary"
             activeProps={{ className: "bg-primary text-primary-foreground" }}
           >
             {item.label}
