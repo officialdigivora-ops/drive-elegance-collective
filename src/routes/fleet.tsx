@@ -26,29 +26,6 @@ export const Route = createFileRoute("/fleet")({
 
 const cars = fleetCars;
 
-function CarPhotoReel({ photos }: { photos: CarPhoto[] }) {
-  return (
-    <div className="limousine-reel" aria-label="Real exterior and interior car photos">
-      <div className="limousine-reel-track">
-        {[0, 1].map((group) => (
-          <div className="limousine-reel-group" aria-hidden={group === 1} key={group}>
-            {photos.map((photo) => (
-              <figure className="limousine-reel-frame" key={`${group}-${photo.alt}`}>
-                <img
-                  src={photo.src}
-                  alt={group === 0 ? photo.alt : ""}
-                  className={photo.contain ? "object-contain" : "object-cover"}
-                  loading="lazy"
-                />
-              </figure>
-            ))}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function ArrowIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
