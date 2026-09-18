@@ -33,6 +33,15 @@ import limousineExteriorFront from "../assets/limousine/limousine-exterior-front
 import limousineExteriorAngle from "../assets/limousine/limousine-exterior-angle.jpg.asset.json";
 import limousineInteriorSeat from "../assets/limousine/limousine-interior-seat.jpg.asset.json";
 import limousineInteriorBar from "../assets/limousine/limousine-interior-bar.jpg.asset.json";
+import mercedesConvertibleFront from "../assets/real-fleet/mercedes-convertible-front.jpg.asset.json";
+import mercedesConvertibleAngle from "../assets/real-fleet/mercedes-convertible-angle.jpg.asset.json";
+import audiA6Front from "../assets/real-fleet/audi-a6-front.jpg.asset.json";
+import audiA6Rear from "../assets/real-fleet/audi-a6-rear.jpg.asset.json";
+import bmw5Front from "../assets/real-fleet/bmw-5-series-front.jpg.asset.json";
+import bmw5Rear from "../assets/real-fleet/bmw-5-series-rear.jpg.asset.json";
+import rangeRoverSportFront from "../assets/real-fleet/range-rover-sport-front.jpg.asset.json";
+import rangeRoverSportAngle from "../assets/real-fleet/range-rover-sport-angle.jpg.asset.json";
+import rangeRoverSportRear from "../assets/real-fleet/range-rover-sport-rear.jpg.asset.json";
 
 export const Route = createFileRoute("/fleet")({
   head: () => ({
@@ -102,18 +111,43 @@ const limousinePhotos = [
   { src: limousineInteriorBar.url, alt: "Limousine cabin bar and entertainment area" },
 ];
 
-function LimousinePhotoReel() {
+const realCarPhotos: Record<string, Array<{ src: string; alt: string; contain?: boolean }>> = {
+  "Mercedes Convertible White": [
+    { src: mercedesConvertible, alt: "Mercedes Convertible White studio view", contain: true },
+    { src: mercedesConvertibleFront.url, alt: "White Mercedes convertible front view" },
+    { src: mercedesConvertibleAngle.url, alt: "White Mercedes convertible angled view" },
+  ],
+  "Audi A6 White": [
+    { src: audiA6, alt: "Audi A6 White studio view", contain: true },
+    { src: audiA6Front.url, alt: "White Audi A6 front view" },
+    { src: audiA6Rear.url, alt: "White Audi A6 rear view" },
+  ],
+  "Bmw 5 Series White": [
+    { src: bmw5, alt: "BMW 5 Series White studio view", contain: true },
+    { src: bmw5Front.url, alt: "White BMW 5 Series front view" },
+    { src: bmw5Rear.url, alt: "White BMW 5 Series rear view" },
+  ],
+  "Limousine Long New White": limousinePhotos.map((photo, index) => ({ ...photo, contain: index === 0 })),
+  "Range Rover Sport White": [
+    { src: rangeRoverSport, alt: "Range Rover Sport White studio view", contain: true },
+    { src: rangeRoverSportFront.url, alt: "Black Range Rover Sport front view" },
+    { src: rangeRoverSportAngle.url, alt: "Black Range Rover Sport angled view" },
+    { src: rangeRoverSportRear.url, alt: "Black Range Rover Sport rear view" },
+  ],
+};
+
+function CarPhotoReel({ photos }: { photos: Array<{ src: string; alt: string; contain?: boolean }> }) {
   return (
-    <div className="limousine-reel" aria-label="Limousine exterior and interior photos">
+    <div className="limousine-reel" aria-label="Real exterior and interior car photos">
       <div className="limousine-reel-track">
         {[0, 1].map((group) => (
           <div className="limousine-reel-group" aria-hidden={group === 1} key={group}>
-            {limousinePhotos.map((photo, index) => (
+            {photos.map((photo) => (
               <figure className="limousine-reel-frame" key={`${group}-${photo.alt}`}>
                 <img
                   src={photo.src}
                   alt={group === 0 ? photo.alt : ""}
-                  className={index === 0 ? "object-contain" : "object-cover"}
+                  className={photo.contain ? "object-contain" : "object-cover"}
                   loading="lazy"
                 />
               </figure>
@@ -164,11 +198,12 @@ function Index() {
           {cars.map((car, index) => {
             const detailsMessage = encodeURIComponent(`I would like more details about the ${car.name}.`);
             const bookingMessage = encodeURIComponent(`I want to book the ${car.name} for ${car.price} / ${car.duration}. Please share availability.`);
+            const photos = realCarPhotos[car.name];
             return (
               <article key={car.name} className="grid overflow-hidden border border-border bg-card md:grid-cols-2">
                 <div className={`relative flex min-h-52 items-center justify-center overflow-hidden bg-fleet p-4 sm:min-h-72 sm:p-6 lg:min-h-80 lg:p-8 ${index % 2 === 1 ? "md:order-2" : ""}`}>
-                  {car.name === "Limousine Long New White" ? (
-                    <LimousinePhotoReel />
+                  {photos ? (
+                    <CarPhotoReel photos={photos} />
                   ) : (
                     <img src={car.image} alt={car.alt} className="h-auto max-h-48 w-full object-contain transition-transform duration-500 hover:scale-[1.03] sm:max-h-64 lg:max-h-72" loading={index > 0 ? "lazy" : "eager"} />
                   )}
