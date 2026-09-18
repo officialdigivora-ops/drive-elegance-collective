@@ -214,7 +214,7 @@ function Hero() {
       <div className="relative mt-1 h-[270px] sm:h-[380px] md:h-[500px] lg:h-[540px]">
         <div className="absolute inset-x-0 bottom-0 h-[62%] bg-primary [clip-path:polygon(0_22%,100%_0,100%_100%,0_100%)]" />
         <span className="spark absolute right-[8%] top-[20%] z-10 text-primary">✦</span>
-        <img src={yellowBentley} width={1536} height={768} alt="Yellow Bentley Continental GT luxury coupe" className="absolute left-1/2 top-1/2 z-10 w-[110%] max-w-6xl -translate-x-1/2 -translate-y-[44%] object-contain" />
+        <img src={yellowBentley} width={1536} height={768} alt="Yellow Bentley Continental GT luxury coupe" className="absolute left-1/2 top-1/2 z-10 w-[104%] max-w-[68rem] -translate-x-1/2 -translate-y-[44%] object-contain" />
       </div>
     </section>
   );
@@ -325,7 +325,7 @@ function Showcase() {
       <div className="mx-auto mt-5 grid w-[calc(100%-2.5rem)] max-w-xl gap-3 rounded-2xl bg-surface p-3 shadow-card sm:grid-cols-[1fr_auto] sm:items-center">
          <div className="flex items-center justify-center gap-3 px-2 sm:justify-start"><Tag size={18} className="text-primary"/><span className="text-xl font-black">₹{activeCar.price.toLocaleString("en-IN")}</span><small className="text-muted-foreground">/ 13 hours</small></div>
         <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
-          <Button asChild className="h-11 rounded-full px-6 text-xs"><a href={`https://wa.me/919990569473?text=${encodeURIComponent(`I want to book this car: ${activeCar.name} (${activeCar.type}) for ₹${activeCar.price.toLocaleString("en-IN")} / 13 hours. Can I get more details?`)}`} target="_blank" rel="noopener noreferrer">Rent Now</a></Button>
+          <Button asChild className="h-11 rounded-full px-6 text-xs"><a href={`https://wa.me/919990569473?text=${encodeURIComponent(`Hello Chaudhary Luxury Cars, I would like to book the ${activeCar.name} (${activeCar.type}). The listed starting price is ₹${activeCar.price.toLocaleString("en-IN")} for 13 hours. Please confirm availability, final price, and pickup details. I understand the package includes fuel, driver, decoration, and toll; extra kilometres and extra time depend on the car.`)}`} target="_blank" rel="noopener noreferrer">Rent Now</a></Button>
           <Button asChild variant="secondary" className="h-11 rounded-full bg-foreground px-6 text-xs font-bold uppercase tracking-wider text-background hover:bg-foreground/90"><Link to="/fleet">Show all</Link></Button>
         </div>
       </div>

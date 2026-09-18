@@ -223,8 +223,7 @@ function Index() {
 
         <div className="space-y-6 sm:space-y-8 lg:space-y-10">
           {cars.map((car, index) => {
-            const detailsMessage = encodeURIComponent(`I would like more details about the ${car.name}.`);
-            const bookingMessage = encodeURIComponent(`I want to book the ${car.name} for ${car.price} / ${car.duration}. Please share availability.`);
+            const bookingMessage = encodeURIComponent(`Hello Chaudhary Luxury Cars, I would like to book the ${car.name} (${car.category}). The listed starting price is ${car.price} for ${car.duration}. Please confirm availability, final price, and pickup details. I understand the package includes fuel, driver, decoration, and toll; extra kilometres and extra time depend on the car.`);
             const photos = realCarPhotos[car.name];
             return (
               <article key={car.name} className="grid overflow-hidden border border-border bg-card md:grid-cols-2">
@@ -248,7 +247,7 @@ function Index() {
                     <Link to="/car-details" className="fleet-action bg-secondary text-secondary-foreground" aria-label={`View details for ${car.name}`}>
                       View Details
                     </Link>
-                    <a href={`https://wa.me/919990569473?text=${bookingMessage}`} className="fleet-action bg-primary text-primary-foreground" aria-label={`Book ${car.name} now`}>
+                    <a href={`https://wa.me/919990569473?text=${bookingMessage}`} target="_blank" rel="noopener noreferrer" className="fleet-action bg-primary text-primary-foreground" aria-label={`Book ${car.name} now`}>
                       <span>Book Now</span><ArrowIcon />
                     </a>
                   </div>
