@@ -3,20 +3,22 @@ import {
   ChevronLeft,
   ChevronRight,
   Armchair,
-
   CircleUserRound,
   Cog,
-  Facebook,
   Gauge,
-  Instagram,
-  MapPinned,
-  MessageCircle,
   Phone,
   Menu,
   ShieldCheck,
   Tag,
   X,
 } from "lucide-react";
+import {
+  WhatsAppIcon,
+  FacebookIcon,
+  InstagramIcon,
+  GoogleIcon,
+  PhoneIcon,
+} from "@/components/brand-icons";
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -142,11 +144,11 @@ const navItems = [
 ];
 
 const contactOptions = [
-  { label: "Call", href: PHONE_LINK, icon: Phone },
-  { label: "WhatsApp", href: WHATSAPP, icon: MessageCircle },
-  { label: "Facebook", href: FACEBOOK, icon: Facebook },
-  { label: "Instagram", href: INSTAGRAM, icon: Instagram },
-  { label: "Google", href: GOOGLE_PROFILE, icon: MapPinned },
+  { label: "Call", href: PHONE_LINK, icon: PhoneIcon, tile: "bg-[#34A853] text-white", iconColor: "" },
+  { label: "WhatsApp", href: WHATSAPP, icon: WhatsAppIcon, tile: "bg-[#25D366] text-white", iconColor: "" },
+  { label: "Facebook", href: FACEBOOK, icon: FacebookIcon, tile: "bg-[#1877F2] text-white", iconColor: "" },
+  { label: "Instagram", href: INSTAGRAM, icon: InstagramIcon, tile: "bg-gradient-to-br from-[#FEDA75] via-[#D62976] to-[#4F5BD5] text-white", iconColor: "" },
+  { label: "Google", href: GOOGLE_PROFILE, icon: GoogleIcon, tile: "bg-white text-white ring-1 ring-black/10", iconColor: "" },
 ] as const;
 
 function ContactOptionsDialog({ footer = false }: { footer?: boolean }) {
@@ -168,13 +170,20 @@ function ContactOptionsDialog({ footer = false }: { footer?: boolean }) {
           <DialogDescription>Choose how you would like to contact Chaudhary Luxury Cars.</DialogDescription>
         </DialogHeader>
         <div className="grid grid-cols-5 gap-1.5" aria-label="Contact options">
-          {contactOptions.map(({ label, href, icon: Icon }) => (
-            <Button key={label} asChild variant="outline" className="h-16 min-w-0 flex-col gap-1 rounded-xl px-1 shadow-none sm:h-20 sm:gap-2">
-              <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noopener noreferrer" : undefined} aria-label={label}>
-                <Icon className="size-5 text-primary sm:size-6" aria-hidden="true" />
-                <span className="max-w-full truncate text-[8px] font-bold sm:text-[10px]">{label}</span>
-              </a>
-            </Button>
+          {contactOptions.map(({ label, href, icon: Icon, tile }) => (
+            <a
+              key={label}
+              href={href}
+              target={href.startsWith("http") ? "_blank" : undefined}
+              rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+              aria-label={label}
+              className="group flex min-w-0 flex-col items-center gap-1.5"
+            >
+              <span className={`flex h-12 w-12 items-center justify-center rounded-2xl shadow-sm transition-transform group-hover:scale-105 group-active:scale-95 sm:h-14 sm:w-14 ${tile}`}>
+                <Icon className="size-6 sm:size-7" />
+              </span>
+              <span className="max-w-full truncate text-[9px] font-bold sm:text-[10px]">{label}</span>
+            </a>
           ))}
         </div>
       </DialogContent>
@@ -401,9 +410,11 @@ function Footer() {
             <img src={brandLogo} width={1536} height={768} loading="lazy" alt={`${BRAND} logo`} className="h-14 w-auto self-start brightness-0 invert sm:h-16" />
             <p className="mt-5 max-w-xs text-xs leading-6 text-footer-muted">Luxury car rental for weddings, photoshoots, corporate travel and airport transfers across Delhi NCR, Haryana & Uttar Pradesh. 100+ premium cars, 7+ years of experience.</p>
             <div className="mt-6 flex gap-2.5">
-              <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full border border-footer-line text-footer-muted transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"><Instagram size={16} /></a>
-              <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-full border border-footer-line text-footer-muted transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"><Facebook size={16} /></a>
-              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex h-10 w-10 items-center justify-center rounded-full border border-footer-line text-footer-muted transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"><MessageCircle size={16} /></a>
+              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white transition-transform hover:scale-110"><WhatsAppIcon className="size-[18px]" /></a>
+              <a href={PHONE_LINK} aria-label="Call" className="flex h-10 w-10 items-center justify-center rounded-full bg-[#34A853] text-white transition-transform hover:scale-110"><PhoneIcon className="size-[18px]" /></a>
+              <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1877F2] text-white transition-transform hover:scale-110"><FacebookIcon className="size-[18px]" /></a>
+              <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#FEDA75] via-[#D62976] to-[#4F5BD5] text-white transition-transform hover:scale-110"><InstagramIcon className="size-[18px]" /></a>
+              <a href={GOOGLE_PROFILE} target="_blank" rel="noopener noreferrer" aria-label="Google profile" className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-white ring-1 ring-black/10 transition-transform hover:scale-110"><GoogleIcon className="size-[18px]" /></a>
             </div>
           </div>
           <div>
