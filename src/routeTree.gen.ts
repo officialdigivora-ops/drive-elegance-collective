@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as CarDetailsRouteImport } from './routes/car-details'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FleetRouteImport } from './routes/fleet'
+import { Route as PoliciesRouteImport } from './routes/policies'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +35,25 @@ const FleetRoute = FleetRouteImport.update({
   path: '/fleet',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PoliciesRoute = PoliciesRouteImport.update({
+  id: '/policies',
+  path: '/policies',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/car-details': typeof CarDetailsRoute
   '/contact': typeof ContactRoute
   '/fleet': typeof FleetRoute
+  '/policies': typeof PoliciesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/car-details': typeof CarDetailsRoute
   '/contact': typeof ContactRoute
   '/fleet': typeof FleetRoute
+  '/policies': typeof PoliciesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,14 @@ export interface FileRoutesById {
   '/car-details': typeof CarDetailsRoute
   '/contact': typeof ContactRoute
   '/fleet': typeof FleetRoute
+  '/policies': typeof PoliciesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/car-details' | '/contact' | '/fleet'
+  fullPaths: '/' | '/car-details' | '/contact' | '/fleet' | '/policies'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/car-details' | '/contact' | '/fleet'
-  id: '__root__' | '/' | '/car-details' | '/contact' | '/fleet'
+  to: '/' | '/car-details' | '/contact' | '/fleet' | '/policies'
+  id: '__root__' | '/' | '/car-details' | '/contact' | '/fleet' | '/policies'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +76,7 @@ export interface RootRouteChildren {
   CarDetailsRoute: typeof CarDetailsRoute
   ContactRoute: typeof ContactRoute
   FleetRoute: typeof FleetRoute
+  PoliciesRoute: typeof PoliciesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FleetRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/policies': {
+      id: '/policies'
+      path: '/policies'
+      fullPath: '/policies'
+      preLoaderRoute: typeof PoliciesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +124,7 @@ const rootRouteChildren: RootRouteChildren = {
   CarDetailsRoute: CarDetailsRoute,
   ContactRoute: ContactRoute,
   FleetRoute: FleetRoute,
+  PoliciesRoute: PoliciesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
