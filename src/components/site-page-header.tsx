@@ -13,9 +13,9 @@ function scrollTop() {
 export function SitePageHeader({ title }: { title: string }) {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-lg">
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-center gap-3 px-4 sm:h-16 sm:px-8 lg:px-12">
-        <h1 className="sr-only">{title}</h1>
-        <nav className="hidden items-center gap-6 text-xs font-bold uppercase sm:flex" aria-label="Page navigation">
+      <h1 className="sr-only">{title}</h1>
+      <div className="mx-auto hidden max-w-7xl items-center justify-center gap-3 px-4 sm:flex sm:h-16 sm:px-8 lg:px-12">
+        <nav className="flex items-center gap-6 text-xs font-bold uppercase" aria-label="Page navigation">
           {pageLinks.map((item) => (
             <Link
               key={item.to}
