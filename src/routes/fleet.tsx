@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SitePageHeader } from "@/components/site-page-header";
-import { bookingLink, fleetCars, realCarPhotos, type CarPhoto } from "@/data/fleet";
+import { bookingLink, fleetCars } from "@/data/fleet";
 
 export const Route = createFileRoute("/fleet")({
   head: () => ({
@@ -25,29 +25,6 @@ export const Route = createFileRoute("/fleet")({
 });
 
 const cars = fleetCars;
-
-function CarPhotoReel({ photos }: { photos: CarPhoto[] }) {
-  return (
-    <div className="limousine-reel" aria-label="Real exterior and interior car photos">
-      <div className="limousine-reel-track">
-        {[0, 1].map((group) => (
-          <div className="limousine-reel-group" aria-hidden={group === 1} key={group}>
-            {photos.map((photo) => (
-              <figure className="limousine-reel-frame" key={`${group}-${photo.alt}`}>
-                <img
-                  src={photo.src}
-                  alt={group === 0 ? photo.alt : ""}
-                  className={photo.contain ? "object-contain" : "object-cover"}
-                  loading="lazy"
-                />
-              </figure>
-            ))}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 function ArrowIcon() {
   return (
@@ -87,15 +64,10 @@ function Index() {
 
         <div className="space-y-5 sm:space-y-6 lg:space-y-8">
           {cars.map((car, index) => {
-            const photos = realCarPhotos[car.name];
             return (
               <article key={car.name} className="grid overflow-hidden border border-border bg-card md:grid-cols-2">
                 <div className={`relative flex min-h-52 items-center justify-center overflow-hidden bg-fleet p-4 sm:min-h-72 sm:p-6 lg:min-h-80 lg:p-8 ${index % 2 === 1 ? "md:order-2" : ""}`}>
-                  {photos ? (
-                    <CarPhotoReel photos={photos} />
-                  ) : (
-                    <img src={car.image} alt={car.alt} className="h-auto max-h-48 w-full object-contain transition-transform duration-500 hover:scale-[1.03] sm:max-h-64 lg:max-h-72" loading={index > 0 ? "lazy" : "eager"} />
-                  )}
+                  <img src={car.image} alt={car.alt} className="h-auto max-h-48 w-full object-contain transition-transform duration-500 hover:scale-[1.03] sm:max-h-64 lg:max-h-72" loading={index > 0 ? "lazy" : "eager"} />
                 </div>
                 <div className={`flex min-w-0 flex-col p-5 sm:p-6 lg:p-8 ${index % 2 === 1 ? "md:order-1" : ""}`}>
                   <div className="flex flex-1 flex-col justify-center">
