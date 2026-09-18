@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { SitePageHeader } from "@/components/site-page-header";
 import { cn } from "@/lib/utils";
 import { fleetCars } from "@/data/fleet";
-import mercedesLogo from "../assets/brands/mercedes.svg.asset.json";
+import { MercedesStarIcon } from "@/components/brand-icons";
 
 const offices = [
   {
@@ -83,7 +83,7 @@ function BookingPage() {
     <main className="min-h-screen bg-background text-foreground">
       <SitePageHeader title="Contact Us" />
       <section className="border-b border-warm-line">
-        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-7 sm:py-10 lg:px-10">
+        <div className="mx-auto max-w-6xl px-4 py-6 sm:px-7 sm:py-8 lg:px-10">
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="display-type text-3xl leading-none uppercase sm:text-5xl">
               Book your <span className="text-primary">perfect ride</span>
@@ -95,12 +95,10 @@ function BookingPage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl items-start gap-9 px-4 py-8 sm:px-7 sm:py-10 lg:grid-cols-[1.35fr_0.65fr] lg:px-10">
+      <section className="mx-auto grid max-w-6xl items-start gap-7 px-4 py-6 sm:px-7 sm:py-10 lg:grid-cols-[1.35fr_0.65fr] lg:px-10">
         <form onSubmit={handleSubmit} className="rounded-md border border-warm-line bg-card p-4 shadow-lg shadow-foreground/5 sm:p-6">
           <div className="mb-5 flex items-center gap-3 border-b border-warm-line pb-4">
-            <span className="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-warm-line">
-              <img src={mercedesLogo.url} alt="Mercedes-Benz logo" className="size-7 object-contain" />
-            </span>
+            <MercedesStarIcon className="size-9 shrink-0 text-foreground" />
             <div className="min-w-0">
               <h2 className="display-type truncate text-lg uppercase sm:text-xl">Rental enquiry</h2>
               <p className="text-xs text-muted-foreground">Fields marked * are required</p>
@@ -121,7 +119,7 @@ function BookingPage() {
                 Car required * <span className="normal-case text-foreground">{selectedCar.name}</span>
               </p>
               <input type="hidden" name="car" value={selectedCar.name} />
-              <div className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2" role="radiogroup" aria-label="Select the car you need">
+              <div className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 py-2" role="radiogroup" aria-label="Select the car you need">
                 {fleetCars.map((car) => {
                   const active = car.name === selectedCar.name;
                   return (
@@ -132,8 +130,10 @@ function BookingPage() {
                       aria-checked={active}
                       onClick={() => setSelectedCar(car)}
                       className={cn(
-                        "relative w-40 shrink-0 snap-start overflow-hidden rounded-xl border bg-background p-2 text-left transition",
-                        active ? "border-primary ring-2 ring-primary" : "border-warm-line hover:border-foreground/40",
+                        "relative w-44 shrink-0 snap-start rounded-2xl border-2 p-3 text-left transition-all duration-300",
+                        active
+                          ? "border-primary bg-primary/15 shadow-lg shadow-primary/30 -translate-y-0.5"
+                          : "border-warm-line bg-background hover:-translate-y-0.5 hover:border-primary/50",
                       )}
                     >
                       {active && (
@@ -141,7 +141,7 @@ function BookingPage() {
                           <Check className="size-3" aria-hidden="true" />
                         </span>
                       )}
-                      <img src={car.image} alt={car.alt} className="h-20 w-full object-contain" loading="lazy" />
+                      <img src={car.image} alt={car.alt} className="h-24 w-full object-contain" loading="lazy" />
                       <p className="mt-1 truncate text-[11px] font-bold uppercase leading-4 text-foreground">{car.name}</p>
                       <p className="truncate text-[10px] font-medium normal-case text-muted-foreground">{car.category}</p>
                       <p className="mt-0.5 text-[11px] font-bold text-primary-strong">{car.price} / 13 hrs</p>

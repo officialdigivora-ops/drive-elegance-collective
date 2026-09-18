@@ -404,3 +404,12 @@ button, a { cursor: pointer; }
   .fleet-marquee, .limousine-reel-track { animation: none; }
   .limousine-reel { overflow-x: auto; }
 }
+
+@keyframes site-loader-slide {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(340%); }
+}
+
+.site-loader-bar {
+  animation: site-loader-slide 0.9s ease-in-out infinite;
+}
