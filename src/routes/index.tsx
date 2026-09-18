@@ -4,8 +4,10 @@ import {
   ChevronRight,
   Armchair,
   CircleUserRound,
+  Clock,
   Cog,
   Gauge,
+  MapPin,
   Phone,
   Menu,
   ShieldCheck,
@@ -111,26 +113,41 @@ export const Route = createFileRoute("/")({
       type: "application/ld+json",
       children: JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "AutoRental",
+        "@type": ["AutoRental", "LocalBusiness"],
+        "@id": `${SITE_URL}/#business`,
         name: "Chaudhary Luxury Cars",
         description: DESCRIPTION,
         url: SITE_URL,
         telephone: "+91 99905 69473",
         priceRange: "₹4,000 - ₹2,00,000 per 13 hours",
+        image: `${SITE_URL}/apple-touch-icon.png`,
+        logo: `${SITE_URL}/apple-touch-icon.png`,
         address: {
           "@type": "PostalAddress",
-          streetAddress: "92M8+62C, Sanoli Rd, Sewah Kheri, Ugra Kheri Village",
+          streetAddress: "92M8+62C, Sanoli Rd, Sewah Kheri, Ugra Kheri Village, Panipat Taraf Afghan",
           addressLocality: "Panipat",
           addressRegion: "Haryana",
           postalCode: "132104",
           addressCountry: "IN",
         },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: 29.38306,
+          longitude: 77.01502,
+        },
+        hasMap: MAP_LINK,
         areaServed: ["Delhi", "New Delhi", "Noida", "Gurugram", "Ghaziabad", "Faridabad", "Panipat", "Sonipat", "Karnal", "Meerut", "Agra", "NCR", "Haryana", "Uttar Pradesh"],
         openingHours: "Mo-Su 00:00-23:59",
-        image: `${SITE_URL}/apple-touch-icon.png`,
+        openingHoursSpecification: [{
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          opens: "00:00",
+          closes: "23:59",
+        }],
         sameAs: [
           "https://www.instagram.com/choudharyluxurycars",
           "https://www.facebook.com/profile.php?id=61554864970019",
+          "https://share.google/fSzEj9gUriU26zQxY",
         ],
       }),
     }],
@@ -456,6 +473,13 @@ function Footer() {
         <p className="mx-auto mt-5 max-w-xl text-xs leading-6 text-footer-muted sm:text-sm sm:leading-7">
           {BRAND} provides premium luxury car rental for weddings, pre-wedding shoots, corporate travel, airport transfers and family occasions. We proudly serve Delhi, Noida, Gurugram, Ghaziabad, Faridabad, Panipat, Sonipat, Karnal, Meerut, Agra and nearby areas of NCR, Haryana and Uttar Pradesh.
         </p>
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[11px] text-footer-muted sm:text-xs">
+          <span className="inline-flex items-center gap-1.5"><Clock className="size-3.5 text-primary" aria-hidden="true" /> Open 24/7 · All Days</span>
+          <span className="hidden h-3 w-px bg-footer-line sm:block" aria-hidden="true" />
+          <a href={MAP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-bold text-primary underline decoration-black underline-offset-4 transition-opacity hover:opacity-80">
+            <MapPin className="size-3.5" aria-hidden="true" /> Get Directions — Panipat
+          </a>
+        </div>
         <div className="mt-6 flex justify-center gap-3">
           <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex h-11 w-11 items-center justify-center rounded-full bg-[#25D366] text-white transition-transform hover:scale-110"><WhatsAppIcon className="size-5" /></a>
           <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex h-11 w-11 items-center justify-center rounded-full bg-[#1877F2] text-white transition-transform hover:scale-110"><FacebookIcon className="size-5" /></a>
