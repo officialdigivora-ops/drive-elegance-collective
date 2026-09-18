@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import audiA6 from "../assets/fleet/audi-a6.png";
+import audiA6 from "../assets/fleet/audi-a6-white.png";
 import hyundaiVerna from "../assets/fleet/hyundai-verna.png";
-import lamborghiniUrus from "../assets/fleet/urus-yellow.png";
 import mercedesConvertible from "../assets/fleet/mercedes-convertible-white.png";
 
 export const Route = createFileRoute("/fleet")({
@@ -26,35 +25,27 @@ export const Route = createFileRoute("/fleet")({
 
 const cars = [
   {
-    name: "Lamborghini Urus",
-    category: "Performance SUV",
-    image: lamborghiniUrus,
-    alt: "Yellow Lamborghini Urus performance SUV",
-    price: "₹45,000",
-    duration: "13 hours",
-  },
-  {
-    name: "Mercedes Convertible",
+    name: "Mercedes Convertible White",
     category: "Luxury Convertible",
     image: mercedesConvertible,
     alt: "White Mercedes luxury convertible",
-    price: "₹25,000",
+    price: "₹20,000",
     duration: "13 hours",
   },
   {
-    name: "Audi A6",
+    name: "Audi A6 White",
     category: "Executive Sedan",
     image: audiA6,
-    alt: "Black Audi A6 executive sedan",
-    price: "₹18,000",
+    alt: "White Audi A6 executive sedan",
+    price: "₹10,000",
     duration: "13 hours",
   },
   {
-    name: "Hyundai Verna",
+    name: "Verna New Model White",
     category: "Premium Sedan",
     image: hyundaiVerna,
     alt: "White Hyundai Verna premium sedan",
-    price: "₹9,500",
+    price: "₹4,000",
     duration: "13 hours",
   },
 ];
