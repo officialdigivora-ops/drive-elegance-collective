@@ -1,4 +1,4 @@
-import brandLogo from "../assets/brand/chaudhary-logo.png";
+import brandLogo from "../assets/brand/chaudhary-logo.webp";
 
 export function SiteLoader() {
   return (

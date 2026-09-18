@@ -45,38 +45,38 @@ import miniLogo from "../assets/brands/mini.svg.asset.json";
 import porscheLogo from "../assets/brands/porsche.png.asset.json";
 import rollsRoyceLogo from "../assets/brands/rolls-royce.svg.asset.json";
 import toyotaLogo from "../assets/brands/toyota.svg.asset.json";
-import yellowBentley from "../assets/hero/bentley-continental-gt-yellow.png";
-import audiA3Convertible from "../assets/fleet/audi-a3-convertible.png";
-import audiA3ConvertibleWhite from "../assets/fleet/audi-a3-convertible-white.png";
-import audiA4 from "../assets/fleet/audi-a4.png";
-import audiA6 from "../assets/fleet/audi-a6-white.png";
-import audiQ7 from "../assets/fleet/audi-q7-white.png";
-import bentleyConvertibleRed from "../assets/fleet/bentley-convertible-red.png";
-import bentleySunroof from "../assets/fleet/bentley-sunroof-white.png";
-import bmw5Series from "../assets/fleet/bmw-5-series-white.png";
-import bmwConvertibleWhite from "../assets/fleet/bmw-convertible-white.png";
-import hummerH2 from "../assets/fleet/hummer-h2-white.png";
-import hyundaiVerna from "../assets/fleet/hyundai-verna-white.png";
-import jaguarXf from "../assets/fleet/jaguar-xf-white.png";
-import jaguarXjl from "../assets/fleet/jaguar-xjl-white.png";
-import landRoverDefender from "../assets/fleet/land-rover-defender-white.png";
-import mercedesCClass from "../assets/fleet/mercedes-c-300-white.png";
-import mercedesCla from "../assets/fleet/mercedes-cla-white.png";
-import mercedesConvertibleRed from "../assets/fleet/mercedes-convertible-red.png";
-import mercedesConvertibleWhite from "../assets/fleet/mercedes-convertible-white.png";
-import mercedesEClass from "../assets/fleet/mercedes-e-class-white.png";
-import mercedesGWagon from "../assets/fleet/mercedes-g-wagon-white.png";
-import mercedesMaybach from "../assets/fleet/mercedes-maybach-white.png";
-import miniCooperConvertibleRed from "../assets/fleet/mini-cooper-convertible-red.png";
-import rangeRoverEvoqueConvertibleRed from "../assets/fleet/range-rover-evoque-convertible-red.png";
-import rangeRoverSportWhite from "../assets/fleet/range-rover-sport-sv-white.png";
-import rangeRoverVelar from "../assets/fleet/range-rover-velar-autobiography-white.png";
-import rollsRoyceGhost from "../assets/fleet/rolls-royce-ghost.png";
-import toyotaFortuner from "../assets/fleet/toyota-fortuner.png";
-import limousineLongNew from "../assets/fleet/limousine-long-new-white.png";
-import mustangGt from "../assets/fleet/mustang-gt-red.png";
-import vintageLuxury from "../assets/fleet/vintage-luxury-white.png";
-import brandLogo from "../assets/brand/chaudhary-logo.png";
+import yellowBentley from "../assets/hero/bentley-continental-gt-yellow.webp";
+import audiA3Convertible from "../assets/fleet/audi-a3-convertible.webp";
+import audiA3ConvertibleWhite from "../assets/fleet/audi-a3-convertible-white.webp";
+import audiA4 from "../assets/fleet/audi-a4.webp";
+import audiA6 from "../assets/fleet/audi-a6-white.webp";
+import audiQ7 from "../assets/fleet/audi-q7-white.webp";
+import bentleyConvertibleRed from "../assets/fleet/bentley-convertible-red.webp";
+import bentleySunroof from "../assets/fleet/bentley-sunroof-white.webp";
+import bmw5Series from "../assets/fleet/bmw-5-series-white.webp";
+import bmwConvertibleWhite from "../assets/fleet/bmw-convertible-white.webp";
+import hummerH2 from "../assets/fleet/hummer-h2-white.webp";
+import hyundaiVerna from "../assets/fleet/hyundai-verna-white.webp";
+import jaguarXf from "../assets/fleet/jaguar-xf-white.webp";
+import jaguarXjl from "../assets/fleet/jaguar-xjl-white.webp";
+import landRoverDefender from "../assets/fleet/land-rover-defender-white.webp";
+import mercedesCClass from "../assets/fleet/mercedes-c-300-white.webp";
+import mercedesCla from "../assets/fleet/mercedes-cla-white.webp";
+import mercedesConvertibleRed from "../assets/fleet/mercedes-convertible-red.webp";
+import mercedesConvertibleWhite from "../assets/fleet/mercedes-convertible-white.webp";
+import mercedesEClass from "../assets/fleet/mercedes-e-class-white.webp";
+import mercedesGWagon from "../assets/fleet/mercedes-g-wagon-white.webp";
+import mercedesMaybach from "../assets/fleet/mercedes-maybach-white.webp";
+import miniCooperConvertibleRed from "../assets/fleet/mini-cooper-convertible-red.webp";
+import rangeRoverEvoqueConvertibleRed from "../assets/fleet/range-rover-evoque-convertible-red.webp";
+import rangeRoverSportWhite from "../assets/fleet/range-rover-sport-sv-white.webp";
+import rangeRoverVelar from "../assets/fleet/range-rover-velar-autobiography-white.webp";
+import rollsRoyceGhost from "../assets/fleet/rolls-royce-ghost.webp";
+import toyotaFortuner from "../assets/fleet/toyota-fortuner.webp";
+import limousineLongNew from "../assets/fleet/limousine-long-new-white.webp";
+import mustangGt from "../assets/fleet/mustang-gt-red.webp";
+import vintageLuxury from "../assets/fleet/vintage-luxury-white.webp";
+import brandLogo from "../assets/brand/chaudhary-logo.webp";
 
 const BRAND = "Chaudhary Luxury Cars";
 const PHONE_DISPLAY = "+91 99905 69473";
@@ -219,7 +219,7 @@ function Header() {
     <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-lg">
       <div className="mx-auto grid h-16 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 md:grid-cols-3 md:px-8">
         <Link to="/" resetScroll onClick={scrollTop} className="flex items-center gap-2" aria-label={`${BRAND} home`}>
-          <img src={brandLogo} width={1536} height={768} alt={`${BRAND} logo`} className="h-12 w-auto sm:h-14" />
+          <img src={brandLogo} width={1000} height={500} alt={`${BRAND} logo`} className="h-12 w-auto sm:h-14" />
           <span className="sr-only">{BRAND}</span>
         </Link>
         <nav className="hidden items-center justify-center gap-8 text-sm font-semibold md:flex" aria-label="Primary navigation">
@@ -245,7 +245,7 @@ function Hero() {
       <div className="relative mt-1 h-[270px] sm:h-[380px] md:h-[500px] lg:h-[540px]">
         <div className="absolute inset-x-0 bottom-0 h-[62%] bg-primary [clip-path:polygon(0_22%,100%_0,100%_100%,0_100%)]" />
         <span className="spark absolute right-[8%] top-[20%] z-10 text-primary">✦</span>
-        <img src={yellowBentley} width={1536} height={768} alt="Yellow Bentley Continental GT luxury coupe" className="absolute left-1/2 top-1/2 z-10 w-[104%] max-w-[68rem] -translate-x-1/2 -translate-y-[44%] object-contain" />
+        <img src={yellowBentley} width={1000} height={500} alt="Yellow Bentley Continental GT luxury coupe" fetchPriority="high" decoding="async" className="absolute left-1/2 top-1/2 z-10 w-[104%] max-w-[68rem] -translate-x-1/2 -translate-y-[44%] object-contain" />
       </div>
     </section>
   );
@@ -294,7 +294,7 @@ function CarImage({ car, position, direction }: { car: Car; position: "previous"
   return (
     <div className={`fleet-car fleet-car--${position} fleet-car--moving-${direction > 0 ? "forward" : "back"}`} aria-hidden={position !== "active"}>
       <div className="fleet-car-shadow" />
-      <img src={car.image} alt={position === "active" ? `${car.name}, ${car.type}` : ""} className="fleet-car-image" loading="lazy" width={1264} height={848} draggable={false} />
+      <img src={car.image} alt={position === "active" ? `${car.name}, ${car.type}` : ""} className="fleet-car-image" loading="lazy" decoding="async" width={1000} height={671} draggable={false} />
     </div>
   );
 }
@@ -389,7 +389,7 @@ function BrandStrip() {
           <div key={copy} className="brand-marquee-group" aria-hidden={copy === 1}>
             {brands.map((brand) => (
               <div key={`${copy}-${brand.name}`} className="flex h-14 w-32 shrink-0 items-center justify-center rounded-xl bg-white px-4 shadow-[0_1px_4px_color-mix(in_oklab,var(--foreground)_8%,transparent)] sm:h-16 sm:w-40" title={brand.name}>
-                <img src={brand.image} alt={copy === 0 ? `${brand.name} logo` : ""} loading="lazy" className="max-h-9 w-auto max-w-24 object-contain sm:max-h-10 sm:max-w-28" />
+                <img src={brand.image} alt={copy === 0 ? `${brand.name} logo` : ""} loading="lazy" decoding="async" className="max-h-9 w-auto max-w-24 object-contain sm:max-h-10 sm:max-w-28" />
               </div>
             ))}
           </div>
@@ -473,7 +473,7 @@ function Footer() {
     <footer className="relative overflow-hidden bg-foreground text-background">
       <div className="pointer-events-none absolute -right-10 top-10 select-none font-display text-[160px] font-black leading-none text-background/[0.03] sm:text-[260px]">✦</div>
       <div className="relative mx-auto max-w-3xl px-5 py-8 text-center md:px-8 md:py-10">
-        <img src={brandLogo} width={1536} height={768} loading="lazy" alt={`${BRAND} logo`} className="mx-auto h-24 w-auto brightness-0 invert sm:h-28" />
+        <img src={brandLogo} width={1000} height={500} loading="lazy" decoding="async" alt={`${BRAND} logo`} className="mx-auto h-24 w-auto brightness-0 invert sm:h-28" />
         <p className="mx-auto mt-5 max-w-xl text-xs leading-6 text-footer-muted sm:text-sm sm:leading-7">
           {BRAND} provides premium luxury car rental for weddings, pre-wedding shoots, corporate travel, airport transfers and family occasions. We proudly serve Delhi, Noida, Gurugram, Ghaziabad, Faridabad, Panipat, Sonipat, Karnal, Meerut, Agra and nearby areas of NCR, Haryana and Uttar Pradesh.
         </p>
