@@ -156,10 +156,14 @@ export const Route = createFileRoute("/")({
 });
 
 const navItems = [
-  { label: "Home", href: "#top" },
-  { label: "Our Fleet", href: "/fleet" },
-  { label: "Book Now", href: "/contact" },
+  { label: "Home", to: "/" as const },
+  { label: "Our Fleet", to: "/fleet" as const },
+  { label: "Book Now", to: "/contact" as const },
 ];
+
+function scrollTop() {
+  requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "auto" }));
+}
 
 const contactOptions = [
   { label: "Call", href: PHONE_LINK, icon: PhoneIcon, tile: "bg-[#34A853] text-white", iconColor: "" },
@@ -214,12 +218,12 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-lg">
       <div className="mx-auto grid h-16 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 md:grid-cols-3 md:px-8">
-        <a href="#top" className="flex items-center gap-2" aria-label={`${BRAND} home`}>
+        <Link to="/" resetScroll onClick={scrollTop} className="flex items-center gap-2" aria-label={`${BRAND} home`}>
           <img src={brandLogo} width={1536} height={768} alt={`${BRAND} logo`} className="h-12 w-auto sm:h-14" />
           <span className="sr-only">{BRAND}</span>
-        </a>
+        </Link>
         <nav className="hidden items-center justify-center gap-8 text-sm font-semibold md:flex" aria-label="Primary navigation">
-          {navItems.map((item) => <a key={item.label} href={item.href} className="transition-colors hover:text-primary">{item.label}</a>)}
+          {navItems.map((item) => <Link key={item.label} to={item.to} preload="intent" resetScroll onClick={scrollTop} className="transition-colors hover:text-primary" activeProps={{ className: "text-primary" }}>{item.label}</Link>)}
         </nav>
         <div className="flex items-center justify-end gap-2 sm:gap-3">
           <button className="hidden h-9 w-9 items-center justify-center rounded-full bg-foreground text-background transition-transform hover:scale-105 sm:flex" aria-label="Open profile"><CircleUserRound size={19} /></button>
@@ -227,7 +231,7 @@ function Header() {
           <button className="flex h-9 w-9 items-center justify-center rounded-full bg-foreground text-background md:hidden" onClick={() => setOpen(!open)} aria-label="Toggle navigation" aria-expanded={open}>{open ? <X size={19} /> : <Menu size={19} />}</button>
         </div>
       </div>
-      {open && <nav className="border-t border-border bg-background px-5 py-4 md:hidden">{navItems.map((item) => <a key={item.label} href={item.href} className="block border-b border-border py-3 text-sm font-bold" onClick={() => setOpen(false)}>{item.label}</a>)}</nav>}
+      {open && <nav className="border-t border-border bg-background px-5 py-4 md:hidden" aria-label="Mobile navigation">{navItems.map((item) => <Link key={item.label} to={item.to} resetScroll className="block border-b border-border py-3 text-sm font-bold" onClick={() => { setOpen(false); scrollTop(); }}>{item.label}</Link>)}</nav>}
     </header>
   );
 }

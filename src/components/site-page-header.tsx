@@ -6,6 +6,10 @@ const pageLinks = [
   { label: "Book Now", to: "/contact" as const },
 ];
 
+function scrollTop() {
+  requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "auto" }));
+}
+
 export function SitePageHeader({ title }: { title: string }) {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-lg">
@@ -13,7 +17,15 @@ export function SitePageHeader({ title }: { title: string }) {
         <h1 className="sr-only">{title}</h1>
         <nav className="hidden items-center gap-6 text-xs font-bold uppercase sm:flex" aria-label="Page navigation">
           {pageLinks.map((item) => (
-            <Link key={item.to} to={item.to} className="whitespace-nowrap transition-colors hover:text-primary" activeProps={{ className: "text-primary" }}>
+            <Link
+              key={item.to}
+              to={item.to}
+              preload="intent"
+              resetScroll
+              onClick={scrollTop}
+              className="whitespace-nowrap transition-colors hover:text-primary"
+              activeProps={{ className: "text-primary" }}
+            >
               {item.label}
             </Link>
           ))}
@@ -21,7 +33,15 @@ export function SitePageHeader({ title }: { title: string }) {
       </div>
       <nav className="grid grid-cols-3 border-t border-border sm:hidden" aria-label="Page navigation">
         {pageLinks.map((item) => (
-          <Link key={item.to} to={item.to} className="flex h-10 items-center justify-center text-[10px] font-bold uppercase transition-colors hover:text-primary" activeProps={{ className: "bg-primary text-primary-foreground" }}>
+          <Link
+            key={item.to}
+            to={item.to}
+            preload="intent"
+            resetScroll
+            onClick={scrollTop}
+            className="flex h-10 items-center justify-center text-[10px] font-bold uppercase transition-colors hover:text-primary"
+            activeProps={{ className: "bg-primary text-primary-foreground" }}
+          >
             {item.label}
           </Link>
         ))}
