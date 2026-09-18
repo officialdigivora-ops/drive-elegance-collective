@@ -1,6 +1,5 @@
-import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import {
-  ArrowLeft,
   Fuel,
   Gauge,
   Phone,
@@ -10,6 +9,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { SitePageHeader } from "@/components/site-page-header";
 import { cn } from "@/lib/utils";
 import mercedesConvertible from "@/assets/fleet/mercedes-convertible-white.png";
 
@@ -40,20 +40,16 @@ const features = [
 ];
 
 function CarDetails() {
-  const router = useRouter();
   const [photo, setPhoto] = useState(0);
   const [booked, setBooked] = useState(false);
 
   const nextPhoto = () => setPhoto((current) => (current + 1) % 3);
 
   return (
-    <main className="mx-auto min-h-screen w-full max-w-[400px] bg-background pb-20 shadow-page sm:my-4 sm:min-h-[calc(100vh-2rem)] sm:overflow-hidden sm:rounded-[1rem]">
-      <header className="grid h-[56px] grid-cols-[auto_minmax(0,1fr)] items-center px-4">
-        <Button variant="iconDark" aria-label="Go back" onClick={() => router.history.back()}>
-          <ArrowLeft className="size-5" strokeWidth={2.2} />
-        </Button>
-        <h1 className="truncate text-center text-[1rem] font-semibold uppercase">Car details</h1>
-      </header>
+    <main className="min-h-screen w-full bg-background pb-20">
+      <SitePageHeader title="Car Details" />
+
+      <div className="mx-auto w-full max-w-[400px] shadow-page sm:my-4 sm:overflow-hidden sm:rounded-[1rem]">
 
       <section className="relative h-[210px] overflow-hidden bg-gallery" aria-label="Vehicle photos" onClick={nextPhoto}>
         <img src={mercedesConvertible} alt="White Mercedes convertible" className={cn("absolute inset-x-0 top-6 mx-auto h-[166px] w-[88%] object-contain transition-transform duration-500", photo === 1 && "scale-[1.04]", photo === 2 && "scale-95")} />
@@ -116,7 +112,9 @@ function CarDetails() {
       </div>
 
 
-      <footer className="fixed inset-x-0 bottom-0 z-20 mx-auto grid h-[68px] w-full max-w-[400px] grid-cols-[minmax(0,1fr)_auto] items-center border-t border-bar-border bg-footer px-4 sm:bottom-4 sm:rounded-b-[1rem]">
+      </div>
+
+      <footer className="fixed inset-x-0 bottom-0 z-20 mx-auto grid h-[68px] w-full max-w-[400px] grid-cols-[minmax(0,1fr)_auto] items-center border-t border-bar-border bg-footer px-4">
         <div>
           <p className="text-[0.68rem] text-footer-muted">Total for 13 hours</p>
           <p className="text-lg font-semibold text-footer-foreground">₹20,000</p>
