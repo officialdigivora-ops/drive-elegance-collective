@@ -9,6 +9,8 @@ import {
   Facebook,
   Gauge,
   Instagram,
+  MapPinned,
+  MessageCircle,
   Phone,
   Menu,
   ShieldCheck,
@@ -18,6 +20,14 @@ import {
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
 
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import audiLogo from "../assets/brands/audi.svg.asset.json";
 import bentleyLogo from "../assets/brands/bentley.svg.asset.json";
 import bmwLogo from "../assets/brands/bmw.svg.asset.json";
@@ -71,6 +81,8 @@ const ADDRESS = "92M8+62C, Sanoli Rd, Sewah Kheri, Ugra Kheri Village, Panipat T
 const MAP_LINK = "https://www.google.com/maps/search/?api=1&query=92M8%2B62C%20Sanoli%20Rd%20Panipat%20Haryana%20132104";
 const INSTAGRAM = "https://www.instagram.com/choudharyluxurycars";
 const FACEBOOK = "https://www.facebook.com/profile.php?id=61554864970019";
+const WHATSAPP = "https://wa.me/919990569473";
+const GOOGLE_PROFILE = "https://share.google/fSzEj9gUriU26zQxY";
 
 const SITE_URL = "https://drive-elegance-collective.lovable.app";
 const TITLE = "Luxury Car Rental in Delhi NCR | Chaudhary Luxury Cars";
@@ -129,6 +141,47 @@ const navItems = [
   { label: "Contact Us", href: "/contact" },
 ];
 
+const contactOptions = [
+  { label: "Call", href: PHONE_LINK, icon: Phone },
+  { label: "WhatsApp", href: WHATSAPP, icon: MessageCircle },
+  { label: "Facebook", href: FACEBOOK, icon: Facebook },
+  { label: "Instagram", href: INSTAGRAM, icon: Instagram },
+  { label: "Google", href: GOOGLE_PROFILE, icon: MapPinned },
+] as const;
+
+function ContactOptionsDialog({ footer = false }: { footer?: boolean }) {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button
+          type="button"
+          className={footer
+            ? "h-10 self-start rounded-full px-6 text-xs font-bold shadow-[0_4px_14px_color-mix(in_oklab,var(--primary)_45%,transparent)] sm:self-auto"
+            : "h-9 rounded-full px-4 text-xs font-bold shadow-[0_4px_14px_color-mix(in_oklab,var(--primary)_45%,transparent)] hover:bg-primary-hover sm:px-5"}
+        >
+          <Phone size={15} /> Contact Now
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="left-1/2 top-auto bottom-3 w-[calc(100%-1.5rem)] max-w-md translate-x-[-50%] translate-y-0 gap-5 rounded-2xl border-border p-4 sm:bottom-auto sm:top-1/2 sm:translate-y-[-50%] sm:p-5">
+        <DialogHeader className="pr-8 text-left">
+          <DialogTitle className="font-display text-xl font-black uppercase">Connect with us</DialogTitle>
+          <DialogDescription>Choose how you would like to contact Chaudhary Luxury Cars.</DialogDescription>
+        </DialogHeader>
+        <div className="grid grid-cols-5 gap-1.5" aria-label="Contact options">
+          {contactOptions.map(({ label, href, icon: Icon }) => (
+            <Button key={label} asChild variant="outline" className="h-16 min-w-0 flex-col gap-1 rounded-xl px-1 shadow-none sm:h-20 sm:gap-2">
+              <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noopener noreferrer" : undefined} aria-label={label}>
+                <Icon className="size-5 text-primary sm:size-6" aria-hidden="true" />
+                <span className="max-w-full truncate text-[8px] font-bold sm:text-[10px]">{label}</span>
+              </a>
+            </Button>
+          ))}
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
 function Header() {
   const [open, setOpen] = useState(false);
   return (
@@ -143,7 +196,7 @@ function Header() {
         </nav>
         <div className="flex items-center justify-end gap-2 sm:gap-3">
           <button className="hidden h-9 w-9 items-center justify-center rounded-full bg-foreground text-background transition-transform hover:scale-105 sm:flex" aria-label="Open profile"><CircleUserRound size={19} /></button>
-          <a href={PHONE_LINK} className="inline-flex h-9 items-center gap-1.5 rounded-full bg-primary px-4 text-xs font-bold text-primary-foreground shadow-[0_4px_14px_color-mix(in_oklab,var(--primary)_45%,transparent)] transition-all hover:bg-primary-hover hover:shadow-[0_6px_20px_color-mix(in_oklab,var(--primary)_55%,transparent)] sm:px-5"><Phone size={15} /> Contact Now</a>
+          <ContactOptionsDialog />
           <button className="flex h-9 w-9 items-center justify-center rounded-full bg-foreground text-background md:hidden" onClick={() => setOpen(!open)} aria-label="Toggle navigation" aria-expanded={open}>{open ? <X size={19} /> : <Menu size={19} />}</button>
         </div>
       </div>
@@ -350,14 +403,14 @@ function Footer() {
             <div className="mt-6 flex gap-2.5">
               <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full border border-footer-line text-footer-muted transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"><Instagram size={16} /></a>
               <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-full border border-footer-line text-footer-muted transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"><Facebook size={16} /></a>
-              <a href="https://wa.me/919990569473" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex h-10 w-10 items-center justify-center rounded-full border border-footer-line text-footer-muted transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"><Phone size={16} /></a>
+              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex h-10 w-10 items-center justify-center rounded-full border border-footer-line text-footer-muted transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"><MessageCircle size={16} /></a>
             </div>
           </div>
           <div>
             <h3 className="mb-5 text-[11px] font-bold uppercase tracking-wider text-primary">Contact</h3>
             <ul className="space-y-4 text-xs text-footer-muted">
               <li><a href={PHONE_LINK} className="flex items-center gap-2 transition-colors hover:text-primary"><Phone size={14} className="text-primary" /> {PHONE_DISPLAY}</a></li>
-              <li><a href="https://wa.me/919990569473" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-primary">WhatsApp us</a></li>
+              <li><a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-primary">WhatsApp us</a></li>
               <li><a href={MAP_LINK} target="_blank" rel="noopener noreferrer" className="leading-6 transition-colors hover:text-primary">{ADDRESS}</a></li>
             </ul>
           </div>
@@ -379,7 +432,7 @@ function Footer() {
         </div>
         <div className="mt-12 flex flex-col gap-5 border-t border-footer-line pt-6 sm:flex-row sm:items-center sm:justify-between">
           <span className="text-[11px] text-footer-muted">All rights reserved © {BRAND} 2026</span>
-          <a href={PHONE_LINK} className="inline-flex h-10 items-center gap-2 self-start rounded-full bg-primary px-6 text-xs font-bold text-primary-foreground shadow-[0_4px_14px_color-mix(in_oklab,var(--primary)_45%,transparent)] transition-all hover:bg-primary-hover sm:self-auto"><Phone size={15} /> Contact Now</a>
+          <ContactOptionsDialog footer />
           <span className="text-[11px] text-footer-muted sm:text-right">Privacy Policy&nbsp;&nbsp;|&nbsp;&nbsp;Terms & Conditions</span>
         </div>
       </div>
