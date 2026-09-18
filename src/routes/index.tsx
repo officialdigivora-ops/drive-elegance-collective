@@ -410,9 +410,11 @@ function Footer() {
             <img src={brandLogo} width={1536} height={768} loading="lazy" alt={`${BRAND} logo`} className="h-14 w-auto self-start brightness-0 invert sm:h-16" />
             <p className="mt-5 max-w-xs text-xs leading-6 text-footer-muted">Luxury car rental for weddings, photoshoots, corporate travel and airport transfers across Delhi NCR, Haryana & Uttar Pradesh. 100+ premium cars, 7+ years of experience.</p>
             <div className="mt-6 flex gap-2.5">
-              <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full border border-footer-line text-footer-muted transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"><Instagram size={16} /></a>
-              <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-full border border-footer-line text-footer-muted transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"><Facebook size={16} /></a>
-              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex h-10 w-10 items-center justify-center rounded-full border border-footer-line text-footer-muted transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"><MessageCircle size={16} /></a>
+              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white transition-transform hover:scale-110"><WhatsAppIcon className="size-[18px]" /></a>
+              <a href={PHONE_LINK} aria-label="Call" className="flex h-10 w-10 items-center justify-center rounded-full bg-[#34A853] text-white transition-transform hover:scale-110"><PhoneIcon className="size-[18px]" /></a>
+              <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1877F2] text-white transition-transform hover:scale-110"><FacebookIcon className="size-[18px]" /></a>
+              <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#FEDA75] via-[#D62976] to-[#4F5BD5] text-white transition-transform hover:scale-110"><InstagramIcon className="size-[18px]" /></a>
+              <a href={GOOGLE_PROFILE} target="_blank" rel="noopener noreferrer" aria-label="Google profile" className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-white ring-1 ring-black/10 transition-transform hover:scale-110"><GoogleIcon className="size-[18px]" /></a>
             </div>
           </div>
           <div>
