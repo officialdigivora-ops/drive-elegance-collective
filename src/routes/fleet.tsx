@@ -24,6 +24,7 @@ import mercedesConvertibleRed from "../assets/fleet/mercedes-convertible-red.png
 import mercedesEClass from "../assets/fleet/mercedes-e-class-white.png";
 import miniRed from "../assets/fleet/mini-cooper-convertible-red.png";
 import mustangRed from "../assets/fleet/mustang-gt-red.png";
+import porscheBoxsterRed from "../assets/fleet/porsche-boxster-red.png";
 import rangeRoverEvoqueRed from "../assets/fleet/range-rover-evoque-convertible-red.png";
 import rangeRoverSport from "../assets/fleet/range-rover-sport-sv-white.png";
 import rangeRoverVelar from "../assets/fleet/range-rover-velar-autobiography-white.png";
@@ -42,6 +43,13 @@ import bmw5Rear from "../assets/real-fleet/bmw-5-series-rear.jpg.asset.json";
 import rangeRoverSportFront from "../assets/real-fleet/range-rover-sport-front.jpg.asset.json";
 import rangeRoverSportAngle from "../assets/real-fleet/range-rover-sport-angle.jpg.asset.json";
 import rangeRoverSportRear from "../assets/real-fleet/range-rover-sport-rear.jpg.asset.json";
+import bentleyConvertibleFront from "../assets/real-fleet/bentley-convertible-front.jpg.asset.json";
+import bentleyConvertibleRear from "../assets/real-fleet/bentley-convertible-rear.jpg.asset.json";
+import bentleyConvertibleSide from "../assets/real-fleet/bentley-convertible-side.jpg.asset.json";
+import audiA3ConvertibleFront from "../assets/real-fleet/audi-a3-convertible-front.jpg.asset.json";
+import audiA3ConvertibleRear from "../assets/real-fleet/audi-a3-convertible-rear.jpg.asset.json";
+import porscheBoxsterRoof from "../assets/real-fleet/porsche-boxster-roof.jpg.asset.json";
+import porscheBoxsterOpen from "../assets/real-fleet/porsche-boxster-open.jpg.asset.json";
 
 export const Route = createFileRoute("/fleet")({
   head: () => ({
@@ -69,6 +77,7 @@ const cars = [
   ["Bmw 5 Series White", "Luxury Sedan", bmw5, 12000],
   ["Bentley Convertible Red", "Luxury Convertible", bentleyRed, 70000],
   ["Audi A3 Convertible White", "Convertible", audiA3White, 16000],
+  ["Porsche Boxster Red", "Sports Convertible", porscheBoxsterRed, 120000],
   ["Jaguar Xf White", "Luxury Sedan", jaguarXf, 13000],
   ["Mercedes Convertible Red", "Luxury Convertible", mercedesConvertibleRed, 20000],
   ["Audi Q7 7 Seater White", "7-Seater SUV", audiQ7, 16000],
@@ -126,6 +135,22 @@ const realCarPhotos: Record<string, Array<{ src: string; alt: string; contain?: 
     { src: bmw5, alt: "BMW 5 Series White studio view", contain: true },
     { src: bmw5Front.url, alt: "White BMW 5 Series front view" },
     { src: bmw5Rear.url, alt: "White BMW 5 Series rear view" },
+  ],
+  "Bentley Convertible Red": [
+    { src: bentleyRed, alt: "Bentley Convertible Red studio view", contain: true },
+    { src: bentleyConvertibleFront.url, alt: "Red Bentley convertible front view" },
+    { src: bentleyConvertibleRear.url, alt: "Red Bentley convertible rear view" },
+    { src: bentleyConvertibleSide.url, alt: "Red Bentley convertible side view" },
+  ],
+  "Audi A3 Convertible White": [
+    { src: audiA3White, alt: "Audi A3 Convertible White studio view", contain: true },
+    { src: audiA3ConvertibleFront.url, alt: "White Audi A3 convertible front view" },
+    { src: audiA3ConvertibleRear.url, alt: "White Audi A3 convertible rear view" },
+  ],
+  "Porsche Boxster Red": [
+    { src: porscheBoxsterRed, alt: "Porsche Boxster Red studio view", contain: true },
+    { src: porscheBoxsterRoof.url, alt: "Red Porsche Boxster rear view with roof closed" },
+    { src: porscheBoxsterOpen.url, alt: "Red Porsche Boxster angled view with roof open" },
   ],
   "Limousine Long New White": limousinePhotos.map((photo, index) => ({ ...photo, contain: index === 0 })),
   "Range Rover Sport White": [
