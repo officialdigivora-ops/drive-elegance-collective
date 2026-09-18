@@ -31,7 +31,7 @@ import miniLogo from "../assets/brands/mini.svg.asset.json";
 import porscheLogo from "../assets/brands/porsche.png.asset.json";
 import rollsRoyceLogo from "../assets/brands/rolls-royce.svg.asset.json";
 import toyotaLogo from "../assets/brands/toyota.svg.asset.json";
-import yellowSuv from "../assets/yellow-suv.png";
+import yellowBentley from "../assets/hero/bentley-continental-gt-yellow.png";
 import audiA3Convertible from "../assets/fleet/audi-a3-convertible.png";
 import audiA3ConvertibleWhite from "../assets/fleet/audi-a3-convertible-white.png";
 import audiA4 from "../assets/fleet/audi-a4.png";
@@ -163,7 +163,7 @@ function Hero() {
       <div className="relative mt-1 h-[270px] sm:h-[380px] md:h-[500px] lg:h-[540px]">
         <div className="absolute inset-x-0 bottom-0 h-[62%] bg-primary [clip-path:polygon(0_22%,100%_0,100%_100%,0_100%)]" />
         <span className="spark absolute right-[8%] top-[20%] z-10 text-primary">✦</span>
-        <img src={yellowSuv} width={1536} height={768} alt="Yellow premium performance SUV" className="absolute left-1/2 top-1/2 z-10 w-[110%] max-w-6xl -translate-x-1/2 -translate-y-[44%] object-contain" />
+        <img src={yellowBentley} width={1536} height={768} alt="Yellow Bentley Continental GT luxury coupe" className="absolute left-1/2 top-1/2 z-10 w-[110%] max-w-6xl -translate-x-1/2 -translate-y-[44%] object-contain" />
       </div>
     </section>
   );
