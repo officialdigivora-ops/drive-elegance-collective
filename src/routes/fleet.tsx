@@ -29,6 +29,10 @@ import rangeRoverSport from "../assets/fleet/range-rover-sport-sv-white.png";
 import rangeRoverVelar from "../assets/fleet/range-rover-velar-autobiography-white.png";
 import rollsRoyce from "../assets/fleet/rolls-royce-ghost.png";
 import vintage from "../assets/fleet/vintage-luxury-white.png";
+import limousineExteriorFront from "../assets/limousine/limousine-exterior-front.jpg.asset.json";
+import limousineExteriorAngle from "../assets/limousine/limousine-exterior-angle.jpg.asset.json";
+import limousineInteriorSeat from "../assets/limousine/limousine-interior-seat.jpg.asset.json";
+import limousineInteriorBar from "../assets/limousine/limousine-interior-bar.jpg.asset.json";
 
 export const Route = createFileRoute("/fleet")({
   head: () => ({
@@ -90,6 +94,37 @@ const cars = [
   duration: "13 hours",
 }));
 
+const limousinePhotos = [
+  { src: limousine, alt: "Limousine Long New White studio view" },
+  { src: limousineExteriorFront.url, alt: "White wedding limousine decorated with flowers, front view" },
+  { src: limousineExteriorAngle.url, alt: "White wedding limousine decorated with flowers, angled view" },
+  { src: limousineInteriorSeat.url, alt: "Limousine passenger cabin with leather seating" },
+  { src: limousineInteriorBar.url, alt: "Limousine cabin bar and entertainment area" },
+];
+
+function LimousinePhotoReel() {
+  return (
+    <div className="limousine-reel" aria-label="Limousine exterior and interior photos">
+      <div className="limousine-reel-track">
+        {[0, 1].map((group) => (
+          <div className="limousine-reel-group" aria-hidden={group === 1} key={group}>
+            {limousinePhotos.map((photo, index) => (
+              <figure className="limousine-reel-frame" key={`${group}-${photo.alt}`}>
+                <img
+                  src={photo.src}
+                  alt={group === 0 ? photo.alt : ""}
+                  className={index === 0 ? "object-contain" : "object-cover"}
+                  loading="lazy"
+                />
+              </figure>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function ArrowIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
@@ -132,7 +167,11 @@ function Index() {
             return (
               <article key={car.name} className="grid overflow-hidden border border-border bg-card md:grid-cols-2">
                 <div className={`relative flex min-h-52 items-center justify-center overflow-hidden bg-fleet p-4 sm:min-h-72 sm:p-6 lg:min-h-80 lg:p-8 ${index % 2 === 1 ? "md:order-2" : ""}`}>
-                  <img src={car.image} alt={car.alt} className="h-auto max-h-48 w-full object-contain transition-transform duration-500 hover:scale-[1.03] sm:max-h-64 lg:max-h-72" loading={index > 0 ? "lazy" : "eager"} />
+                  {car.name === "Limousine Long New White" ? (
+                    <LimousinePhotoReel />
+                  ) : (
+                    <img src={car.image} alt={car.alt} className="h-auto max-h-48 w-full object-contain transition-transform duration-500 hover:scale-[1.03] sm:max-h-64 lg:max-h-72" loading={index > 0 ? "lazy" : "eager"} />
+                  )}
                 </div>
                 <div className={`flex min-w-0 flex-col p-5 sm:p-6 lg:p-8 ${index % 2 === 1 ? "md:order-1" : ""}`}>
                   <div className="flex flex-1 flex-col justify-center">
