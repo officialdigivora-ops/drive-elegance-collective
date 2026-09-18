@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 const pageLinks = [
   { label: "Home", to: "/" as const },
   { label: "Our Fleet", to: "/fleet" as const },
-  { label: "Contact Us", to: "/contact" as const },
+  { label: "Book Now", to: "/contact" as const },
 ];
 
 export function SitePageHeader({ title }: { title: string }) {
