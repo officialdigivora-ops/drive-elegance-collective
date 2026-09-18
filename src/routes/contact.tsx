@@ -3,6 +3,7 @@ import { ArrowUpRight, CarFront, Clock3, Mail, MapPin, Phone } from "lucide-reac
 import { useState, type FormEvent } from "react";
 
 import { Button } from "@/components/ui/button";
+import { SitePageHeader } from "@/components/site-page-header";
 
 const offices = [
   {
@@ -74,6 +75,7 @@ function BookingPage() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
+      <SitePageHeader title="Contact Us" />
       <section className="border-b border-warm-line">
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-7 sm:py-10 lg:px-10">
           <div className="mx-auto max-w-2xl text-center">

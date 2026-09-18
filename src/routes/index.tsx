@@ -124,11 +124,9 @@ export const Route = createFileRoute("/")({
 });
 
 const navItems = [
-  { label: "Fleet", href: "#fleet" },
+  { label: "Home", href: "#top" },
   { label: "Our Fleet", href: "/fleet" },
-  { label: "Car Details", href: "/car-details" },
   { label: "Contact Us", href: "/contact" },
-  { label: "Feedback", href: "#feedback" },
 ];
 
 function Header() {

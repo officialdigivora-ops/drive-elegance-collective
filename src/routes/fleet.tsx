@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { SitePageHeader } from "@/components/site-page-header";
 import audiA3Red from "../assets/fleet/audi-a3-convertible.png";
 import audiA3White from "../assets/fleet/audi-a3-convertible-white.png";
 import audiA4 from "../assets/fleet/audi-a4.png";
@@ -195,6 +196,7 @@ function ArrowIcon() {
 function Index() {
   return (
     <main className="min-h-screen bg-background">
+      <SitePageHeader title="Our Fleet" />
       <section className="fleet-intro mx-auto flex max-w-7xl flex-col items-center justify-center px-4 py-6 text-center sm:px-8 sm:py-8 lg:px-12 lg:py-10">
         <p className="text-[0.6rem] font-bold uppercase tracking-[0.26em] text-primary sm:text-[0.7rem]">100+ Premium Cars Across NCR</p>
         <h1 className="mt-2 max-w-5xl font-display text-4xl font-black uppercase leading-[0.92] tracking-normal sm:text-6xl lg:text-7xl">
@@ -243,9 +245,9 @@ function Index() {
                     </div>
                   </div>
                   <div className="mt-5 grid h-11 grid-cols-2 overflow-hidden rounded-full sm:mt-6 sm:h-12">
-                    <a href={`https://wa.me/919990569473?text=${detailsMessage}`} className="fleet-action bg-secondary text-secondary-foreground" aria-label={`View details for ${car.name}`}>
+                    <Link to="/car-details" className="fleet-action bg-secondary text-secondary-foreground" aria-label={`View details for ${car.name}`}>
                       View Details
-                    </a>
+                    </Link>
                     <a href={`https://wa.me/919990569473?text=${bookingMessage}`} className="fleet-action bg-primary text-primary-foreground" aria-label={`Book ${car.name} now`}>
                       <span>Book Now</span><ArrowIcon />
                     </a>
