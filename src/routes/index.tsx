@@ -125,8 +125,9 @@ export const Route = createFileRoute("/")({
           postalCode: "132104",
           addressCountry: "IN",
         },
-        areaServed: ["Delhi", "NCR", "Haryana", "Uttar Pradesh"],
+        areaServed: ["Delhi", "New Delhi", "Noida", "Gurugram", "Ghaziabad", "Faridabad", "Panipat", "Sonipat", "Karnal", "Meerut", "Agra", "NCR", "Haryana", "Uttar Pradesh"],
         openingHours: "Mo-Su 00:00-23:59",
+        image: `${SITE_URL}/apple-touch-icon.png`,
         sameAs: [
           "https://www.instagram.com/choudharyluxurycars",
           "https://www.facebook.com/profile.php?id=61554864970019",

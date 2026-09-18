@@ -5,19 +5,21 @@ import { bookingLink, fleetCars, realCarPhotos, type CarPhoto } from "@/data/fle
 export const Route = createFileRoute("/fleet")({
   head: () => ({
     meta: [
-      { title: "Luxury Car Fleet | Chaudhary Car Rental" },
-      {
-        name: "description",
-        content: "Explore premium rental cars in NCR with transparent pricing, professional drivers, and 24/7 service.",
-      },
-      { property: "og:title", content: "Luxury Car Fleet | Chaudhary Car Rental" },
-      {
-        property: "og:description",
-        content: "Choose your dream car from our premium rental fleet in NCR.",
-      },
+      { title: "Luxury Car Fleet on Rent in Delhi NCR, Haryana & UP | Chaudhary Luxury Cars" },
+      { name: "description", content: "Browse 30+ luxury cars on rent — Rolls-Royce, Mercedes, Bentley, Range Rover, Audi, BMW and limousines — for weddings and events in Delhi, Noida, Gurugram, Ghaziabad, Faridabad, Panipat, Sonipat, Karnal, Meerut and Agra. 13-hour packages with fuel and driver included. Call +91 99905 69473." },
+      { name: "keywords", content: "luxury car rental Delhi, wedding car hire Noida, Rolls Royce rent Gurugram, Mercedes rental Panipat, limousine rent Ghaziabad, Range Rover hire Haryana, Bentley rental Agra, car rental Meerut" },
+      { property: "og:title", content: "Luxury Car Fleet on Rent in Delhi NCR, Haryana & UP | Chaudhary Luxury Cars" },
+      { property: "og:description", content: "Browse 30+ luxury cars on rent — Rolls-Royce, Mercedes, Bentley, Range Rover, Audi, BMW and limousines — for weddings and events in Delhi, Noida, Gurugram, Ghaziabad, Faridabad, Panipat, Sonipat, Karnal, Meerut and Agra. 13-hour packages with fuel and driver included. Call +91 99905 69473." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Chaudhary Luxury Cars" },
+      { property: "og:url", content: "https://drive-elegance-collective.lovable.app/fleet" },
+      { property: "og:locale", content: "en_IN" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Luxury Car Fleet on Rent in Delhi NCR, Haryana & UP | Chaudhary Luxury Cars" },
+      { name: "twitter:description", content: "Browse 30+ luxury cars on rent — Rolls-Royce, Mercedes, Bentley, Range Rover, Audi, BMW and limousines — for weddings and events in Delhi, Noida, Gurugram, Ghaziabad, Faridabad, Panipat, Sonipat, Karnal, Meerut and Agra. 13-hour packages with fuel and driver included. Call +91 99905 69473." },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
     ],
+    links: [{ rel: "canonical", href: "https://drive-elegance-collective.lovable.app/fleet" }],
   }),
   component: Index,
 });
