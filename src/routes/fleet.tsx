@@ -87,15 +87,10 @@ function Index() {
 
         <div className="space-y-5 sm:space-y-6 lg:space-y-8">
           {cars.map((car, index) => {
-            const photos = realCarPhotos[car.name];
             return (
               <article key={car.name} className="grid overflow-hidden border border-border bg-card md:grid-cols-2">
                 <div className={`relative flex min-h-52 items-center justify-center overflow-hidden bg-fleet p-4 sm:min-h-72 sm:p-6 lg:min-h-80 lg:p-8 ${index % 2 === 1 ? "md:order-2" : ""}`}>
-                  {photos ? (
-                    <CarPhotoReel photos={photos} />
-                  ) : (
-                    <img src={car.image} alt={car.alt} className="h-auto max-h-48 w-full object-contain transition-transform duration-500 hover:scale-[1.03] sm:max-h-64 lg:max-h-72" loading={index > 0 ? "lazy" : "eager"} />
-                  )}
+                  <img src={car.image} alt={car.alt} className="h-auto max-h-48 w-full object-contain transition-transform duration-500 hover:scale-[1.03] sm:max-h-64 lg:max-h-72" loading={index > 0 ? "lazy" : "eager"} />
                 </div>
                 <div className={`flex min-w-0 flex-col p-5 sm:p-6 lg:p-8 ${index % 2 === 1 ? "md:order-1" : ""}`}>
                   <div className="flex flex-1 flex-col justify-center">
