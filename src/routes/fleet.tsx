@@ -61,7 +61,7 @@ function Index() {
   return (
     <main className="min-h-screen bg-background">
       <SitePageHeader title="Our Fleet" />
-      <section className="fleet-intro mx-auto flex max-w-7xl flex-col items-center justify-center px-4 py-5 text-center sm:px-8 sm:py-6 lg:px-12 lg:py-8">
+      <section className="fleet-intro mx-auto flex max-w-7xl flex-col items-center justify-center px-4 pb-5 pt-2 text-center sm:px-8 sm:pb-6 sm:pt-3 lg:px-12 lg:pb-8">
         <p className="text-[0.6rem] font-bold uppercase tracking-[0.26em] text-primary sm:text-[0.7rem]">100+ Premium Cars Across NCR</p>
         <h1 className="mt-2 max-w-5xl font-display text-4xl font-black uppercase leading-[0.92] tracking-normal sm:text-6xl lg:text-7xl">
           Meet Our <span className="text-primary">Fleet</span>
