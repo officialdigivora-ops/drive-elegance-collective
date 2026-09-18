@@ -83,7 +83,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-6 sm:px-8 sm:py-8 lg:px-12 lg:py-10">
+      <section className="mx-auto max-w-7xl px-4 py-5 sm:px-8 sm:py-6 lg:px-12 lg:py-8">
 
         <div className="space-y-5 sm:space-y-6 lg:space-y-8">
           {cars.map((car, index) => {

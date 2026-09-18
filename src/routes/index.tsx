@@ -315,7 +315,7 @@ function Showcase() {
   ] as const;
 
   return (
-    <section id="fleet" className="fleet-showcase overflow-hidden py-10 sm:py-12 md:py-16" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}>
+    <section id="fleet" className="fleet-showcase overflow-hidden py-7 sm:py-9 md:py-12" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}>
       <div className="px-5 text-center">
         <h2 className="font-display text-4xl font-black leading-none sm:text-6xl">PICK YOUR DREAM<br />CAR TODAY</h2>
         <p className="mt-4 text-xs font-bold uppercase text-muted-foreground" aria-live="polite">{activeCar.name} · {activeCar.type}</p>
@@ -422,7 +422,7 @@ function FeedbackCard({ item }: { item: { quote: string; name: string; detail: s
 
 function UserFeedback() {
   return (
-    <section id="feedback" className="bg-primary py-9 sm:py-12 md:py-14">
+    <section id="feedback" className="bg-primary py-7 sm:py-9 md:py-11">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div><p className="mb-3 text-xs font-bold uppercase">From our customers</p><h2 className="font-display text-3xl font-black leading-none sm:text-5xl">USER FEEDBACK</h2></div>

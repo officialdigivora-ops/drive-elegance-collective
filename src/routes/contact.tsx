@@ -97,7 +97,7 @@ function BookingPage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl items-start gap-7 px-4 py-6 sm:px-7 sm:py-10 lg:grid-cols-[1.35fr_0.65fr] lg:px-10">
+      <section className="mx-auto grid max-w-6xl items-start gap-6 px-4 py-5 sm:px-7 sm:py-8 lg:grid-cols-[1.35fr_0.65fr] lg:px-10">
         <form onSubmit={handleSubmit} className="rounded-md border border-warm-line bg-card p-4 shadow-lg shadow-foreground/5 sm:p-6">
           <div className="mb-5 flex items-center gap-3 border-b border-warm-line pb-4">
             <MercedesStarIcon className="size-9 shrink-0 text-foreground" />
