@@ -1,7 +1,4 @@
-import { Link, useRouter } from "@tanstack/react-router";
-import { ArrowLeft } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
+import { Link } from "@tanstack/react-router";
 
 const pageLinks = [
   { label: "Home", to: "/" as const },
@@ -10,21 +7,9 @@ const pageLinks = [
 ];
 
 export function SitePageHeader({ title }: { title: string }) {
-  const router = useRouter();
-
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-lg">
       <div className="mx-auto flex h-14 max-w-7xl items-center gap-3 px-4 sm:h-16 sm:px-8 lg:px-12">
-        <Button
-          type="button"
-          variant="iconDark"
-          size="icon"
-          className="h-9 w-9 shrink-0 rounded-full"
-          aria-label="Go back"
-          onClick={() => router.history.back()}
-        >
-          <ArrowLeft className="size-4" aria-hidden="true" />
-        </Button>
         <h1 className="min-w-0 flex-1 truncate font-display text-base font-black uppercase sm:text-xl">{title}</h1>
         <nav className="hidden items-center gap-5 text-xs font-bold uppercase sm:flex" aria-label="Page navigation">
           {pageLinks.map((item) => (
