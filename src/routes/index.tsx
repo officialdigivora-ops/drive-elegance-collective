@@ -3,20 +3,22 @@ import {
   ChevronLeft,
   ChevronRight,
   Armchair,
-
   CircleUserRound,
   Cog,
-  Facebook,
   Gauge,
-  Instagram,
-  MapPinned,
-  MessageCircle,
   Phone,
   Menu,
   ShieldCheck,
   Tag,
   X,
 } from "lucide-react";
+import {
+  WhatsAppIcon,
+  FacebookIcon,
+  InstagramIcon,
+  GoogleIcon,
+  PhoneIcon,
+} from "@/components/brand-icons";
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
 
 import { Button } from "@/components/ui/button";
