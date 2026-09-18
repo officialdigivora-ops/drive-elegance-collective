@@ -11,20 +11,20 @@ export const Route = createFileRoute("/policies")({
   head: () => ({
     meta: [
       { title: "Privacy Policy & Terms | Chaudhary Luxury Cars" },
-      {
-        name: "description",
-        content:
-          "Read the Privacy Policy and Terms & Conditions for Chaudhary Luxury Cars luxury car rental services across Delhi NCR, Haryana and Uttar Pradesh.",
-      },
+      { name: "description", content: "Privacy Policy and Terms & Conditions for Chaudhary Luxury Cars luxury car rental bookings across Delhi NCR, Haryana and Uttar Pradesh." },
+      { name: "keywords", content: "Chaudhary Luxury Cars terms, car rental privacy policy India" },
       { property: "og:title", content: "Privacy Policy & Terms | Chaudhary Luxury Cars" },
-      {
-        property: "og:description",
-        content:
-          "Privacy Policy and Terms & Conditions for Chaudhary Luxury Cars rental bookings.",
-      },
+      { property: "og:description", content: "Privacy Policy and Terms & Conditions for Chaudhary Luxury Cars luxury car rental bookings across Delhi NCR, Haryana and Uttar Pradesh." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Chaudhary Luxury Cars" },
+      { property: "og:url", content: "https://drive-elegance-collective.lovable.app/policies" },
+      { property: "og:locale", content: "en_IN" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Privacy Policy & Terms | Chaudhary Luxury Cars" },
+      { name: "twitter:description", content: "Privacy Policy and Terms & Conditions for Chaudhary Luxury Cars luxury car rental bookings across Delhi NCR, Haryana and Uttar Pradesh." },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
     ],
+    links: [{ rel: "canonical", href: "https://drive-elegance-collective.lovable.app/policies" }],
   }),
   component: PoliciesPage,
 });

@@ -26,19 +26,21 @@ const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(offices[0].ad
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Book a Luxury Car | Chaudhary Luxury Cars" },
-      {
-        name: "description",
-        content: "Book a luxury car in Panipat and Delhi NCR. Send your rental enquiry directly to Chaudhary Luxury Cars on WhatsApp.",
-      },
-      { property: "og:title", content: "Book a Luxury Car | Chaudhary Luxury Cars" },
-      {
-        property: "og:description",
-        content: "Choose your car, share your trip details, and enquire directly on WhatsApp.",
-      },
+      { title: "Book a Luxury Car in Delhi NCR & Haryana | Chaudhary Luxury Cars" },
+      { name: "description", content: "Book your luxury or wedding car online. Choose your car, share pickup details and confirm instantly on WhatsApp. Serving Delhi, Noida, Gurugram, Ghaziabad, Faridabad, Panipat, Sonipat, Karnal, Meerut and Agra. Call +91 99905 69473." },
+      { name: "keywords", content: "book luxury car Delhi NCR, wedding car booking Panipat, luxury car rental contact Haryana, car hire booking Noida Gurugram" },
+      { property: "og:title", content: "Book a Luxury Car in Delhi NCR & Haryana | Chaudhary Luxury Cars" },
+      { property: "og:description", content: "Book your luxury or wedding car online. Choose your car, share pickup details and confirm instantly on WhatsApp. Serving Delhi, Noida, Gurugram, Ghaziabad, Faridabad, Panipat, Sonipat, Karnal, Meerut and Agra. Call +91 99905 69473." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Chaudhary Luxury Cars" },
+      { property: "og:url", content: "https://drive-elegance-collective.lovable.app/contact" },
+      { property: "og:locale", content: "en_IN" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Book a Luxury Car in Delhi NCR & Haryana | Chaudhary Luxury Cars" },
+      { name: "twitter:description", content: "Book your luxury or wedding car online. Choose your car, share pickup details and confirm instantly on WhatsApp. Serving Delhi, Noida, Gurugram, Ghaziabad, Faridabad, Panipat, Sonipat, Karnal, Meerut and Agra. Call +91 99905 69473." },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
     ],
+    links: [{ rel: "canonical", href: "https://drive-elegance-collective.lovable.app/contact" }],
   }),
   component: BookingPage,
 });
