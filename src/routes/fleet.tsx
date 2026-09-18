@@ -1,7 +1,34 @@
 import { createFileRoute } from "@tanstack/react-router";
+import audiA3Red from "../assets/fleet/audi-a3-convertible.png";
+import audiA3White from "../assets/fleet/audi-a3-convertible-white.png";
+import audiA4 from "../assets/fleet/audi-a4.png";
 import audiA6 from "../assets/fleet/audi-a6-white.png";
-import hyundaiVerna from "../assets/fleet/hyundai-verna.png";
+import audiQ7 from "../assets/fleet/audi-q7-white.png";
+import bentleyRed from "../assets/fleet/bentley-convertible-red.png";
+import bentleySunroof from "../assets/fleet/bentley-sunroof-white.png";
+import bmw5 from "../assets/fleet/bmw-5-series-white.png";
+import bmwConvertible from "../assets/fleet/bmw-convertible-white.png";
+import defender from "../assets/fleet/land-rover-defender-white.png";
+import fortuner from "../assets/fleet/toyota-fortuner.png";
+import gwagon from "../assets/fleet/mercedes-g-wagon-white.png";
+import hummer from "../assets/fleet/hummer-h2-white.png";
+import hyundaiVerna from "../assets/fleet/hyundai-verna-white.png";
+import jaguarXf from "../assets/fleet/jaguar-xf-white.png";
+import jaguarXjl from "../assets/fleet/jaguar-xjl-white.png";
+import limousine from "../assets/fleet/limousine-long-new-white.png";
+import maybach from "../assets/fleet/mercedes-maybach-white.png";
+import mercedesC300 from "../assets/fleet/mercedes-c-300-white.png";
+import mercedesCla from "../assets/fleet/mercedes-cla-white.png";
 import mercedesConvertible from "../assets/fleet/mercedes-convertible-white.png";
+import mercedesConvertibleRed from "../assets/fleet/mercedes-convertible-red.png";
+import mercedesEClass from "../assets/fleet/mercedes-e-class-white.png";
+import miniRed from "../assets/fleet/mini-cooper-convertible-red.png";
+import mustangRed from "../assets/fleet/mustang-gt-red.png";
+import rangeRoverRed from "../assets/fleet/range-rover-sport-red.png";
+import rangeRoverSport from "../assets/fleet/range-rover-sport.png";
+import rangeRoverVelar from "../assets/fleet/range-rover-velar-white.png";
+import rollsRoyce from "../assets/fleet/rolls-royce-ghost.png";
+import vintage from "../assets/fleet/vintage-luxury-white.png";
 
 export const Route = createFileRoute("/fleet")({
   head: () => ({
@@ -24,31 +51,44 @@ export const Route = createFileRoute("/fleet")({
 });
 
 const cars = [
-  {
-    name: "Mercedes Convertible White",
-    category: "Luxury Convertible",
-    image: mercedesConvertible,
-    alt: "White Mercedes luxury convertible",
-    price: "₹20,000",
-    duration: "13 hours",
-  },
-  {
-    name: "Audi A6 White",
-    category: "Executive Sedan",
-    image: audiA6,
-    alt: "White Audi A6 executive sedan",
-    price: "₹10,000",
-    duration: "13 hours",
-  },
-  {
-    name: "Verna New Model White",
-    category: "Premium Sedan",
-    image: hyundaiVerna,
-    alt: "White Hyundai Verna premium sedan",
-    price: "₹4,000",
-    duration: "13 hours",
-  },
-];
+  ["Mercedes Convertible White", "Luxury Convertible", mercedesConvertible, 20000],
+  ["Audi A6 White", "Executive Sedan", audiA6, 10000],
+  ["Bmw 5 Series White", "Luxury Sedan", bmw5, 12000],
+  ["Bentley Convertible Red", "Luxury Convertible", bentleyRed, 70000],
+  ["Audi A3 Convertible White", "Convertible", audiA3White, 16000],
+  ["Jaguar Xf White", "Luxury Sedan", jaguarXf, 13000],
+  ["Mercedes Convertible Red", "Luxury Convertible", mercedesConvertibleRed, 20000],
+  ["Audi Q7 7 Seater White", "7-Seater SUV", audiQ7, 16000],
+  ["Mercedes C 300 White", "Luxury Sedan", mercedesC300, 14000],
+  ["Mercedes Cla White", "Luxury Sedan", mercedesCla, 13000],
+  ["Jaguar Xjl White", "Luxury Sedan", jaguarXjl, 20000],
+  ["Mini Cooper Convertible Red", "Convertible", miniRed, 15000],
+  ["Rolls Royce Sedan White", "Ultra Luxury Sedan", rollsRoyce, 200000],
+  ["Mercedes Maybach White", "Ultra Luxury Sedan", maybach, 40000],
+  ["Gwagon White", "Luxury SUV", gwagon, 90000],
+  ["Audi A4 White", "Executive Sedan", audiA4, 7000],
+  ["Limousine Long New White", "Luxury Limousine", limousine, 18000],
+  ["Range Rover Convertible Sport Red", "Convertible SUV", rangeRoverRed, 75000],
+  ["Bmw Convertible White", "Convertible", bmwConvertible, 20000],
+  ["Audi A3 Convertible Red", "Convertible", audiA3Red, 18000],
+  ["Mustang GT Red", "Sports Coupe", mustangRed, 90000],
+  ["Mercedes E Class White", "Luxury Sedan", mercedesEClass, 20000],
+  ["Vintages White", "Classic Car", vintage, 21000],
+  ["Range Rover Velar White", "Luxury SUV", rangeRoverVelar, 40000],
+  ["Fortuner Legender White", "7-Seater SUV", fortuner, 10000],
+  ["Range Rover Sport White", "Luxury SUV", rangeRoverSport, 40000],
+  ["Bentley Sunroof White", "Luxury Sedan", bentleySunroof, 45000],
+  ["Hummee H2 White", "Luxury SUV", hummer, 48000],
+  ["Defender White", "Luxury SUV", defender, 45000],
+  ["Verna New Model White", "Premium Sedan", hyundaiVerna, 4000],
+].map(([name, category, image, price]) => ({
+  name: String(name),
+  category: String(category),
+  image: String(image),
+  alt: `${name} available for luxury car rental`,
+  price: `₹${Number(price).toLocaleString("en-IN")}`,
+  duration: "13 hours",
+}));
 
 function ArrowIcon() {
   return (
