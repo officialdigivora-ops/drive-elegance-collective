@@ -8,7 +8,7 @@ import { bookingLink, carPhotosFor, findCar, PHONE_DISPLAY, PHONE_LINK } from "@
 
 export const Route = createFileRoute("/car-details")({
   validateSearch: (search: Record<string, unknown>) => ({
-    car: typeof search.car === "string" ? search.car : undefined,
+    car: typeof search['car'] === "string" ? (search['car'] as string) : undefined,
   }),
   head: () => ({
     meta: [
