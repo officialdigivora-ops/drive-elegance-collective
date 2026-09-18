@@ -51,3 +51,16 @@ export function PhoneIcon({ className }: IconProps) {
     </svg>
   );
 }
+
+export function MercedesStarIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} aria-hidden="true">
+      <circle cx="24" cy="24" r="21.5" fill="none" stroke="currentColor" strokeWidth="3" />
+      <g stroke="currentColor" strokeWidth="3" strokeLinecap="round">
+        <line x1="24" y1="24" x2="24" y2="3.5" />
+        <line x1="24" y1="24" x2="6.3" y2="34.3" />
+        <line x1="24" y1="24" x2="41.7" y2="34.3" />
+      </g>
+    </svg>
+  );
+}

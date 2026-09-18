@@ -216,7 +216,7 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-background pt-8 sm:pt-10 md:pt-14">
+    <section id="top" className="relative overflow-hidden bg-background pt-5 sm:pt-7 md:pt-10">
       <div className="relative z-10 px-5 text-center">
         <h1 className="mx-auto max-w-4xl font-display text-5xl font-black leading-[0.92] tracking-normal sm:text-7xl lg:text-8xl">LUXURY CAR<br />RENTAL</h1>
       </div>
@@ -314,7 +314,7 @@ function Showcase() {
   ] as const;
 
   return (
-    <section id="fleet" className="fleet-showcase overflow-hidden py-14 sm:py-18 md:py-24" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}>
+    <section id="fleet" className="fleet-showcase overflow-hidden py-10 sm:py-12 md:py-16" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}>
       <div className="px-5 text-center">
         <h2 className="font-display text-4xl font-black leading-none sm:text-6xl">PICK YOUR DREAM<br />CAR TODAY</h2>
         <p className="mt-4 text-xs font-bold uppercase text-muted-foreground" aria-live="polite">{activeCar.name} · {activeCar.type}</p>
@@ -361,7 +361,7 @@ function BrandStrip() {
   ];
 
   return (
-    <section className="brand-marquee bg-background py-4" aria-label="Vehicle brands">
+    <section className="brand-marquee bg-background py-3" aria-label="Vehicle brands">
       <div className="brand-marquee-track">
         {[0, 1].map((copy) => (
           <div key={copy} className="brand-marquee-group" aria-hidden={copy === 1}>
@@ -421,7 +421,7 @@ function FeedbackCard({ item }: { item: { quote: string; name: string; detail: s
 
 function UserFeedback() {
   return (
-    <section id="feedback" className="bg-primary py-12 sm:py-16 md:py-20">
+    <section id="feedback" className="bg-primary py-9 sm:py-12 md:py-14">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div><p className="mb-3 text-xs font-bold uppercase">From our customers</p><h2 className="font-display text-3xl font-black leading-none sm:text-5xl">USER FEEDBACK</h2></div>
@@ -450,7 +450,7 @@ function Footer() {
   return (
     <footer className="relative overflow-hidden bg-foreground text-background">
       <div className="pointer-events-none absolute -right-10 top-10 select-none font-display text-[160px] font-black leading-none text-background/[0.03] sm:text-[260px]">✦</div>
-      <div className="relative mx-auto max-w-3xl px-5 py-10 text-center md:px-8 md:py-12">
+      <div className="relative mx-auto max-w-3xl px-5 py-8 text-center md:px-8 md:py-10">
         <img src={brandLogo} width={1536} height={768} loading="lazy" alt={`${BRAND} logo`} className="mx-auto h-24 w-auto brightness-0 invert sm:h-28" />
         <p className="mx-auto mt-5 max-w-xl text-xs leading-6 text-footer-muted sm:text-sm sm:leading-7">
           {BRAND} provides premium luxury car rental for weddings, pre-wedding shoots, corporate travel, airport transfers and family occasions. We proudly serve Delhi, Noida, Gurugram, Ghaziabad, Faridabad, Panipat, Sonipat, Karnal, Meerut, Agra and nearby areas of NCR, Haryana and Uttar Pradesh.

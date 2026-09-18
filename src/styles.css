@@ -404,3 +404,30 @@ button, a { cursor: pointer; }
   .fleet-marquee, .limousine-reel-track { animation: none; }
   .limousine-reel { overflow-x: auto; }
 }
+
+.site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--background);
+  animation: site-loader-out 1.2s ease forwards;
+}
+
+@keyframes site-loader-out {
+  0%, 60% { opacity: 1; visibility: visible; }
+  99% { opacity: 0; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+@keyframes site-loader-slide {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(340%); }
+}
+
+.site-loader-bar {
+  animation: site-loader-slide 0.9s ease-in-out infinite;
+}
