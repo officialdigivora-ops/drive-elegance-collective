@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SitePageHeader } from "@/components/site-page-header";
-import { bookingLink, fleetCars, realCarPhotos, type CarPhoto } from "@/data/fleet";
+import { bookingLink, fleetCars } from "@/data/fleet";
 
 export const Route = createFileRoute("/fleet")({
   head: () => ({
