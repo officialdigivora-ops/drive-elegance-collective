@@ -17,7 +17,7 @@ export const Route = createFileRoute("/car-details")({
   head: () => ({
     meta: [
       { title: "Mercedes Convertible Rental | Chaudhary Car Rental" },
-      { name: "description", content: "Book a white Mercedes convertible in NCR for ₹25,000 per 13 hours, with fuel and driver included." },
+      { name: "description", content: "Book a white Mercedes convertible in NCR from ₹20,000 per 13 hours, with fuel and driver included." },
       { property: "og:title", content: "Mercedes Convertible Rental" },
       { property: "og:description", content: "White Mercedes convertible rental with fuel and driver included." },
       { property: "og:type", content: "website" },
@@ -66,7 +66,7 @@ function CarDetails() {
 
       <div className="px-4 pb-5 pt-3">
         <section>
-          <h2 className="text-[1.35rem] font-semibold leading-tight">Mercedes Convertible</h2>
+          <h2 className="text-[1.35rem] font-semibold leading-tight">Mercedes Convertible White</h2>
           <p className="mt-0.5 text-xs text-muted-foreground">White · Convertible</p>
         </section>
 
@@ -119,7 +119,7 @@ function CarDetails() {
       <footer className="fixed inset-x-0 bottom-0 z-20 mx-auto grid h-[68px] w-full max-w-[400px] grid-cols-[minmax(0,1fr)_auto] items-center border-t border-bar-border bg-footer px-4 sm:bottom-4 sm:rounded-b-[1rem]">
         <div>
           <p className="text-[0.68rem] text-footer-muted">Total for 13 hours</p>
-          <p className="text-lg font-semibold text-footer-foreground">₹25,000</p>
+          <p className="text-lg font-semibold text-footer-foreground">₹20,000</p>
         </div>
         <Button variant="booking" onClick={() => setBooked(true)}>{booked ? "Request sent" : "Rent now"}</Button>
       </footer>

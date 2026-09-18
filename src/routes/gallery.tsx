@@ -36,21 +36,21 @@ type GalleryCar = {
 };
 
 const galleryCars: GalleryCar[] = [
-  { name: "Rolls Royce Sedan", type: "Ultra Luxury Sedan", speed: "250 km/h", seats: "4 seats", transmission: "Automatic", price: 245000, image: galleryRollsRoyceWhite.url },
+  { name: "Rolls Royce Sedan White", type: "Ultra Luxury Sedan", speed: "250 km/h", seats: "4 seats", transmission: "Automatic", price: 200000, image: galleryRollsRoyceWhite.url },
   { name: "Bentley Convertible Black", type: "Convertible", speed: "333 km/h", seats: "4 seats", transmission: "Automatic", price: 75000, image: galleryBentleyBlack.url },
-  { name: "Mercedes Maybach", type: "Luxury Sedan", speed: "250 km/h", seats: "4 seats", transmission: "Automatic", price: 50000, image: galleryMaybach.url },
-  { name: "Range Rover Convertible Sport Red", type: "Convertible SUV", speed: "209 km/h", seats: "4 seats", transmission: "Automatic", price: 80000, image: galleryRangeRoverRed.url },
-  { name: "Gwagon", type: "Luxury SUV", speed: "210 km/h", seats: "5 seats", transmission: "Automatic", price: 110000, image: galleryGwagon.url },
-  { name: "Defender", type: "Luxury SUV", speed: "191 km/h", seats: "5 seats", transmission: "Automatic", price: 52000, image: galleryDefender.url },
-  { name: "Hummee H2", type: "SUV", speed: "160 km/h", seats: "5 seats", transmission: "Automatic", price: 50000, image: galleryHummer.url },
+  { name: "Mercedes Maybach White", type: "Luxury Sedan", speed: "250 km/h", seats: "4 seats", transmission: "Automatic", price: 40000, image: galleryMaybach.url },
+  { name: "Range Rover Convertible Sport Red", type: "Convertible SUV", speed: "209 km/h", seats: "4 seats", transmission: "Automatic", price: 75000, image: galleryRangeRoverRed.url },
+  { name: "Gwagon White", type: "Luxury SUV", speed: "210 km/h", seats: "5 seats", transmission: "Automatic", price: 90000, image: galleryGwagon.url },
+  { name: "Defender White", type: "Luxury SUV", speed: "191 km/h", seats: "5 seats", transmission: "Automatic", price: 45000, image: galleryDefender.url },
+  { name: "Hummee H2 White", type: "SUV", speed: "160 km/h", seats: "5 seats", transmission: "Automatic", price: 48000, image: galleryHummer.url },
   { name: "Porche Taycon Turbo", type: "Electric Sports Sedan", speed: "260 km/h", seats: "4 seats", transmission: "Automatic", price: 150000, image: galleryTaycanBlue.url },
-  { name: "Mustang GT", type: "Muscle Coupe", speed: "250 km/h", seats: "4 seats", transmission: "Automatic", price: 90000, image: galleryMustangRed.url },
-  { name: "Bmw Convertible White", type: "Convertible", speed: "250 km/h", seats: "4 seats", transmission: "Automatic", price: 24000, image: galleryBmwFront.url },
-  { name: "Bmw 5 Series", type: "Luxury Sedan", speed: "250 km/h", seats: "5 seats", transmission: "Automatic", price: 15000, image: galleryBmwSide.url },
-  { name: "Audi A4", type: "Luxury Sedan", speed: "241 km/h", seats: "5 seats", transmission: "Automatic", price: 11000, image: galleryAudiWhite.url },
-  { name: "Jaguar Xf", type: "Luxury Sedan", speed: "250 km/h", seats: "5 seats", transmission: "Automatic", price: 15000, image: galleryJaguarXf.url },
-  { name: "Mini Cooper Convertible Red", type: "Convertible", speed: "228 km/h", seats: "4 seats", transmission: "Automatic", price: 18000, image: galleryMiniRed.url },
-  { name: "Vintages", type: "Vintage Classic", speed: "120 km/h", seats: "4 seats", transmission: "Manual", price: 21000, image: galleryVintageRed.url },
+  { name: "Mustang GT Red", type: "Muscle Coupe", speed: "250 km/h", seats: "4 seats", transmission: "Automatic", price: 90000, image: galleryMustangRed.url },
+  { name: "Bmw Convertible White", type: "Convertible", speed: "250 km/h", seats: "4 seats", transmission: "Automatic", price: 20000, image: galleryBmwFront.url },
+  { name: "Bmw 5 Series White", type: "Luxury Sedan", speed: "250 km/h", seats: "5 seats", transmission: "Automatic", price: 12000, image: galleryBmwSide.url },
+  { name: "Audi A4 White", type: "Luxury Sedan", speed: "241 km/h", seats: "5 seats", transmission: "Automatic", price: 7000, image: galleryAudiWhite.url },
+  { name: "Jaguar Xf White", type: "Luxury Sedan", speed: "250 km/h", seats: "5 seats", transmission: "Automatic", price: 13000, image: galleryJaguarXf.url },
+  { name: "Mini Cooper Convertible Red", type: "Convertible", speed: "228 km/h", seats: "4 seats", transmission: "Automatic", price: 15000, image: galleryMiniRed.url },
+  { name: "Vintages White", type: "Vintage Classic", speed: "120 km/h", seats: "4 seats", transmission: "Manual", price: 21000, image: galleryVintageRed.url },
 ];
 
 const bookingLink = (car: GalleryCar) =>
