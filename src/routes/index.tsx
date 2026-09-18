@@ -231,7 +231,7 @@ function Header() {
           <button className="flex h-9 w-9 items-center justify-center rounded-full bg-foreground text-background md:hidden" onClick={() => setOpen(!open)} aria-label="Toggle navigation" aria-expanded={open}>{open ? <X size={19} /> : <Menu size={19} />}</button>
         </div>
       </div>
-      {open && <nav className="border-t border-border bg-background px-5 py-4 md:hidden">{navItems.map((item) => <a key={item.label} href={item.href} className="block border-b border-border py-3 text-sm font-bold" onClick={() => setOpen(false)}>{item.label}</a>)}</nav>}
+      {open && <nav className="border-t border-border bg-background px-5 py-4 md:hidden" aria-label="Mobile navigation">{navItems.map((item) => <Link key={item.label} to={item.to} resetScroll className="block border-b border-border py-3 text-sm font-bold" onClick={() => { setOpen(false); scrollTop(); }}>{item.label}</Link>)}</nav>}
     </header>
   );
 }
