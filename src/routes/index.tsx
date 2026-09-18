@@ -447,51 +447,38 @@ function UserFeedback() {
 }
 
 function Footer() {
-  const serviceAreas = ["Delhi", "Noida", "Gurugram", "Ghaziabad", "Faridabad", "Panipat", "Sonipat", "Karnal", "Meerut", "Agra"];
+  const policies = [
+    "Once a booking is confirmed, it cannot be cancelled.",
+    "Advance payment is required for every booking.",
+    "Extra charges apply only when the ride exceeds the time or distance agreed in the booking.",
+    "On self-drive rentals, the customer pays all damage charges.",
+    "When our driver is included, any damage responsibility is ours.",
+  ];
   return (
     <footer className="relative overflow-hidden bg-foreground text-background">
       <div className="pointer-events-none absolute -right-10 top-10 select-none font-display text-[160px] font-black leading-none text-background/[0.03] sm:text-[260px]">✦</div>
-      <div className="relative mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
-          <div className="flex flex-col">
-            <img src={brandLogo} width={1536} height={768} loading="lazy" alt={`${BRAND} logo`} className="h-14 w-auto self-start brightness-0 invert sm:h-16" />
-            <p className="mt-5 max-w-xs text-xs leading-6 text-footer-muted">Luxury car rental for weddings, photoshoots, corporate travel and airport transfers across Delhi NCR, Haryana & Uttar Pradesh. 100+ premium cars, 7+ years of experience.</p>
-            <div className="mt-6 flex gap-2.5">
-              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white transition-transform hover:scale-110"><WhatsAppIcon className="size-[18px]" /></a>
-              <a href={PHONE_LINK} aria-label="Call" className="flex h-10 w-10 items-center justify-center rounded-full bg-[#34A853] text-white transition-transform hover:scale-110"><PhoneIcon className="size-[18px]" /></a>
-              <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1877F2] text-white transition-transform hover:scale-110"><FacebookIcon className="size-[18px]" /></a>
-              <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#FEDA75] via-[#D62976] to-[#4F5BD5] text-white transition-transform hover:scale-110"><InstagramIcon className="size-[18px]" /></a>
-              <a href={GOOGLE_PROFILE} target="_blank" rel="noopener noreferrer" aria-label="Google profile" className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-white ring-1 ring-black/10 transition-transform hover:scale-110"><GoogleIcon className="size-[18px]" /></a>
-            </div>
-          </div>
-          <div>
-            <h3 className="mb-5 text-[11px] font-bold uppercase tracking-wider text-primary">Contact</h3>
-            <ul className="space-y-4 text-xs text-footer-muted">
-              <li><a href={PHONE_LINK} className="flex items-center gap-2 transition-colors hover:text-primary"><Phone size={14} className="text-primary" /> {PHONE_DISPLAY}</a></li>
-              <li><a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-primary">WhatsApp us</a></li>
-              <li><a href={MAP_LINK} target="_blank" rel="noopener noreferrer" className="leading-6 transition-colors hover:text-primary">{ADDRESS}</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="mb-5 text-[11px] font-bold uppercase tracking-wider text-primary">Rental Package</h3>
-            <ul className="space-y-3 text-xs leading-6 text-footer-muted">
-              <li>Timing: 13 hours</li>
-              <li>Fuel, driver, decoration & toll included</li>
-              <li>Extra km depends on car</li>
-              <li>Extra timing depends on car</li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="mb-5 text-[11px] font-bold uppercase tracking-wider text-primary">Service Areas</h3>
-            <ul className="flex flex-wrap gap-2">
-              {serviceAreas.map((area) => <li key={area} className="rounded-full border border-footer-line px-3 py-1 text-[11px] text-footer-muted">{area}</li>)}
-            </ul>
-          </div>
+      <div className="relative mx-auto max-w-3xl px-5 py-14 text-center md:px-8 md:py-16">
+        <img src={brandLogo} width={1536} height={768} loading="lazy" alt={`${BRAND} logo`} className="mx-auto h-28 w-auto brightness-0 invert sm:h-32" />
+        <p className="mx-auto mt-6 max-w-xl text-xs leading-6 text-footer-muted sm:text-sm sm:leading-7">
+          {BRAND} provides premium luxury car rental for weddings, pre-wedding shoots, corporate travel, airport transfers and family occasions. We proudly serve Delhi, Noida, Gurugram, Ghaziabad, Faridabad, Panipat, Sonipat, Karnal, Meerut, Agra and nearby areas of NCR, Haryana and Uttar Pradesh.
+        </p>
+        <div className="mt-7 flex justify-center gap-3">
+          <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex h-11 w-11 items-center justify-center rounded-full bg-[#25D366] text-white transition-transform hover:scale-110"><WhatsAppIcon className="size-5" /></a>
+          <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex h-11 w-11 items-center justify-center rounded-full bg-[#1877F2] text-white transition-transform hover:scale-110"><FacebookIcon className="size-5" /></a>
+          <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-[#FEDA75] via-[#D62976] to-[#4F5BD5] text-white transition-transform hover:scale-110"><InstagramIcon className="size-5" /></a>
+          <a href={GOOGLE_PROFILE} target="_blank" rel="noopener noreferrer" aria-label="Google profile" className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-white ring-1 ring-black/10 transition-transform hover:scale-110"><GoogleIcon className="size-5" /></a>
         </div>
-        <div className="mt-12 flex flex-col gap-5 border-t border-footer-line pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <span className="text-[11px] text-footer-muted">All rights reserved © {BRAND} 2026</span>
-          <ContactOptionsDialog footer />
-          <span className="text-[11px] text-footer-muted sm:text-right">Privacy Policy&nbsp;&nbsp;|&nbsp;&nbsp;Terms & Conditions</span>
+        <p className="mt-8 text-[11px] text-footer-muted">All rights reserved © {BRAND} 2026</p>
+        <div className="mt-6 border-y border-footer-line py-6">
+          <p className="text-[11px] font-bold uppercase tracking-widest text-primary">Privacy Policy & Terms & Conditions</p>
+          <ul className="mx-auto mt-4 max-w-xl space-y-2.5 text-left text-xs leading-6 text-primary">
+            {policies.map((policy) => (
+              <li key={policy} className="flex items-start gap-2.5">
+                <span className="mt-2 h-1 w-4 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                <span>{policy}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </footer>
