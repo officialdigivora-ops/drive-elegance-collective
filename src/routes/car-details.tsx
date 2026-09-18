@@ -64,10 +64,10 @@ function CarDetails() {
   const current = photos[photo] ?? photos[0]!;
 
   return (
-    <main className="min-h-screen w-full bg-background pb-24">
+    <main className="min-h-screen w-full bg-background pb-[68px]">
       <SitePageHeader title="Car Details" />
 
-      <div className="mx-auto w-full max-w-[420px] shadow-page sm:my-4 sm:overflow-hidden sm:rounded-[1rem]">
+      <div className="mx-auto w-full max-w-[420px] shadow-page sm:my-3 sm:overflow-hidden sm:rounded-[1rem]">
         <section className="relative h-[230px] overflow-hidden bg-gallery" aria-label={`${car.name} photos`}>
           {photos.map((item, index) => (
             <img
@@ -106,7 +106,7 @@ function CarDetails() {
           )}
         </section>
 
-        <div className="px-4 pb-5 pt-3">
+        <div className="px-4 pb-2 pt-3">
           <section>
             <h2 className="text-[1.35rem] font-semibold leading-tight">{car.name}</h2>
             <p className="mt-0.5 text-xs text-muted-foreground">{car.category}</p>

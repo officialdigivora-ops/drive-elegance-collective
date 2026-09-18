@@ -132,10 +132,10 @@ function BookingPage() {
                       aria-checked={active}
                       onClick={() => setSelectedCar(car)}
                       className={cn(
-                        "relative w-44 shrink-0 snap-start rounded-2xl border-2 p-3 text-left transition-all duration-300",
+                        "relative w-44 shrink-0 snap-start rounded-2xl border-2 p-3 text-left shadow-none transition-colors duration-200",
                         active
-                          ? "border-primary bg-primary/15 shadow-lg shadow-primary/30 -translate-y-0.5"
-                          : "border-warm-line bg-background hover:-translate-y-0.5 hover:border-primary/50",
+                          ? "border-primary bg-primary/10"
+                          : "border-warm-line bg-background hover:border-primary/50",
                       )}
                     >
                       {active && (
