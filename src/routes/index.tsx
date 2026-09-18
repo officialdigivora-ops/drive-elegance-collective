@@ -126,7 +126,6 @@ export const Route = createFileRoute("/")({
 const navItems = [
   { label: "Fleet", href: "#fleet" },
   { label: "Our Fleet", href: "/fleet" },
-  { label: "Gallery", href: "/gallery" },
   { label: "Car Details", href: "/car-details" },
   { label: "Contact Us", href: "/contact" },
   { label: "Feedback", href: "#feedback" },
@@ -301,7 +300,21 @@ function BrandStrip() {
     { name: "Hummer", image: hummerLogo.url },
   ];
 
-  return <section className="bg-surface pb-8 md:pb-10" aria-label="Vehicle brands"><div className="no-scrollbar mx-auto flex max-w-6xl items-center gap-3 overflow-x-auto px-5 py-3 md:justify-between md:gap-4 md:px-8">{brands.map((brand) => <div key={brand.name} className="flex h-12 min-w-20 shrink-0 items-center justify-center rounded-xl bg-white px-3 shadow-[0_1px_4px_rgba(0,0,0,0.05)]" title={brand.name}><img src={brand.image} alt={`${brand.name} logo`} loading="lazy" className="max-h-7 w-auto max-w-20 object-contain sm:max-h-8" /></div>)}</div></section>;
+  return (
+    <section className="brand-marquee bg-background py-4" aria-label="Vehicle brands">
+      <div className="brand-marquee-track">
+        {[0, 1].map((copy) => (
+          <div key={copy} className="brand-marquee-group" aria-hidden={copy === 1}>
+            {brands.map((brand) => (
+              <div key={`${copy}-${brand.name}`} className="flex h-14 w-32 shrink-0 items-center justify-center rounded-xl bg-white px-4 shadow-[0_1px_4px_color-mix(in_oklab,var(--foreground)_8%,transparent)] sm:h-16 sm:w-40" title={brand.name}>
+                <img src={brand.image} alt={copy === 0 ? `${brand.name} logo` : ""} loading="lazy" className="max-h-9 w-auto max-w-24 object-contain sm:max-h-10 sm:max-w-28" />
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }
 
 const feedback = [
