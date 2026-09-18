@@ -24,9 +24,9 @@ import mercedesConvertibleRed from "../assets/fleet/mercedes-convertible-red.png
 import mercedesEClass from "../assets/fleet/mercedes-e-class-white.png";
 import miniRed from "../assets/fleet/mini-cooper-convertible-red.png";
 import mustangRed from "../assets/fleet/mustang-gt-red.png";
-import rangeRoverRed from "../assets/fleet/range-rover-sport-red.png";
-import rangeRoverSport from "../assets/fleet/range-rover-sport.png";
-import rangeRoverVelar from "../assets/fleet/range-rover-velar-white.png";
+import rangeRoverEvoqueRed from "../assets/fleet/range-rover-evoque-convertible-red.png";
+import rangeRoverSport from "../assets/fleet/range-rover-sport-sv-white.png";
+import rangeRoverVelar from "../assets/fleet/range-rover-velar-autobiography-white.png";
 import rollsRoyce from "../assets/fleet/rolls-royce-ghost.png";
 import vintage from "../assets/fleet/vintage-luxury-white.png";
 
@@ -68,7 +68,7 @@ const cars = [
   ["Gwagon White", "Luxury SUV", gwagon, 90000],
   ["Audi A4 White", "Executive Sedan", audiA4, 7000],
   ["Limousine Long New White", "Luxury Limousine", limousine, 18000],
-  ["Range Rover Convertible Sport Red", "Convertible SUV", rangeRoverRed, 75000],
+  ["Range Rover Evoque Convertible Red", "Convertible SUV", rangeRoverEvoqueRed, 75000],
   ["Bmw Convertible White", "Convertible", bmwConvertible, 20000],
   ["Audi A3 Convertible Red", "Convertible", audiA3Red, 18000],
   ["Mustang GT Red", "Sports Coupe", mustangRed, 90000],

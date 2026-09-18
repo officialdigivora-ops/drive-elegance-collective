@@ -54,9 +54,9 @@ import mercedesEClass from "../assets/fleet/mercedes-e-class-white.png";
 import mercedesGWagon from "../assets/fleet/mercedes-g-wagon-white.png";
 import mercedesMaybach from "../assets/fleet/mercedes-maybach-white.png";
 import miniCooperConvertibleRed from "../assets/fleet/mini-cooper-convertible-red.png";
-import rangeRoverSportRed from "../assets/fleet/range-rover-sport-red.png";
-import rangeRoverSportWhite from "../assets/fleet/range-rover-sport.png";
-import rangeRoverVelar from "../assets/fleet/range-rover-velar-white.png";
+import rangeRoverEvoqueConvertibleRed from "../assets/fleet/range-rover-evoque-convertible-red.png";
+import rangeRoverSportWhite from "../assets/fleet/range-rover-sport-sv-white.png";
+import rangeRoverVelar from "../assets/fleet/range-rover-velar-autobiography-white.png";
 import rollsRoyceGhost from "../assets/fleet/rolls-royce-ghost.png";
 import toyotaFortuner from "../assets/fleet/toyota-fortuner.png";
 import limousineLongNew from "../assets/fleet/limousine-long-new-white.png";
@@ -194,7 +194,7 @@ const cars: [Car, ...Car[]] = [
   { name:"Gwagon White", type:"SUV", speed:"210 km/h", seats:"5 seats", airbags:"9 airbags", transmission:"9-speed Automatic", price:90000, image:mercedesGWagon },
   { name:"Audi A4 White", type:"Sedan", speed:"250 km/h", seats:"5 seats", airbags:"8 airbags", transmission:"7-speed Automatic", price:7000, image:audiA4 },
   { name:"Limousine Long New White", type:"Luxury Limousine", speed:"180 km/h", seats:"8 seats", airbags:"6 airbags", transmission:"9-speed Automatic", price:18000, image:limousineLongNew },
-  { name:"Range Rover Convertible Sport Red", type:"SUV", speed:"250 km/h", seats:"5 seats", airbags:"8 airbags", transmission:"8-speed Automatic", price:75000, image:rangeRoverSportRed },
+  { name:"Range Rover Evoque Convertible Red", type:"Convertible SUV", speed:"209 km/h", seats:"4 seats", airbags:"7 airbags", transmission:"9-speed Automatic", price:75000, image:rangeRoverEvoqueConvertibleRed },
   { name:"Bmw Convertible White", type:"Convertible", speed:"250 km/h", seats:"4 seats", airbags:"6 airbags", transmission:"8-speed Automatic", price:20000, image:bmwConvertibleWhite },
   { name:"Audi A3 Convertible Red", type:"Convertible", speed:"220 km/h", seats:"4 seats", airbags:"6 airbags", transmission:"7-speed Automatic", price:18000, image:audiA3Convertible },
   { name:"Mustang GT Red", type:"Sports Coupe", speed:"250 km/h", seats:"4 seats", airbags:"8 airbags", transmission:"6-speed Manual", price:90000, image:mustangGt },

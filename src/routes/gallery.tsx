@@ -39,7 +39,7 @@ const galleryCars: GalleryCar[] = [
   { name: "Rolls Royce Sedan White", type: "Ultra Luxury Sedan", speed: "250 km/h", seats: "4 seats", transmission: "Automatic", price: 200000, image: galleryRollsRoyceWhite.url },
   { name: "Bentley Convertible Black", type: "Convertible", speed: "333 km/h", seats: "4 seats", transmission: "Automatic", price: 75000, image: galleryBentleyBlack.url },
   { name: "Mercedes Maybach White", type: "Luxury Sedan", speed: "250 km/h", seats: "4 seats", transmission: "Automatic", price: 40000, image: galleryMaybach.url },
-  { name: "Range Rover Convertible Sport Red", type: "Convertible SUV", speed: "209 km/h", seats: "4 seats", transmission: "Automatic", price: 75000, image: galleryRangeRoverRed.url },
+  { name: "Range Rover Evoque Convertible Red", type: "Convertible SUV", speed: "209 km/h", seats: "4 seats", transmission: "Automatic", price: 75000, image: galleryRangeRoverRed.url },
   { name: "Gwagon White", type: "Luxury SUV", speed: "210 km/h", seats: "5 seats", transmission: "Automatic", price: 90000, image: galleryGwagon.url },
   { name: "Defender White", type: "Luxury SUV", speed: "191 km/h", seats: "5 seats", transmission: "Automatic", price: 45000, image: galleryDefender.url },
   { name: "Hummee H2 White", type: "SUV", speed: "160 km/h", seats: "5 seats", transmission: "Automatic", price: 48000, image: galleryHummer.url },
