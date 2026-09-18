@@ -219,7 +219,7 @@ function Header() {
     <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-lg">
       <div className="mx-auto grid h-16 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 md:grid-cols-3 md:px-8">
         <Link to="/" resetScroll onClick={scrollTop} className="flex items-center gap-2" aria-label={`${BRAND} home`}>
-          <img src={brandLogo} width={1536} height={768} alt={`${BRAND} logo`} className="h-12 w-auto sm:h-14" />
+          <img src={brandLogo} width={1000} height={500} alt={`${BRAND} logo`} className="h-12 w-auto sm:h-14" />
           <span className="sr-only">{BRAND}</span>
         </Link>
         <nav className="hidden items-center justify-center gap-8 text-sm font-semibold md:flex" aria-label="Primary navigation">
@@ -245,7 +245,7 @@ function Hero() {
       <div className="relative mt-1 h-[270px] sm:h-[380px] md:h-[500px] lg:h-[540px]">
         <div className="absolute inset-x-0 bottom-0 h-[62%] bg-primary [clip-path:polygon(0_22%,100%_0,100%_100%,0_100%)]" />
         <span className="spark absolute right-[8%] top-[20%] z-10 text-primary">✦</span>
-        <img src={yellowBentley} width={1536} height={768} alt="Yellow Bentley Continental GT luxury coupe" className="absolute left-1/2 top-1/2 z-10 w-[104%] max-w-[68rem] -translate-x-1/2 -translate-y-[44%] object-contain" />
+        <img src={yellowBentley} width={1000} height={500} alt="Yellow Bentley Continental GT luxury coupe" fetchPriority="high" decoding="async" className="absolute left-1/2 top-1/2 z-10 w-[104%] max-w-[68rem] -translate-x-1/2 -translate-y-[44%] object-contain" />
       </div>
     </section>
   );
@@ -294,7 +294,7 @@ function CarImage({ car, position, direction }: { car: Car; position: "previous"
   return (
     <div className={`fleet-car fleet-car--${position} fleet-car--moving-${direction > 0 ? "forward" : "back"}`} aria-hidden={position !== "active"}>
       <div className="fleet-car-shadow" />
-      <img src={car.image} alt={position === "active" ? `${car.name}, ${car.type}` : ""} className="fleet-car-image" loading="lazy" width={1264} height={848} draggable={false} />
+      <img src={car.image} alt={position === "active" ? `${car.name}, ${car.type}` : ""} className="fleet-car-image" loading="lazy" decoding="async" width={1000} height={671} draggable={false} />
     </div>
   );
 }
@@ -389,7 +389,7 @@ function BrandStrip() {
           <div key={copy} className="brand-marquee-group" aria-hidden={copy === 1}>
             {brands.map((brand) => (
               <div key={`${copy}-${brand.name}`} className="flex h-14 w-32 shrink-0 items-center justify-center rounded-xl bg-white px-4 shadow-[0_1px_4px_color-mix(in_oklab,var(--foreground)_8%,transparent)] sm:h-16 sm:w-40" title={brand.name}>
-                <img src={brand.image} alt={copy === 0 ? `${brand.name} logo` : ""} loading="lazy" className="max-h-9 w-auto max-w-24 object-contain sm:max-h-10 sm:max-w-28" />
+                <img src={brand.image} alt={copy === 0 ? `${brand.name} logo` : ""} loading="lazy" decoding="async" className="max-h-9 w-auto max-w-24 object-contain sm:max-h-10 sm:max-w-28" />
               </div>
             ))}
           </div>
@@ -473,7 +473,7 @@ function Footer() {
     <footer className="relative overflow-hidden bg-foreground text-background">
       <div className="pointer-events-none absolute -right-10 top-10 select-none font-display text-[160px] font-black leading-none text-background/[0.03] sm:text-[260px]">✦</div>
       <div className="relative mx-auto max-w-3xl px-5 py-8 text-center md:px-8 md:py-10">
-        <img src={brandLogo} width={1536} height={768} loading="lazy" alt={`${BRAND} logo`} className="mx-auto h-24 w-auto brightness-0 invert sm:h-28" />
+        <img src={brandLogo} width={1000} height={500} loading="lazy" decoding="async" alt={`${BRAND} logo`} className="mx-auto h-24 w-auto brightness-0 invert sm:h-28" />
         <p className="mx-auto mt-5 max-w-xl text-xs leading-6 text-footer-muted sm:text-sm sm:leading-7">
           {BRAND} provides premium luxury car rental for weddings, pre-wedding shoots, corporate travel, airport transfers and family occasions. We proudly serve Delhi, Noida, Gurugram, Ghaziabad, Faridabad, Panipat, Sonipat, Karnal, Meerut, Agra and nearby areas of NCR, Haryana and Uttar Pradesh.
         </p>
