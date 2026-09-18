@@ -447,38 +447,25 @@ function UserFeedback() {
 }
 
 function Footer() {
-  const policies = [
-    "Once a booking is confirmed, it cannot be cancelled.",
-    "Advance payment is required for every booking.",
-    "Extra charges apply only when the ride exceeds the time or distance agreed in the booking.",
-    "On self-drive rentals, the customer pays all damage charges.",
-    "When our driver is included, any damage responsibility is ours.",
-  ];
   return (
     <footer className="relative overflow-hidden bg-foreground text-background">
       <div className="pointer-events-none absolute -right-10 top-10 select-none font-display text-[160px] font-black leading-none text-background/[0.03] sm:text-[260px]">✦</div>
-      <div className="relative mx-auto max-w-3xl px-5 py-14 text-center md:px-8 md:py-16">
-        <img src={brandLogo} width={1536} height={768} loading="lazy" alt={`${BRAND} logo`} className="mx-auto h-28 w-auto brightness-0 invert sm:h-32" />
-        <p className="mx-auto mt-6 max-w-xl text-xs leading-6 text-footer-muted sm:text-sm sm:leading-7">
+      <div className="relative mx-auto max-w-3xl px-5 py-10 text-center md:px-8 md:py-12">
+        <img src={brandLogo} width={1536} height={768} loading="lazy" alt={`${BRAND} logo`} className="mx-auto h-24 w-auto brightness-0 invert sm:h-28" />
+        <p className="mx-auto mt-5 max-w-xl text-xs leading-6 text-footer-muted sm:text-sm sm:leading-7">
           {BRAND} provides premium luxury car rental for weddings, pre-wedding shoots, corporate travel, airport transfers and family occasions. We proudly serve Delhi, Noida, Gurugram, Ghaziabad, Faridabad, Panipat, Sonipat, Karnal, Meerut, Agra and nearby areas of NCR, Haryana and Uttar Pradesh.
         </p>
-        <div className="mt-7 flex justify-center gap-3">
+        <div className="mt-6 flex justify-center gap-3">
           <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex h-11 w-11 items-center justify-center rounded-full bg-[#25D366] text-white transition-transform hover:scale-110"><WhatsAppIcon className="size-5" /></a>
           <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex h-11 w-11 items-center justify-center rounded-full bg-[#1877F2] text-white transition-transform hover:scale-110"><FacebookIcon className="size-5" /></a>
           <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-[#FEDA75] via-[#D62976] to-[#4F5BD5] text-white transition-transform hover:scale-110"><InstagramIcon className="size-5" /></a>
           <a href={GOOGLE_PROFILE} target="_blank" rel="noopener noreferrer" aria-label="Google profile" className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-white ring-1 ring-black/10 transition-transform hover:scale-110"><GoogleIcon className="size-5" /></a>
         </div>
-        <p className="mt-8 text-[11px] text-footer-muted">All rights reserved © {BRAND} 2026</p>
-        <div className="mt-6 border-y border-footer-line py-6">
-          <p className="text-[11px] font-bold uppercase tracking-widest text-primary">Privacy Policy & Terms & Conditions</p>
-          <ul className="mx-auto mt-4 max-w-xl space-y-2.5 text-left text-xs leading-6 text-primary">
-            {policies.map((policy) => (
-              <li key={policy} className="flex items-start gap-2.5">
-                <span className="mt-2 h-1 w-4 shrink-0 rounded-full bg-primary" aria-hidden="true" />
-                <span>{policy}</span>
-              </li>
-            ))}
-          </ul>
+        <p className="mt-6 text-[11px] text-footer-muted">All rights reserved © {BRAND} 2026</p>
+        <div className="mt-4 flex items-center justify-center gap-4 border-t border-footer-line pt-4">
+          <Link to="/policies" className="text-[11px] font-bold uppercase tracking-widest text-primary underline decoration-black underline-offset-4 transition-opacity hover:opacity-80">Privacy Policy</Link>
+          <span className="h-3 w-px bg-footer-line" aria-hidden="true" />
+          <Link to="/policies" className="text-[11px] font-bold uppercase tracking-widest text-primary underline decoration-black underline-offset-4 transition-opacity hover:opacity-80">Terms & Conditions</Link>
         </div>
       </div>
     </footer>
