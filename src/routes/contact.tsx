@@ -97,7 +97,7 @@ function BookingPage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl items-start gap-7 px-4 py-6 sm:px-7 sm:py-10 lg:grid-cols-[1.35fr_0.65fr] lg:px-10">
+      <section className="mx-auto grid max-w-6xl items-start gap-6 px-4 py-5 sm:px-7 sm:py-8 lg:grid-cols-[1.35fr_0.65fr] lg:px-10">
         <form onSubmit={handleSubmit} className="rounded-md border border-warm-line bg-card p-4 shadow-lg shadow-foreground/5 sm:p-6">
           <div className="mb-5 flex items-center gap-3 border-b border-warm-line pb-4">
             <MercedesStarIcon className="size-9 shrink-0 text-foreground" />
@@ -132,10 +132,10 @@ function BookingPage() {
                       aria-checked={active}
                       onClick={() => setSelectedCar(car)}
                       className={cn(
-                        "relative w-44 shrink-0 snap-start rounded-2xl border-2 p-3 text-left transition-all duration-300",
+                        "relative w-44 shrink-0 snap-start rounded-2xl border-2 p-3 text-left shadow-none transition-colors duration-200",
                         active
-                          ? "border-primary bg-primary/15 shadow-lg shadow-primary/30 -translate-y-0.5"
-                          : "border-warm-line bg-background hover:-translate-y-0.5 hover:border-primary/50",
+                          ? "border-primary bg-primary/10"
+                          : "border-warm-line bg-background hover:border-primary/50",
                       )}
                     >
                       {active && (
