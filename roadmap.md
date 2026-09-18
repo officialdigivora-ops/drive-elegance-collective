@@ -20,7 +20,7 @@
 - [x] Remove the Gallery page and its navigation link.
 
 # Latest Hostinger package
-- [ ] Export the current Home, Fleet, Book Now, Car Details, and Policies pages.
-- [ ] Bundle every CDN image locally so logos and photo sliders work on Hostinger.
-- [ ] Verify Home and Fleet Rent Now messages and the Book Now form.
-- [ ] Package and inspect a new versioned Hostinger ZIP.
+- [x] Export the current Home, Fleet, Book Now, Car Details, and Policies pages.
+- [x] Bundle every CDN image locally so logos and photo sliders work on Hostinger.
+- [x] Verify Home and Fleet Rent Now messages and the Book Now form.
+- [x] Package and inspect a new versioned Hostinger ZIP.
