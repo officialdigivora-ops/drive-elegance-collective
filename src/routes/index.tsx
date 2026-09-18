@@ -377,23 +377,70 @@ function BrandStrip() {
   );
 }
 
-const feedback = [
-  { quote: "The car arrived spotless and exactly on time. The whole experience felt effortless.", name: "Aarav Mehta", detail: "Mercedes Convertible" },
-  { quote: "Professional service, excellent cars, and clear pricing. I would happily book again.", name: "Riya Kapoor", detail: "Range Rover Sport" },
-  { quote: "Our event journey was handled perfectly from pickup to return. Truly premium service.", name: "Kabir Sharma", detail: "Bentley Convertible" },
+const feedbackRows = [
+  [
+    { quote: "Booked the G-Wagon for my wedding in Panipat. Car was spotless, driver bhaiya was very polite. Highly recommended.", name: "Rohit Chaudhary", detail: "G-Wagon · Panipat, Haryana" },
+    { quote: "Mercedes convertible for our Delhi sangeet — arrived on time, decorated beautifully. Guests kept asking where we got it.", name: "Simran Kaur", detail: "Mercedes Convertible · Delhi" },
+    { quote: "Used the Fortuner for a family trip from Noida. Fair pricing, no hidden charges, fuel included as promised.", name: "Amit Tomar", detail: "Fortuner Legender · Noida, UP" },
+    { quote: "Booked Audi A6 for airport pickup of my in-laws in Gurugram. Driver was already waiting before we landed. Very professional.", name: "Neha Rathi", detail: "Audi A6 · Gurugram, Haryana" },
+    { quote: "Vintage car for my grandfather's 80th birthday in Karnal. He was so happy. Team handled everything patiently.", name: "Vikas Saini", detail: "Vintage Car · Karnal, Haryana" },
+    { quote: "Range Rover Sport for a corporate shoot in Delhi. Clean car, punctual service, smooth booking on WhatsApp.", name: "Arjun Malhotra", detail: "Range Rover Sport · Delhi" },
+  ],
+  [
+    { quote: "Rolls Royce for our wedding entry in Ghaziabad — honestly the best decision. Decoration and driver both were perfect.", name: "Pooja & Sahil Verma", detail: "Rolls Royce · Ghaziabad, UP" },
+    { quote: "Verna for daily use from Sonipat at a very genuine price. Car was well maintained and delivery was on time.", name: "Deepak Hooda", detail: "Verna · Sonipat, Haryana" },
+    { quote: "Bentley convertible red for a music video shoot. Stunning car, flexible timing, team adjusted everything around our schedule.", name: "Karan Ahuja", detail: "Bentley Convertible · Delhi" },
+    { quote: "Booked BMW 5 Series for a client visit in Faridabad. Good experience, driver knew all routes well.", name: "Ritu Aggarwal", detail: "BMW 5 Series · Faridabad, Haryana" },
+    { quote: "Limousine for my daughter's birthday in Delhi — she felt like a celebrity! Interior was gorgeous. Thank you team.", name: "Manoj Bansal", detail: "Limousine · Delhi" },
+    { quote: "Defender for an off-road weekend from Gurugram. Powerful car in top condition. Booking took two minutes on WhatsApp.", name: "Sahil Rana", detail: "Defender · Gurugram, Haryana" },
+  ],
+  [
+    { quote: "Mercedes Maybach for our anniversary dinner in Delhi. Chauffeur in proper uniform, car smelled fresh. Pure luxury.", name: "Ankit & Shweta Gupta", detail: "Mercedes Maybach · Delhi" },
+    { quote: "Mustang GT for my pre-wedding shoot in Meerut. Head-turner! Photographer said it's the best car he's shot.", name: "Yash Chauhan", detail: "Mustang GT · Meerut, UP" },
+    { quote: "Hummer H2 for baraat in Panipat — full paisa vasool. Driver managed the crowd very well. Booked again for my brother.", name: "Gaurav Malik", detail: "Hummer H2 · Panipat, Haryana" },
+    { quote: "Audi Q7 for family airport run from Agra. 7 seater, lots of luggage space, comfortable ride throughout.", name: "Farhan Khan", detail: "Audi Q7 · Agra, UP" },
+    { quote: "Jaguar XJL for a business meeting in Noida. Client was impressed before the meeting even started. Worth it.", name: "Nikhil Sethi", detail: "Jaguar XJL · Noida, UP" },
+    { quote: "Mini Cooper convertible for a surprise date in Delhi. She said yes! Team helped with the flower decoration too.", name: "Aditya Kapoor", detail: "Mini Cooper Convertible · Delhi" },
+  ],
 ];
+
+function FeedbackCard({ item }: { item: { quote: string; name: string; detail: string } }) {
+  return (
+    <blockquote className="flex w-72 shrink-0 flex-col justify-between rounded-2xl bg-surface p-5 shadow-card sm:w-80">
+      <div>
+        <div className="text-sm text-primary" aria-label="5 out of 5 stars">★★★★★</div>
+        <p className="mt-3 text-sm font-medium leading-6">“{item.quote}”</p>
+      </div>
+      <footer className="mt-4 border-t border-border pt-3">
+        <strong className="block text-xs">{item.name}</strong>
+        <span className="mt-0.5 block text-[11px] text-muted-foreground">{item.detail}</span>
+      </footer>
+    </blockquote>
+  );
+}
 
 function UserFeedback() {
   return (
-    <section id="feedback" className="bg-primary py-14 sm:py-18 md:py-24">
+    <section id="feedback" className="bg-primary py-12 sm:py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div><p className="mb-4 text-xs font-bold uppercase">From our customers</p><h2 className="font-display text-4xl font-black leading-none sm:text-6xl">USER FEEDBACK</h2></div>
-          <div className="text-3xl" aria-hidden="true">✦</div>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div><p className="mb-3 text-xs font-bold uppercase">From our customers</p><h2 className="font-display text-3xl font-black leading-none sm:text-5xl">USER FEEDBACK</h2></div>
+          <div className="text-2xl" aria-hidden="true">✦</div>
         </div>
-        <div className="mt-8 grid gap-4 md:mt-10 md:grid-cols-3">
-          {feedback.map((item) => <blockquote key={item.name} className="flex min-h-64 flex-col justify-between rounded-2xl bg-surface p-7 shadow-card"><div><div className="text-lg text-primary" aria-label="5 out of 5 stars">★★★★★</div><p className="mt-6 text-lg font-semibold leading-8">“{item.quote}”</p></div><footer className="mt-8 border-t border-border pt-5"><strong className="block text-sm">{item.name}</strong><span className="mt-1 block text-xs text-muted-foreground">{item.detail}</span></footer></blockquote>)}
-        </div>
+      </div>
+      <div className="mt-8 space-y-4">
+        {feedbackRows.map((row, rowIndex) => (
+          <div key={rowIndex} className="brand-marquee" aria-label={rowIndex === 0 ? "Customer feedback" : undefined}>
+            <div className={`brand-marquee-track feedback-track ${rowIndex === 1 ? "feedback-track--reverse" : ""}`}>
+              <div className="brand-marquee-group gap-4 px-2">
+                {row.map((item) => <FeedbackCard key={item.name} item={item} />)}
+              </div>
+              <div className="brand-marquee-group gap-4 px-2" aria-hidden="true">
+                {row.map((item) => <FeedbackCard key={`dup-${item.name}`} item={item} />)}
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
