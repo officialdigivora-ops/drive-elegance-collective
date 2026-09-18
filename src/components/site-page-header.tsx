@@ -31,7 +31,7 @@ export function SitePageHeader({ title }: { title: string }) {
           ))}
         </nav>
       </div>
-      <nav className="grid grid-cols-3 border-t border-border sm:hidden" aria-label="Page navigation">
+      <nav className="grid grid-cols-3 sm:hidden" aria-label="Page navigation">
         {pageLinks.map((item) => (
           <Link
             key={item.to}
