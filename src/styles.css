@@ -45,6 +45,26 @@ button, a { cursor: pointer; }
 .spark { font-size: clamp(2.25rem, 5vw, 4.5rem); line-height: 1; }
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
+.brand-marquee {
+  width: 100%;
+  overflow: hidden;
+}
+.brand-marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: brand-marquee-scroll 75s linear infinite;
+}
+.brand-marquee-group {
+  display: flex;
+  flex: none;
+  gap: 0.75rem;
+  padding-right: 0.75rem;
+}
+@keyframes brand-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
 .map-pattern {
   background-color: var(--background);
   background-image: linear-gradient(30deg, transparent 48%, var(--border) 49%, var(--border) 51%, transparent 52%), linear-gradient(120deg, transparent 48%, var(--border) 49%, var(--border) 51%, transparent 52%);
@@ -221,7 +241,7 @@ button, a { cursor: pointer; }
   .fleet-car--next { transform: translate3d(30%, -50%, -80px) rotateY(-8deg) scale(.84); }
   .fleet-arrow { top: 88%; }
 }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } .gallery-flow { overflow-x: auto; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } .gallery-flow, .brand-marquee { overflow-x: auto; } }
 /* ---- Tokens & utilities for the Fleet, Car Details and Contact pages ---- */
 @theme inline {
   --color-card-foreground: var(--card-foreground);

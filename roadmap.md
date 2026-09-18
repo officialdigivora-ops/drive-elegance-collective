@@ -14,3 +14,8 @@
 - [x] Tighten excess vertical spacing across mobile, tablet, and desktop.
 - [x] Restyle the crossing marquee with image-inspired typography and theme neutrals only.
 - [x] Verify the updated page on mobile, tablet, and desktop.
+# Brand strip and navigation cleanup
+- [x] Match the logo strip background to the site theme while preserving white logo tiles.
+- [x] Make the brand logos move slowly in a seamless continuous loop.
+- [x] Remove the Gallery page and its navigation link.
+
